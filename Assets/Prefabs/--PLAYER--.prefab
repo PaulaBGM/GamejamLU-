@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 168992155167783817}
   - component: {fileID: 5865367658643460474}
   - component: {fileID: 8867839400412155435}
-  - component: {fileID: 1484675209930308116}
   - component: {fileID: 4823960261210824431}
   m_Layer: 0
   m_Name: Main Camera
@@ -94,21 +93,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 635983855089078118}
   m_Enabled: 1
---- !u!114 &1484675209930308116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 635983855089078118}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b3cfceef5fcf8b4fb45c2d694079b4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  horizontalSensitivity: 0.5
-  verticalSensitivity: 0.2
-  smoothSpeed: 5
 --- !u!114 &4823960261210824431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,6 +147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3835769205625875914}
   - component: {fileID: 6636837456022148313}
+  - component: {fileID: 8836298335152377335}
   - component: {fileID: 6376653494142145129}
   - component: {fileID: 7839650822165191294}
   m_Layer: 0
@@ -182,7 +167,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8601431425137527408}
@@ -209,6 +194,20 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+--- !u!114 &8836298335152377335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5940372863869735624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71b7d73776251a84ca1a5986d12aae55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  climbSpeed: 3
+  interactKey: 101
 --- !u!50 &6376653494142145129
 Rigidbody2D:
   serializedVersion: 5
