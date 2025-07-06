@@ -6,6 +6,7 @@ using UnityEngine;
 public class PickupItem : MonoBehaviour
 {
     public bool IsCollected { get; private set; } = false;
+    public bool IsClean { get; private set; } = false;
 
     private Vector3 targetLocalPosition;
     private float moveSpeed = 5f;
@@ -35,6 +36,14 @@ public class PickupItem : MonoBehaviour
     }
 
     /// <summary>
+    /// Marca el objeto como limpio (lavado).
+    /// </summary>
+    public void SetClean(bool value)
+    {
+        IsClean = value;
+    }
+
+    /// <summary>
     /// Inicia el movimiento hacia la posición dentro del stack.
     /// </summary>
     public void StartMoveToPosition(Vector3 localPosition, float speed)
@@ -43,4 +52,14 @@ public class PickupItem : MonoBehaviour
         moveSpeed = speed;
         moving = true;
     }
+    public void StopMovement()
+    {
+        moving = false;
+    }
+
+    public void EnableMovement()
+    {
+        moving = true;
+    }
+
 }

@@ -1,73 +1,83 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Permite al jugador recoger objetos interactuables (ropa, platos, etc.)
-/// y apilarlos en su espalda.
-/// </summary>
 public class PlayerPickUp : MonoBehaviour
 {
-    [Header("Configuración de Recolección")]
-    [SerializeField] private Transform stackPoint;
-    [SerializeField] private float itemSpacing = 0.5f;
-    [SerializeField] private float pickupRadius = 1f;
+    [SerializeField] private Transform holdPoint;
+    [SerializeField] private float stackHeight = 0.5f;
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private KeyCode interactKey = KeyCode.E;
     [SerializeField] private LayerMask pickupLayer;
+    [SerializeField] private float pickupRange = 1f;
+    [SerializeField] private KeyCode pickupKey = KeyCode.E;
 
     private readonly List<PickupItem> collectedItems = new();
 
     private void Update()
     {
-        if (Input.GetKeyDown(interactKey))
+        if (Input.GetKeyDown(pickupKey))
         {
-            TryPickupNearestItem();
+            TryPickup();
         }
     }
 
-    private void TryPickupNearestItem()
+    private void TryPickup()
     {
-        // Buscar todos los colliders en el radio de recolección
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, pickupRadius, pickupLayer);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, pickupRange, pickupLayer);
 
-        float closestSqrMag = float.MaxValue;
-        PickupItem closestItem = null;
-        Vector2 currentPos = transform.position;
-
-        foreach (var col in colliders)
+        foreach (var hit in hits)
         {
-            PickupItem item = col.GetComponent<PickupItem>();
-            if (item == null || item.IsCollected)
-                continue;
+            PickupItem item = hit.GetComponent<PickupItem>();
 
-            float sqrMag = ((Vector2)item.transform.position - currentPos).sqrMagnitude;
-            if (sqrMag < closestSqrMag)
+            if (item != null && !item.IsCollected && !item.IsClean)
             {
-                closestSqrMag = sqrMag;
-                closestItem = item;
+                item.SetCollected(true);
+                item.transform.SetParent(holdPoint);
+
+                int index = collectedItems.Count;
+                Vector3 localPos = Vector3.up * (index * stackHeight);
+                item.transform.localPosition = localPos;
+
+                item.StartMoveToPosition(localPos, moveSpeed);
+
+                Rigidbody2D rb = item.GetComponent<Rigidbody2D>();
+                if (rb != null)
+                {
+                    rb.linearVelocity = Vector2.zero;
+                    rb.bodyType = RigidbodyType2D.Kinematic;
+                }
+
+                collectedItems.Add(item);
+                break; // Solo recoger uno por pulsaciï¿½n
+            }
+        }
+    }
+
+    public bool HasItems()
+    {
+        return collectedItems.Count > 0;
+    }
+
+    /// <summary>
+    /// Suelta todos los ï¿½tems recogidos y los mueve al transform indicado (por ejemplo, la lavadora).
+    /// </summary>
+    public List<PickupItem> DropAllItemsTo(Transform destination)
+    {
+        List<PickupItem> itemsToDrop = new(collectedItems);
+        collectedItems.Clear();
+        Debug.Log("Chema deja los objetos");
+        foreach (PickupItem item in itemsToDrop)
+        {
+            item.transform.SetParent(destination);
+            item.SetCollected(false);
+
+            Rigidbody2D rb = item.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.linearVelocity = Vector2.zero;
+                rb.bodyType = RigidbodyType2D.Dynamic;
             }
         }
 
-        if (closestItem != null)
-        {
-            Pickup(closestItem);
-        }
-    }
-
-    private void Pickup(PickupItem item)
-    {
-        item.SetCollected(true);
-        collectedItems.Add(item);
-
-        item.transform.SetParent(stackPoint);
-        Vector3 localTarget = new(0f, itemSpacing * (collectedItems.Count - 1), 0f);
-
-        item.StartMoveToPosition(localTarget, moveSpeed);
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, pickupRadius);
+        return itemsToDrop;
     }
 }
