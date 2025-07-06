@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Chihuahua_0: -2377735727823366626
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -184,7 +184,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Duque_el_Gato_0: 5430550563163330392
+      Duque_el_Gato_1: -256460419222469136
+      Duque_el_Gato_2: 2332932167213099574
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
