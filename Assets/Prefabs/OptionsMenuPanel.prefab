@@ -417,7 +417,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2744887280179455117}
         m_TargetAssemblyTypeName: OptionsReferenceManager, Assembly-CSharp
-        m_MethodName: ExitOptionsMenu
+        m_MethodName: CheckChanges
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

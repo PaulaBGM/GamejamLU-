@@ -13,6 +13,8 @@ public class OptionsReferenceManager : MonoBehaviour
     [SerializeField]
     private GameObject _optionsMenuExit;
 
+    private bool hasChanges;
+
     private void Awake()
     {
         // Load saved volume settings if they exist
@@ -42,6 +44,23 @@ public class OptionsReferenceManager : MonoBehaviour
         }
     }
 
+    public void CheckChanges()
+    {
+        // Check if any of the sliders have changed from their default values
+        hasChanges = _brightSlider.value != PlayerPrefs.GetFloat("Brightness") 
+            ||
+            _musicVolumeSlider.value != PlayerPrefs.GetFloat("MusicVolume") 
+            ||
+            _sfxVolumeSlider.value != PlayerPrefs.GetFloat("SFXVolume");
+        if(hasChanges)
+        {
+            ExitOptionsMenu();
+        }
+        else
+        {
+            TogglePanel();
+        }
+    }
     public void ExitOptionsMenu()
     {
         _optionsMenuExit.SetActive(!_optionsMenuExit.activeSelf);
