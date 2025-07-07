@@ -922,7 +922,6 @@ Transform:
   - {fileID: 159534097}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
 --- !u!1 &337503059 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 729789693727294701, guid: 685258fdea6880c4a943604407824573, type: 3}
@@ -930,47 +929,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!70 &337503064
 CapsuleCollider2D:
-=======
---- !u!1 &357298061
-GameObject:
->>>>>>> 6fc460094edbd32ac119bcf5918302243c82ea53
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 337503059}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 5.65, y: 0.19}
-  m_Direction: 0
-=======
   serializedVersion: 6
   m_Component:
   - component: {fileID: 357298064}
@@ -1044,7 +1006,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> 6fc460094edbd32ac119bcf5918302243c82ea53
 --- !u!1 &391495189
 GameObject:
   m_ObjectHideFlags: 0
@@ -7188,9 +7149,4 @@ SceneRoots:
   - {fileID: 643309164}
   - {fileID: 944509063}
   - {fileID: 118061589}
-<<<<<<< HEAD
   - {fileID: 2977223970470979639}
-=======
-  - {fileID: 1362076969}
-  - {fileID: 357298064}
->>>>>>> 6fc460094edbd32ac119bcf5918302243c82ea53
