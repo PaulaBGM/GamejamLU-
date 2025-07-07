@@ -49,7 +49,7 @@ public class PlayerBroomController : MonoBehaviour
         Debug.Log("¡Montado en la escoba!");
     }
 
-    // ✅ Método que faltaba
+    // Método que faltaba
     public bool IsOnBroom()
     {
         return onBroom;
