@@ -43,15 +43,12 @@ public class DogWalker : MonoBehaviour
         currentVelocity.x = (movingRight ? 1 : -1) * fluctuatingSpeed;
         rb.linearVelocity = currentVelocity;
 
-        Debug.Log($"[Movimiento] Dirección: {(movingRight ? "Derecha" : "Izquierda")} - Velocidad X: {currentVelocity.x}");
-
         bool isBlocked = movingRight
             ? Physics2D.OverlapCircle(rightWallCheck.position, wallCheckRadius, groundLayer)
             : Physics2D.OverlapCircle(leftWallCheck.position, wallCheckRadius, groundLayer);
 
         if (isBlocked && Time.time - lastFlipTime > flipCooldown)
         {
-            Debug.Log($"[Pared] Detectada en {(movingRight ? "derecha" : "izquierda")}. Cambiando dirección.");
             Flip();
             lastFlipTime = Time.time;
         }
@@ -65,7 +62,6 @@ public class DogWalker : MonoBehaviour
         scale.x = Mathf.Abs(initialScale.x) * (movingRight ? 1 : -1);
         transform.localScale = scale;
 
-        Debug.Log($"[Flip] Nueva dirección: {(movingRight ? "Derecha" : "Izquierda")}");
     }
 
     private void OnDrawGizmosSelected()

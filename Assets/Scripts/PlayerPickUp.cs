@@ -47,7 +47,7 @@ public class PlayerPickUp : MonoBehaviour
                 }
 
                 collectedItems.Add(item);
-                break; // Solo recoger uno por pulsaci�n
+                break; // Solo recoge uno por pulsación
             }
         }
     }
@@ -58,13 +58,15 @@ public class PlayerPickUp : MonoBehaviour
     }
 
     /// <summary>
-    /// Suelta todos los �tems recogidos y los mueve al transform indicado (por ejemplo, la lavadora).
+    /// Suelta todos los ítems recogidos y los mueve al transform indicado (por ejemplo, la lavadora).
     /// </summary>
     public List<PickupItem> DropAllItemsTo(Transform destination)
     {
         List<PickupItem> itemsToDrop = new(collectedItems);
         collectedItems.Clear();
+
         Debug.Log("Chema deja los objetos");
+
         foreach (PickupItem item in itemsToDrop)
         {
             item.transform.SetParent(destination);
@@ -79,5 +81,32 @@ public class PlayerPickUp : MonoBehaviour
         }
 
         return itemsToDrop;
+    }
+
+    /// <summary>
+    /// Recibe los objetos limpios desde la lavadora y los apila sobre el jugador.
+    /// </summary>
+    public void ReceiveCleanItems(List<PickupItem> cleanedItems)
+    {
+        foreach (PickupItem item in cleanedItems)
+        {
+            item.SetCollected(true);
+            item.transform.SetParent(holdPoint);
+
+            int index = collectedItems.Count;
+            Vector3 localPos = Vector3.up * (index * stackHeight);
+            item.transform.localPosition = localPos;
+
+            item.StartMoveToPosition(localPos, moveSpeed);
+
+            Rigidbody2D rb = item.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.linearVelocity = Vector2.zero;
+                rb.bodyType = RigidbodyType2D.Kinematic;
+            }
+
+            collectedItems.Add(item);
+        }
     }
 }

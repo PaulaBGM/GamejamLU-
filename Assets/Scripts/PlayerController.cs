@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
@@ -16,20 +17,15 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     private float moveInput;
 
-    /* 
-    // Referencias al Animator y SpriteRenderer del hijo (comentadas)
-    private Animator animator;
-    private SpriteRenderer spriteRenderer;
-    */
+    private bool facingRight = true;
+
+    // Para suavizar la cámara
+    [SerializeField] private float flipSmoothTime = 0.3f;
+    [SerializeField] private string cameraChildName = "Camera"; // Nombre del hijo cámara para suavizar flip
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-
-        /* 
-        animator = GetComponentInChildren<Animator>();
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        */
     }
 
     private void Update()
@@ -41,11 +37,16 @@ public class PlayerController : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
 
-        /* 
-        animator?.SetFloat("Speed", Mathf.Abs(moveInput));
-        animator?.SetBool("IsGrounded", IsGrounded());
-
-        */
+        if (moveInput > 0 && !facingRight)
+        {
+            FlipChildren(true);
+            facingRight = true;
+        }
+        else if (moveInput < 0 && facingRight)
+        {
+            FlipChildren(false);
+            facingRight = false;
+        }
     }
 
     private void FixedUpdate()
@@ -56,5 +57,59 @@ public class PlayerController : MonoBehaviour
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
+    }
+
+    private void FlipChildren(bool faceRight)
+    {
+        foreach (Transform child in transform)
+        {
+            if (child.name == cameraChildName)
+            {
+                // Suavizamos la posición local de la cámara
+                StopAllCoroutines();
+                StartCoroutine(SmoothFlipCamera(child, faceRight));
+            }
+            else
+            {
+                // Flip inmediato para otros hijos
+                Vector3 localPos = child.localPosition;
+                localPos.x = -localPos.x;
+                child.localPosition = localPos;
+
+                SpriteRenderer sr = child.GetComponent<SpriteRenderer>();
+                if (sr == null)
+                    sr = child.GetComponentInChildren<SpriteRenderer>();
+
+                if (sr != null)
+                    sr.flipX = !sr.flipX;
+            }
+        }
+    }
+
+    private IEnumerator SmoothFlipCamera(Transform cam, bool faceRight)
+    {
+        Vector3 startPos = cam.localPosition;
+        Vector3 targetPos = startPos;
+        targetPos.x = -startPos.x;
+
+        float elapsed = 0f;
+        float duration = flipSmoothTime;
+
+        SpriteRenderer sr = cam.GetComponent<SpriteRenderer>();
+        if (sr == null)
+            sr = cam.GetComponentInChildren<SpriteRenderer>();
+
+        // Cambio inmediato del sprite flip para evitar que se vea al revés
+        if (sr != null)
+            sr.flipX = faceRight ? false : true;
+
+        while (elapsed < duration)
+        {
+            cam.localPosition = Vector3.Lerp(startPos, targetPos, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        cam.localPosition = targetPos;
     }
 }

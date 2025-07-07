@@ -4,69 +4,127 @@ using UnityEngine;
 
 public class WashingMachine : MonoBehaviour
 {
-    [SerializeField] private float washDuration = 20f;
-    [SerializeField] private AudioClip alarmSound;
+    [SerializeField] private float washingTime = 20f;
+    [SerializeField] private Transform washingPoint;
+    [SerializeField] private float interactionRange = 1f;
+    [SerializeField] private KeyCode interactionKey = KeyCode.E;
 
-    private AudioSource audioSource;
-    private bool playerInRange = false;
+    private List<PickupItem> itemsInside = new();
     private bool isWashing = false;
-
-    private void Awake()
-    {
-        audioSource = GetComponent<AudioSource>();
-    }
+    private bool isFinished = false;
 
     private void Update()
     {
-        if (playerInRange && !isWashing && Input.GetKeyDown(KeyCode.E))
+        if (!Input.GetKeyDown(interactionKey)) return;
+
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, interactionRange);
+
+        foreach (Collider2D collider in colliders)
         {
-            TryReceiveItems();
+            PlayerPickUp player = collider.GetComponent<PlayerPickUp>();
+            if (player != null)
+            {
+                if (isFinished)
+                {
+                    ReturnCleanItemsToPlayer(player);
+                }
+                else if (!isWashing && player.HasItems())
+                {
+                    List<PickupItem> items = player.DropAllItemsTo(washingPoint);
+                    ReceiveItems(items);
+                }
+
+                break; // Solo interactuar con un jugador
+            }
         }
     }
 
-    private void TryReceiveItems()
+    private void ReturnCleanItemsToPlayer(PlayerPickUp player)
     {
-        PlayerPickUp player = Object.FindFirstObjectByType<PlayerPickUp>();
+        if (itemsInside.Count == 0) return;
 
-        if (player != null && player.HasItems())
+        // Hacer visibles los objetos antes de devolverlos
+        foreach (var item in itemsInside)
         {
-            List<PickupItem> items = player.DropAllItemsTo(transform);
+            SpriteRenderer sr = item.GetComponentInChildren<SpriteRenderer>();
+            if (sr != null) sr.enabled = true;
 
-            // Destruye los objetos para que "desaparezcan" en la lavadora
-            foreach (var item in items)
+            // Reactivar colisiones si tienes collider
+            Collider2D col = item.GetComponent<Collider2D>();
+            if (col != null) col.enabled = true;
+
+            // Cambiar Rigidbody a cinemático para control del jugador
+            Rigidbody2D rb = item.GetComponent<Rigidbody2D>();
+            if (rb != null)
             {
-                Destroy(item.gameObject);
+                rb.bodyType = RigidbodyType2D.Kinematic;
+                rb.linearVelocity = Vector2.zero;
+                rb.angularVelocity = 0f;
             }
-
-            StartCoroutine(WashItems());
         }
+
+        player.ReceiveCleanItems(itemsInside);
+        itemsInside.Clear();
+        isFinished = false;
+        Debug.Log("Chema recoge los objetos limpios");
+    }
+
+    public bool CanAcceptItems()
+    {
+        return !isWashing;
+    }
+
+    public void ReceiveItems(List<PickupItem> items)
+    {
+        if (!CanAcceptItems()) return;
+
+        itemsInside = items;
+
+        foreach (var item in itemsInside)
+        {
+            item.transform.position = washingPoint.position;
+            item.SetClean(false); // Aún están sucios al llegar
+
+            // Ocultar objeto
+            SpriteRenderer sr = item.GetComponentInChildren<SpriteRenderer>();
+            if (sr != null) sr.enabled = false;
+
+            // Desactivar colisiones
+            Collider2D col = item.GetComponent<Collider2D>();
+            if (col != null) col.enabled = false;
+
+            // Poner Rigidbody dinámico para que no caiga y no se mueva
+            Rigidbody2D rb = item.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.linearVelocity = Vector2.zero;
+                rb.angularVelocity = 0f;
+                rb.bodyType = RigidbodyType2D.Kinematic;
+            }
+        }
+
+        StartCoroutine(WashItems());
     }
 
     private IEnumerator WashItems()
     {
         isWashing = true;
-        Debug.Log("Lavado Iniciado");
+        yield return new WaitForSeconds(washingTime);
 
-        yield return new WaitForSeconds(washDuration);
-
-        Debug.Log("Lavado completado");
-        isWashing = false;
-
-        if (alarmSound && audioSource)
+        foreach (var item in itemsInside)
         {
-            audioSource.PlayOneShot(alarmSound);
+            item.SetClean(true);
         }
+
+        isWashing = false;
+        isFinished = true;
+        Debug.Log("Lavadora terminó de lavar");
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnDrawGizmosSelected()
     {
-        if (other.CompareTag("Player"))
-            playerInRange = true;
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-            playerInRange = false;
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, interactionRange);
     }
 }
+
