@@ -1,19 +1,27 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BroomZone : MonoBehaviour
 {
-    public GameObject broomPrefab; // Prefab de la escoba que se activa al montarse
-    public ParticleSystem mountParticles;
-
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
+        if (other.CompareTag("Player"))
         {
-            PlayerBroomController broomController = other.GetComponent<PlayerBroomController>();
-            if (broomController != null)
+            var controller = other.GetComponent<PlayerBroomController>();
+            if (controller != null)
             {
-                broomController.MountBroom(broomPrefab, mountParticles);
-                Destroy(gameObject); // Opcional: eliminar escoba de suelo
+                controller.inBroomZone = true;
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            var controller = other.GetComponent<PlayerBroomController>();
+            if (controller != null)
+            {
+                controller.inBroomZone = false;
             }
         }
     }
