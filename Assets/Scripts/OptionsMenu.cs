@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +14,8 @@ public class OptionsMenu : MonoBehaviour
     private GameObject _mainCanva;
     //Bool to see if the menu is open
     public bool IsOpen;
+    [SerializeField]
+    private List<GameObject> _buttonsToDisable;
 
     private void Awake()
     {
@@ -47,11 +50,30 @@ public class OptionsMenu : MonoBehaviour
             if (_optionsMenu.activeSelf)
             {
                 IsOpen = true;
+                TurnOffAllButtons();
             }
             else
             {
                 IsOpen = false;
+                TurnOnAllButtons();
             }
+        }
+    }
+
+    private void TurnOffAllButtons()
+    {
+        //Toggle the active state of all buttons in the list
+        foreach (GameObject button in _buttonsToDisable)
+        {
+            button.SetActive(false);
+        }
+    }
+    private void TurnOnAllButtons()
+    {
+        //Toggle the active state of all buttons in the list
+        foreach (GameObject button in _buttonsToDisable)
+        {
+            button.SetActive(true);
         }
     }
 

@@ -198,6 +198,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _exitPanel: {fileID: 1401207884}
+  _buttonsToDisable:
+  - {fileID: 222690102}
+  - {fileID: 491711432}
+  - {fileID: 1093441218}
+  - {fileID: 1484583979}
 --- !u!1 &182115191
 GameObject:
   m_ObjectHideFlags: 0
@@ -1250,6 +1255,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _optionsMenuPrefab: {fileID: 7209848591056533594, guid: eb774d546374afc4988c9ddb5fb948a4, type: 3}
+  IsOpen: 0
+  _buttonsToDisable:
+  - {fileID: 222690102}
+  - {fileID: 491711432}
+  - {fileID: 1093441218}
+  - {fileID: 1484583979}
 --- !u!1 &1025502740
 GameObject:
   m_ObjectHideFlags: 0

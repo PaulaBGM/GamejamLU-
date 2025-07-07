@@ -27,7 +27,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 3
-    m_Localized: Sair
+    m_Localized: "Sa\xEDr"
     m_Metadata:
       m_Items: []
   - m_Id: 4
