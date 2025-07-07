@@ -816,6 +816,7 @@ GameObject:
   - component: {fileID: 586861741715849081}
   - component: {fileID: 4556816610270659868}
   - component: {fileID: 2744887280179455117}
+  - component: {fileID: 3765555319795508492}
   m_Layer: 5
   m_Name: PreferencesPanel
   m_TagString: Untagged
@@ -900,6 +901,19 @@ MonoBehaviour:
   _musicVolumeSlider: {fileID: 7826007164712507983}
   _sfxVolumeSlider: {fileID: 4027453095947504091}
   _optionsMenuExit: {fileID: 6154418445642262524}
+--- !u!114 &3765555319795508492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128513788939394011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b49e2d606e7825d4b928c28186836567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _languageText: {fileID: 3790680308729886660}
 --- !u!1 &2336166726430495313
 GameObject:
   m_ObjectHideFlags: 0
@@ -1233,6 +1247,7 @@ GameObject:
   - component: {fileID: 8290044957850250488}
   - component: {fileID: 6474162704333518567}
   - component: {fileID: 234196745557945679}
+  - component: {fileID: 1499343393304870055}
   m_Layer: 5
   m_Name: OptionsText
   m_TagString: Untagged
@@ -1358,6 +1373,46 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1499343393304870055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2923022395949362293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:2d06980cce10fd64dbb0c49b5e3fbffa
+    m_TableEntryReference:
+      m_KeyId: 2
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 234196745557945679}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &3028633940724519945
 GameObject:
   m_ObjectHideFlags: 0
@@ -2522,7 +2577,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: English
+  m_text: "Espa\xF1ol"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2587,7 +2642,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -16.440796, y: 0, z: -17.615112, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3605,7 +3660,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1102377322029432418}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3765555319795508492}
+        m_TargetAssemblyTypeName: LanguageController, Assembly-CSharp
+        m_MethodName: DecreaseId
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8010465904170597421
 GameObject:
   m_ObjectHideFlags: 0
@@ -4080,4 +4147,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6506650314863625958}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3765555319795508492}
+        m_TargetAssemblyTypeName: LanguageController, Assembly-CSharp
+        m_MethodName: IncreaseId
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

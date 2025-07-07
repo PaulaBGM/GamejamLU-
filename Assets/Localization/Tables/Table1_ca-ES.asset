@@ -17,7 +17,51 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 2d06980cce10fd64dbb0c49b5e3fbffa, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 1
+    m_Localized: "Comen\xE7ar"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2
+    m_Localized: Opcions
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3
+    m_Localized: Sortir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4
+    m_Localized: Si
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5
+    m_Localized: No
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6
+    m_Localized: Brillantor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7
+    m_Localized: Idioma
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8
+    m_Localized: Musica
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9
+    m_Localized: SFX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10
+    m_Localized: "Cr\xE8dits"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11
+    m_Localized: Desa Canvis?
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
