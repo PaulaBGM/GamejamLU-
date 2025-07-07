@@ -11,6 +11,8 @@ public class OptionsMenu : MonoBehaviour
     private GameObject _optionsMenu;
     //Point to spawn the options menu prefab
     private GameObject _mainCanva;
+    //Bool to see if the menu is open
+    public bool IsOpen;
 
     private void Awake()
     {
@@ -25,6 +27,7 @@ public class OptionsMenu : MonoBehaviour
             Destroy(gameObject);
         }
         _mainCanva = GameObject.Find("Canvas");
+        IsOpen = false;
     }
 
     private void Update()
@@ -36,6 +39,18 @@ public class OptionsMenu : MonoBehaviour
                 //If the options menu is already open, close it
                 _optionsMenu.SetActive(false);
                 return;
+            }
+        }
+        if (_optionsMenu != null)
+        {
+
+            if (_optionsMenu.activeSelf)
+            {
+                IsOpen = true;
+            }
+            else
+            {
+                IsOpen = false;
             }
         }
     }
