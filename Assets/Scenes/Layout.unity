@@ -483,7 +483,7 @@ GameObject:
   - component: {fileID: 106007003}
   - component: {fileID: 106007005}
   - component: {fileID: 106007004}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1473,7 +1473,7 @@ GameObject:
   - component: {fileID: 410043790}
   - component: {fileID: 410043792}
   - component: {fileID: 410043791}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4766,7 +4766,7 @@ GameObject:
   - component: {fileID: 987147248}
   - component: {fileID: 987147250}
   - component: {fileID: 987147249}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6799,6 +6799,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 764411735368239138, guid: 76206381ed6c1544ca03f9366fb7b007, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1539222546886168201, guid: 76206381ed6c1544ca03f9366fb7b007, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -6842,6 +6846,10 @@ PrefabInstance:
     - target: {fileID: 3835769205625875914, guid: 76206381ed6c1544ca03f9366fb7b007, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3961591701100601045, guid: 76206381ed6c1544ca03f9366fb7b007, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5940372863869735624, guid: 76206381ed6c1544ca03f9366fb7b007, type: 3}
       propertyPath: m_Name
@@ -6890,6 +6898,14 @@ PrefabInstance:
     - target: {fileID: 6680302934299542297, guid: 76206381ed6c1544ca03f9366fb7b007, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6680302934299542297, guid: 76206381ed6c1544ca03f9366fb7b007, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7176954944943233974, guid: 76206381ed6c1544ca03f9366fb7b007, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8601431425137527408, guid: 76206381ed6c1544ca03f9366fb7b007, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7232,7 +7248,7 @@ GameObject:
   - component: {fileID: 1709773486}
   - component: {fileID: 1709773488}
   - component: {fileID: 1709773487}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7959,7 +7975,7 @@ GameObject:
   - component: {fileID: 1785676845}
   - component: {fileID: 1785676847}
   - component: {fileID: 1785676846}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -19,10 +19,10 @@ public class PlayerController : MonoBehaviour
 
     private bool facingRight = true;
 
-    // Para suavizar la cámara
     [SerializeField] private float flipSmoothTime = 0.3f;
-    [SerializeField] private string cameraChildName = "Camera"; // Nombre del hijo cámara para suavizar flip
-    [SerializeField] Animator anim;
+    [SerializeField] private string cameraChildName = "Camera";
+    [SerializeField] private Animator anim;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -32,10 +32,13 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         moveInput = Input.GetAxisRaw("Horizontal");
-        anim.SetFloat("Speed", moveInput);
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+        anim.SetFloat("Speed", Mathf.Abs(moveInput));
+
+        // Saltar
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            anim.SetBool("JumpStart", true); // se activa el salto inicial
         }
 
         if (moveInput > 0 && !facingRight)
@@ -48,16 +51,25 @@ public class PlayerController : MonoBehaviour
             FlipChildren(false);
             facingRight = false;
         }
+
+        // Actualizar verticalSpeed para el Animator
+        anim.SetFloat("verticalSpeed", rb.linearVelocity.y);
     }
 
     private void FixedUpdate()
     {
+        // Movimiento horizontal
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
-    }
 
-    private bool IsGrounded()
-    {
-        return Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
+        // Actualizar estado de suelo
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
+        anim.SetBool("IsGrounded", isGrounded);
+
+        // Resetear "JumpStart" si ya estamos cayendo
+        if (rb.linearVelocity.y <= 0)
+        {
+            anim.SetBool("JumpStart", false);
+        }
     }
 
     private void FlipChildren(bool faceRight)
@@ -66,13 +78,11 @@ public class PlayerController : MonoBehaviour
         {
             if (child.name == cameraChildName)
             {
-                // Suavizamos la posición local de la cámara
                 StopAllCoroutines();
                 StartCoroutine(SmoothFlipCamera(child, faceRight));
             }
             else
             {
-                // Flip inmediato para otros hijos
                 Vector3 localPos = child.localPosition;
                 localPos.x = -localPos.x;
                 child.localPosition = localPos;
@@ -100,9 +110,8 @@ public class PlayerController : MonoBehaviour
         if (sr == null)
             sr = cam.GetComponentInChildren<SpriteRenderer>();
 
-        // Cambio inmediato del sprite flip para evitar que se vea al revés
         if (sr != null)
-            sr.flipX = faceRight ? false : true;
+            sr.flipX = !faceRight;
 
         while (elapsed < duration)
         {
