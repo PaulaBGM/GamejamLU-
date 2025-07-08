@@ -9,6 +9,7 @@ public class TimerMechanic : MonoBehaviour
     private bool _isOnHalfTime;
     private bool _isOnLastMinute;
     private float _timer;
+
     [SerializeField]
     private TextMeshProUGUI _timerText;
     private void Awake()
@@ -90,6 +91,7 @@ public class TimerMechanic : MonoBehaviour
     }
     private void ShowResults()
     {
+        TaskManager.Instance.CalculateFinalPercent();
         SceneManager.LoadScene(4);
     }
 }

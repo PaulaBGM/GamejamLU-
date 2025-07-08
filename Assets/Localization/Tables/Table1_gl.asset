@@ -62,6 +62,34 @@ MonoBehaviour:
     m_Localized: Gardar Cambios?
     m_Metadata:
       m_Items: []
+  - m_Id: 12
+    m_Localized: "Vi\xF1o Bodega"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13
+    m_Localized: Barrer Salon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14
+    m_Localized: "Fregar Coci\xF1a"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15
+    m_Localized: Lavar Louza
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16
+    m_Localized: Roupa Sucia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17
+    m_Localized: Lavadora
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18
+    m_Localized: Tender Roupa
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

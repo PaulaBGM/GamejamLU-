@@ -62,6 +62,34 @@ MonoBehaviour:
     m_Localized: Guardar Cambios?
     m_Metadata:
       m_Items: []
+  - m_Id: 12
+    m_Localized: Vino Bodega
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13
+    m_Localized: Barrer Salon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14
+    m_Localized: Fregar Cocina
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15
+    m_Localized: Lavar Platos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16
+    m_Localized: Ropa Sucia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17
+    m_Localized: Lavadora
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18
+    m_Localized: Tender Ropa
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

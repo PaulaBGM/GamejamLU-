@@ -62,6 +62,34 @@ MonoBehaviour:
     m_Localized: Desa Canvis?
     m_Metadata:
       m_Items: []
+  - m_Id: 12
+    m_Localized: Vi Celler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13
+    m_Localized: Barrer Salon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14
+    m_Localized: Fregar Cuina
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15
+    m_Localized: Rentar Plats
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16
+    m_Localized: Roba Bruta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17
+    m_Localized: Rentadora
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18
+    m_Localized: Estendre Roba
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

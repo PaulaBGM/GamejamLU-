@@ -12,6 +12,8 @@ public class WashingMachine : MonoBehaviour
     private List<PickupItem> itemsInside = new();
     private bool isWashing = false;
     private bool isFinished = false;
+    private int _cleanedCount = 0;
+    private const int _totalRequired = 6;
 
     private void Update()
     {
@@ -114,11 +116,14 @@ public class WashingMachine : MonoBehaviour
         foreach (var item in itemsInside)
         {
             item.SetClean(true);
+            _cleanedCount++;
         }
 
         isWashing = false;
         isFinished = true;
+        TaskManager.Instance.EndTask(6, (float)_cleanedCount / _totalRequired * 100f);
         Debug.Log("Lavadora terminó de lavar");
+        Debug.Log($"Objetos lavados: {(float)_cleanedCount / _totalRequired * 100f}%");
     }
 
     private void OnDrawGizmosSelected()

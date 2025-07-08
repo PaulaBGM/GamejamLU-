@@ -3,8 +3,7 @@ using UnityEngine.UI;
 
 public class TaskManager : MonoBehaviour
 {
-    public TaskManager Instance;
-    
+    public static TaskManager Instance;
     
     [Header("Tasks")]
     [SerializeField]
@@ -21,7 +20,6 @@ public class TaskManager : MonoBehaviour
     private Task WashingMachineTask;
     [SerializeField]
     private Task HangClothesTask;
-
     
     [Header("Task Progress Images")]
     [SerializeField]
@@ -52,6 +50,7 @@ public class TaskManager : MonoBehaviour
     [SerializeField]
     private GameObject _taskListButton;
 
+    public float FinalPercent;
     private void Awake()
     {
         if(Instance == null)
@@ -129,12 +128,12 @@ public class TaskManager : MonoBehaviour
     {
         WineTask.CompletedPercent = percent;
         WineTaskProgress.gameObject.SetActive(true);
-        if (percent > 66.0f)
+        if (percent > 66.7f)
         {
             WineTask.Completed = true;
             WineTaskProgress.sprite = NiceResult;
         }
-        else if (percent > 33.0f)
+        else if (percent > 33.4f)
         {
             WineTask.Completed = true;
             WineTaskProgress.sprite = MediumResult;
@@ -149,12 +148,12 @@ public class TaskManager : MonoBehaviour
     {
         SweepTask.CompletedPercent = percent;
         SweepTaskProgress.gameObject.SetActive(true);
-        if (percent > 66.0f)
+        if (percent > 66.7f)
         {
             SweepTask.Completed = true;
             SweepTaskProgress.sprite = NiceResult;
         }
-        else if (percent > 33.0f)
+        else if (percent > 33.4f)
         {
             SweepTask.Completed = true;
             SweepTaskProgress.sprite = MediumResult;
@@ -169,12 +168,12 @@ public class TaskManager : MonoBehaviour
     {
         ScrubTask.CompletedPercent = percent;
         ScrubTaskProgress.gameObject.SetActive(true);
-        if (percent > 66.0f)
+        if (percent > 66.7f)
         {
             ScrubTask.Completed = true;
             ScrubTaskProgress.sprite = NiceResult;
         }
-        else if (percent > 33.0f)
+        else if (percent > 33.4f)
         {
             ScrubTask.Completed = true;
             ScrubTaskProgress.sprite = MediumResult;
@@ -189,12 +188,12 @@ public class TaskManager : MonoBehaviour
     {
         DishesTask.CompletedPercent = percent;
         DishesTaskProgress.gameObject.SetActive(true);
-        if (percent > 66.0f)
+        if (percent > 66.7f)
         {
             DishesTask.Completed = true;
             DishesTaskProgress.sprite = NiceResult;
         }
-        else if (percent > 33.0f)
+        else if (percent > 33.4f)
         {
             DishesTask.Completed = true;
             DishesTaskProgress.sprite = MediumResult;
@@ -209,12 +208,12 @@ public class TaskManager : MonoBehaviour
     {
         ClothesTask.CompletedPercent = percent;
         ClothesTaskProgress.gameObject.SetActive(true);
-        if (percent > 66.0f)
+        if (percent > 66.7f)
         {
             ClothesTask.Completed = true;
             ClothesTaskProgress.sprite = NiceResult;
         }
-        else if (percent > 33.0f)
+        else if (percent > 33.4f)
         {
             ClothesTask.Completed = true;
             ClothesTaskProgress.sprite = MediumResult;
@@ -229,12 +228,12 @@ public class TaskManager : MonoBehaviour
     {
         WashingMachineTask.CompletedPercent = percent;
         WashingMachineTaskProgress.gameObject.SetActive(true);
-        if (percent > 66.0f)
+        if (percent > 66.7f)
         {
             WashingMachineTask.Completed = true;
             WashingMachineTaskProgress.sprite = NiceResult;
         }
-        else if (percent > 33.0f)
+        else if (percent > 33.4f)
         {
             WashingMachineTask.Completed = true;
             WashingMachineTaskProgress.sprite = MediumResult;
@@ -249,12 +248,12 @@ public class TaskManager : MonoBehaviour
     {
         HangClothesTask.CompletedPercent = percent;
         HangClothesTaskProgress.gameObject.SetActive(true);
-        if (percent > 66.0f)
+        if (percent > 66.7f)
         {
             HangClothesTask.Completed = true;
             HangClothesTaskProgress.sprite = NiceResult;
         }
-        else if (percent > 33.0f)
+        else if (percent > 33.4f)
         {
             HangClothesTask.Completed = true;
             HangClothesTaskProgress.sprite = MediumResult;
@@ -269,5 +268,17 @@ public class TaskManager : MonoBehaviour
     {
         _taskListPanel.SetActive(!_taskListPanel.activeSelf);
         _taskListButton.SetActive(!_taskListPanel.activeSelf);
+    }
+    public void CalculateFinalPercent()
+    {
+        FinalPercent = (
+            WineTask.CompletedPercent +
+            SweepTask.CompletedPercent +
+            ScrubTask.CompletedPercent +
+            DishesTask.CompletedPercent +
+            ClothesTask.CompletedPercent +
+            WashingMachineTask.CompletedPercent +
+            HangClothesTask.CompletedPercent) /
+            7.0f;
     }
 }
