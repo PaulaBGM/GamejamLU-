@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8866708795927941305}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: wallcheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 4783863611184830437}
   - component: {fileID: 4050371254514175482}
   - component: {fileID: 7416820779398733300}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Dog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2423235414912232187}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: groundcheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1391574551174139750}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: wallcheck (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -238,7 +238,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7166138693107760907}
   - component: {fileID: 2709528581876141174}
-  m_Layer: 0
+  - component: {fileID: 184087123324467514}
+  m_Layer: 7
   m_Name: perro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -315,3 +316,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &184087123324467514
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8653124901444463397}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 819fda3fc2ad4a34b8433dcc591a32d6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

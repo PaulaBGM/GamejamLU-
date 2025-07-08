@@ -22,16 +22,17 @@ public class PlayerController : MonoBehaviour
     // Para suavizar la cámara
     [SerializeField] private float flipSmoothTime = 0.3f;
     [SerializeField] private string cameraChildName = "Camera"; // Nombre del hijo cámara para suavizar flip
-
+    [SerializeField] Animator anim;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     private void Update()
     {
         moveInput = Input.GetAxisRaw("Horizontal");
-
+        anim.SetFloat("Speed", moveInput);
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
