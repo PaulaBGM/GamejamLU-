@@ -4,17 +4,11 @@
 public class PlayerBroomController : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private bool onBroom = false;
 
-    [Header("Broom Settings")]
     public float broomSpeed = 8f;
     public Transform broomMountPoint;
-    public GameObject broomPrefab;
-    public ParticleSystem mountParticles;
 
-    [HideInInspector]
-    public bool inBroomZone = false;
-
-    private bool onBroom = false;
     private GameObject broomObject;
 
     private void Awake()
@@ -24,62 +18,57 @@ public class PlayerBroomController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if (onBroom)
-            {
-                DismountBroom();
-            }
-            else if (inBroomZone && broomPrefab != null)
-            {
-                MountBroom();
-            }
-        }
-
         if (onBroom)
         {
+            // Movimiento en escoba
             float moveX = Input.GetAxisRaw("Horizontal");
             float moveY = Input.GetAxisRaw("Vertical");
-            Vector2 move = new Vector2(moveX, moveY).normalized;
-            rb.linearVelocity = move * broomSpeed;
+            Vector2 movement = new Vector2(moveX, moveY).normalized;
+
+            rb.linearVelocity = movement * broomSpeed;
 
             if (broomObject != null)
             {
                 broomObject.transform.position = broomMountPoint.position;
             }
+
+            // Desmontar con Q
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                DismountBroom();
+            }
         }
     }
 
-    private void MountBroom()
+    public void MountBroom(GameObject broomPrefab, ParticleSystem particles)
     {
-        onBroom = true;
+        if (onBroom) return;
 
-        if (mountParticles != null)
+        if (particles != null)
         {
-            Instantiate(mountParticles, transform.position, Quaternion.identity).Play();
+            Instantiate(particles, transform.position, Quaternion.identity).Play();
         }
 
         broomObject = Instantiate(broomPrefab, broomMountPoint.position, Quaternion.identity);
         broomObject.transform.SetParent(transform);
+        onBroom = true;
 
-        Debug.Log("🧹 Montado en la escoba");
+        Debug.Log("¡Montado en la escoba!");
     }
 
-    private void DismountBroom()
+    public void DismountBroom()
     {
-        onBroom = false;
+        if (!onBroom) return;
 
         if (broomObject != null)
         {
             Destroy(broomObject);
         }
 
-        if (mountParticles != null)
-        {
-            Instantiate(mountParticles, transform.position, Quaternion.identity).Play();
-        }
+        onBroom = false;
+        rb.linearVelocity = Vector2.zero;
 
-        Debug.Log("❌ Desmontado de la escoba");
+        Debug.Log("¡Desmontado de la escoba!");
     }
 
     public bool IsOnBroom()

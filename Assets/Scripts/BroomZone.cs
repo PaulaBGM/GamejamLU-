@@ -2,15 +2,18 @@
 
 public class BroomZone : MonoBehaviour
 {
+    public GameObject broomPrefab;
+    public ParticleSystem mountParticles;
+
+    private bool playerInZone = false;
+    private PlayerBroomController player;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            var controller = other.GetComponent<PlayerBroomController>();
-            if (controller != null)
-            {
-                controller.inBroomZone = true;
-            }
+            player = other.GetComponent<PlayerBroomController>();
+            playerInZone = true;
         }
     }
 
@@ -18,11 +21,17 @@ public class BroomZone : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            var controller = other.GetComponent<PlayerBroomController>();
-            if (controller != null)
-            {
-                controller.inBroomZone = false;
-            }
+            playerInZone = false;
+            player = null;
+        }
+    }
+
+    private void Update()
+    {
+        if (playerInZone && player != null && Input.GetKeyDown(KeyCode.E))
+        {
+            player.MountBroom(broomPrefab, mountParticles);
+            Destroy(gameObject); // Opcional
         }
     }
 }
