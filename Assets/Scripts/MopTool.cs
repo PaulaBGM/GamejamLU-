@@ -19,8 +19,12 @@ public class MopTool : MountableTool
         spawnTimer -= Time.deltaTime;
         if (spawnTimer <= 0f)
         {
-            GameObject zone = Instantiate(slipperyZonePrefab, owner.transform.position, Quaternion.identity);
+            Vector3 spawnPos = owner.transform.position;
+            spawnPos.y = 28.23f; // Asegura que se instale en el plano del suelo
+
+            Instantiate(slipperyZonePrefab, spawnPos, Quaternion.identity);
             spawnTimer = spawnInterval;
         }
     }
+
 }

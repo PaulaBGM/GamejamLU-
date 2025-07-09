@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - Stairs
+  - Mom
+  - Cat
+  - Dog
   layers:
   - Default
   - TransparentFX

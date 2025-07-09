@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6
   slipperyZonePrefab: {fileID: 5088208862206212733, guid: b8ae9a4ab32d2f6408f5a8ab1a82772f, type: 3}
-  spawnInterval: 0.5
+  spawnInterval: 0.1
 --- !u!1 &4325294191996973335
 GameObject:
   m_ObjectHideFlags: 0
