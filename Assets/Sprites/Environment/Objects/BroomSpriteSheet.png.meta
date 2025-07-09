@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 6d26dd694f60f404fb08343486718a56
+guid: 133dde71ff9e3c946852ec602ede6a14
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1284859215476283910
-    second: MopSpriteSheet_0
+      213: -1008124144715852321
+    second: BroomSpriteSheet_0
   - first:
-      213: 5650887619208477777
-    second: MopSpriteSheet_1
+      213: -3591976762364761600
+    second: BroomSpriteSheet_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -99,16 +99,68 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: tvOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MopSpriteSheet_0
+      name: BroomSpriteSheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 384
+        width: 192
         height: 384
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -116,21 +168,21 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 60ad9d426acb4d110800000000000000
-      internalID: 1284859215476283910
+      spriteID: 89febd0cb87fc834099d325eb9ff2975
+      internalID: -1008124144715852321
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MopSpriteSheet_1
+      name: BroomSpriteSheet_1
       rect:
         serializedVersion: 2
-        x: 384
+        x: 192
         y: 0
-        width: 384
+        width: 192
         height: 384
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -138,10 +190,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 15cf298995cfb6e40800000000000000
-      internalID: 5650887619208477777
+      spriteID: fe785f2c55c8ef645b869652cc8656e1
+      internalID: -3591976762364761600
       vertices: []
       indices: 
       edges: []
@@ -150,7 +202,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 3e70c5659caec8e4ba81493f36984a14
+    spriteID: 23c9b08d22fb8a542a2efeec87c66ebd
     internalID: 0
     vertices: []
     indices: 
@@ -160,8 +212,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      MopSpriteSheet_0: 1284859215476283910
-      MopSpriteSheet_1: 5650887619208477777
+      BroomSpriteSheet_0: -1008124144715852321
+      BroomSpriteSheet_1: -3591976762364761600
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
