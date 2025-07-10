@@ -90,6 +90,10 @@ MonoBehaviour:
     m_Localized: Estendre Roba
     m_Metadata:
       m_Items: []
+  - m_Id: 19
+    m_Localized: "Seg\xFCent"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

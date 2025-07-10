@@ -31,6 +31,7 @@ public class PlayerPickUp : MonoBehaviour
             if (item != null && !item.IsCollected && !item.IsClean)
             {
                 item.SetCollected(true);
+                item.CheckPickUpState();
                 item.transform.SetParent(holdPoint);
 
                 int index = collectedItems.Count;
@@ -71,6 +72,7 @@ public class PlayerPickUp : MonoBehaviour
         {
             item.transform.SetParent(destination);
             item.SetCollected(false);
+            item.CheckPickUpState();
 
             Rigidbody2D rb = item.GetComponent<Rigidbody2D>();
             if (rb != null)
@@ -91,6 +93,8 @@ public class PlayerPickUp : MonoBehaviour
         foreach (PickupItem item in cleanedItems)
         {
             item.SetCollected(true);
+            item.IsClean = true;
+            item.CheckPickUpState();
             item.transform.SetParent(holdPoint);
 
             int index = collectedItems.Count;

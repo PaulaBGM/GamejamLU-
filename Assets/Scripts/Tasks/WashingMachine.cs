@@ -15,11 +15,16 @@ public class WashingMachine : MonoBehaviour
     private int _cleanedCount = 0;
     private const int _totalRequired = 6;
 
+    [SerializeField]
+    private Animator _anim;
+
     private void Update()
     {
         if (!Input.GetKeyDown(interactionKey)) return;
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, interactionRange);
+
+        
 
         foreach (Collider2D collider in colliders)
         {
@@ -29,10 +34,12 @@ public class WashingMachine : MonoBehaviour
                 if (isFinished)
                 {
                     ReturnCleanItemsToPlayer(player);
+                    _anim.gameObject.SetActive(false);
                 }
                 else if (!isWashing && player.HasItems())
                 {
                     List<PickupItem> items = player.DropAllItemsTo(washingPoint);
+                    _anim.gameObject.SetActive(true);
                     ReceiveItems(items);
                 }
 

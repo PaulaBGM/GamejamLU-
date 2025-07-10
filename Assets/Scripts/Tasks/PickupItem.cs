@@ -6,16 +6,32 @@ using UnityEngine;
 public class PickupItem : MonoBehaviour
 {
     public bool IsCollected { get; private set; } = false;
-    public bool IsClean { get; private set; } = false;
+    public bool IsClean { get; set; } = false;
 
     private Vector3 targetLocalPosition;
     private float moveSpeed = 5f;
     private bool moving = false;
 
+    [SerializeField]
+    private SpriteRenderer _itemImage;
+
+    [SerializeField]
+    private Sprite _dirtySprite;
+    [SerializeField]
+    private Sprite _collectedDirtySprite;
+    [SerializeField]
+    private Sprite _collectedCleanSprite;
+    [SerializeField]
+    private Sprite _cleanSprite;
+
     private static int _totalCollected = 0;
     private const int _totalRequired = 6;
     private static bool _taskAlreadyCompleted = false;
 
+    private void Start()
+    {
+        CheckPickUpState();
+    }
     void Update()
     {
         if (moving)
@@ -87,4 +103,29 @@ public class PickupItem : MonoBehaviour
         moving = true;
     }
 
+    public void CheckPickUpState()
+    {
+        if (IsCollected)
+        {
+            if (IsClean)
+            {
+                _itemImage.sprite = _collectedCleanSprite;
+            }
+            else
+            {
+                _itemImage.sprite = _collectedDirtySprite;
+            }
+        }
+        else
+        {
+            if (IsClean)
+            {
+                _itemImage.sprite = _cleanSprite;
+            }
+            else
+            {
+                _itemImage.sprite = _dirtySprite;
+            }
+        }
+    }
 }

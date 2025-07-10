@@ -207,3 +207,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff2daea6c66e6e74d9180750c51fb73b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _itemImage: {fileID: 1277432530555731528}
+  _dirtySprite: {fileID: 21300000, guid: f1658d66ff7c66d4fadad93c1955729d, type: 3}
+  _collectedDirtySprite: {fileID: 21300000, guid: c0ff7a3ca74ab9745a51ce96dee9436b, type: 3}
+  _collectedCleanSprite: {fileID: 21300000, guid: 9a992f8c4aeada142b34b60d9f0815e8, type: 3}
+  _cleanSprite: {fileID: 21300000, guid: 8e127a4f2c9135c4b88cafd4f1ac926a, type: 3}
