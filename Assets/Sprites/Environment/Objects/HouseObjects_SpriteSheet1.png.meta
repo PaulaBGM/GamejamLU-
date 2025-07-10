@@ -1,91 +1,49 @@
 fileFormatVersion: 2
-guid: d6d8b853f2e810448904099f8671bcfc
+guid: 2539530c5714f454e98ddb21eefd5e64
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8491956614035521118
-    second: spritesheet_2_0
+      213: 2916073862928582063
+    second: HouseObjects_SpriteSheet1_0
   - first:
-      213: -3837702315187162603
-    second: spritesheet_2_1
+      213: 8461967925631927735
+    second: HouseObjects_SpriteSheet1_1
   - first:
-      213: 2569100708621144869
-    second: spritesheet_2_2
+      213: -6675459945859929122
+    second: HouseObjects_SpriteSheet1_2
   - first:
-      213: -3993288347735931237
-    second: spritesheet_2_3
+      213: 8271753379637793525
+    second: HouseObjects_SpriteSheet1_3
   - first:
-      213: 8950025076985365624
-    second: spritesheet_2_4
+      213: 6382715980653762448
+    second: HouseObjects_SpriteSheet1_4
   - first:
-      213: -8875862564875435290
-    second: spritesheet_2_5
+      213: -8698367798949188179
+    second: HouseObjects_SpriteSheet1_5
   - first:
-      213: 8233645187710016264
-    second: spritesheet_2_6
+      213: 6749604709963905756
+    second: HouseObjects_SpriteSheet1_6
   - first:
-      213: 8521182879252874860
-    second: spritesheet_2_7
+      213: 3223045677631275853
+    second: HouseObjects_SpriteSheet1_7
   - first:
-      213: 5129092750833557445
-    second: spritesheet_2_8
+      213: 4874948391625671284
+    second: HouseObjects_SpriteSheet1_8
   - first:
-      213: -9000165094889331372
-    second: spritesheet_2_9
+      213: -1357235678521840587
+    second: HouseObjects_SpriteSheet1_9
   - first:
-      213: 8294873765667503973
-    second: spritesheet_2_10
+      213: -6967791626713050953
+    second: HouseObjects_SpriteSheet1_10
   - first:
-      213: 3832644435989426482
-    second: spritesheet_2_11
+      213: -2532776721595713123
+    second: HouseObjects_SpriteSheet1_11
   - first:
-      213: 4738425652870097708
-    second: spritesheet_2_12
+      213: -2990150666475553981
+    second: HouseObjects_SpriteSheet1_12
   - first:
-      213: 2368661559500192228
-    second: spritesheet_2_13
-  - first:
-      213: 9103127817338196606
-    second: spritesheet_2_14
-  - first:
-      213: -8149018022313179117
-    second: spritesheet_2_15
-  - first:
-      213: 6751242756475174427
-    second: spritesheet_2_16
-  - first:
-      213: 7487175565018950654
-    second: spritesheet_2_17
-  - first:
-      213: 5526209199736040706
-    second: spritesheet_2_18
-  - first:
-      213: -3879364905738395079
-    second: spritesheet_2_19
-  - first:
-      213: 1822403349918308376
-    second: spritesheet_2_20
-  - first:
-      213: -1584016898556111026
-    second: spritesheet_2_21
-  - first:
-      213: -7714713428465645256
-    second: spritesheet_2_22
-  - first:
-      213: 8257875754961214822
-    second: spritesheet_2_23
-  - first:
-      213: 4271065831418628320
-    second: spritesheet_2_24
-  - first:
-      213: -311483218838270405
-    second: spritesheet_2_25
-  - first:
-      213: -7916955099504360590
-    second: spritesheet_2_26
-  - first:
-      213: 2044539080368523981
-    second: spritesheet_2_27
+      213: 4692087741475499420
+    second: HouseObjects_SpriteSheet1_13
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -132,7 +90,7 @@ TextureImporter:
   spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 95
+  spritePixelsToUnits: 60
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -153,10 +111,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 8192
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -182,7 +140,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -195,7 +153,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -208,7 +166,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -221,7 +179,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -233,13 +191,277 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ChemaWalk1
+      name: Tonel
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1152
+        width: 384
+        height: 384
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa5c8a27ab9f77820800000000000000
+      internalID: 2916073862928582063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clothsline
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1152
+        width: 384
+        height: 384
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b54a04bef2fe6570800000000000000
+      internalID: 8461967925631927735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Table
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1152
+        width: 384
+        height: 384
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edbabae1c800c53a0800000000000000
+      internalID: -6675459945859929122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sink
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 1152
+        width: 384
+        height: 384
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f292f68fdb2bc270800000000000000
+      internalID: 8271753379637793525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oven
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 384
+        height: 384
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09793190e56f39850800000000000000
+      internalID: 6382715980653762448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BedsideTable
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 768
+        width: 384
+        height: 384
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dadefe1a290394780800000000000000
+      internalID: -8698367798949188179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Window
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 384
+        height: 384
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdab3b709b96bad50800000000000000
+      internalID: 6749604709963905756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TV
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 768
+        width: 384
+        height: 384
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d430216a7fe8abc20800000000000000
+      internalID: 3223045677631275853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barrel
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 384
+        height: 384
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 472c53dcbbb47a340800000000000000
+      internalID: 4874948391625671284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArmChair
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 384
+        width: 384
+        height: 384
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53c283167512a2de0800000000000000
+      internalID: -1357235678521840587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Toilet
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 384
+        width: 384
+        height: 384
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b0d3d4be6e6d4f90800000000000000
+      internalID: -6967791626713050953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UmbrellaStand
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 384
+        width: 384
+        height: 384
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d99b8edadf4c9dcd0800000000000000
+      internalID: -2532776721595713123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WashingMachine
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 256
-        height: 256
+        width: 384
+        height: 384
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -248,20 +470,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e5ebd935c8d79d570800000000000000
-      internalID: 8491956614035521118
+      spriteID: 34bb3d3bfc9d086d0800000000000000
+      internalID: -2990150666475553981
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChemaWalk2
+      name: Mirror
       rect:
         serializedVersion: 2
-        x: 256
+        x: 384
         y: 0
-        width: 256
-        height: 256
+        width: 384
+        height: 384
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -270,272 +492,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 512339dc31ebdbac0800000000000000
-      internalID: -3837702315187162603
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ChemaWalk3
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 52351999b7747a320800000000000000
-      internalID: 2569100708621144869
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ChemaWalk4
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b964e73b76df498c0800000000000000
-      internalID: -3993288347735931237
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ChemaWalk5
-      rect:
-        serializedVersion: 2
-        x: 1024
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8740d846360e43c70800000000000000
-      internalID: 8950025076985365624
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ChemaWalk6
-      rect:
-        serializedVersion: 2
-        x: 1280
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6e28969060a92d480800000000000000
-      internalID: -8875862564875435290
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ChemaBroom
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 80b5f0caca8c34270800000000000000
-      internalID: 8233645187710016264
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ChemaMop1
-      rect:
-        serializedVersion: 2
-        x: 1792
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c6602087ea2514670800000000000000
-      internalID: 8521182879252874860
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ChemaMop2
-      rect:
-        serializedVersion: 2
-        x: 2048
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5cf17798ea23e2740800000000000000
-      internalID: 5129092750833557445
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ChemaJump2
-      rect:
-        serializedVersion: 2
-        x: 2304
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4556047f78df81380800000000000000
-      internalID: -9000165094889331372
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ChemaJump1
-      rect:
-        serializedVersion: 2
-        x: 2560
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 56f7153edbf4d1370800000000000000
-      internalID: 8294873765667503973
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ChemaJump3
-      rect:
-        serializedVersion: 2
-        x: 2816
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 231f68deec9403530800000000000000
-      internalID: 3832644435989426482
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ChemaIdle1
-      rect:
-        serializedVersion: 2
-        x: 3072
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c2babe9a60542c140800000000000000
-      internalID: 4738425652870097708
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ChemaIdle2
-      rect:
-        serializedVersion: 2
-        x: 3328
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4e9b12f732d2fd020800000000000000
-      internalID: 2368661559500192228
+      spriteID: c9dac9de0f4ad1140800000000000000
+      internalID: 4692087741475499420
       vertices: []
       indices: 
       edges: []
@@ -544,7 +502,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: cecbc3aad0a077f4886a87d5d2f40d18
+    spriteID: c109705efbc6d914c8557559696d68dc
     internalID: 0
     vertices: []
     indices: 
@@ -554,20 +512,20 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ChemaBroom: 8233645187710016264
-      ChemaIdle1: 4738425652870097708
-      ChemaIdle2: 2368661559500192228
-      ChemaJump1: 8294873765667503973
-      ChemaJump2: -9000165094889331372
-      ChemaJump3: 3832644435989426482
-      ChemaMop1: 8521182879252874860
-      ChemaMop2: 5129092750833557445
-      ChemaWalk1: 8491956614035521118
-      ChemaWalk2: -3837702315187162603
-      ChemaWalk3: 2569100708621144869
-      ChemaWalk4: -3993288347735931237
-      ChemaWalk5: 8950025076985365624
-      ChemaWalk6: -8875862564875435290
+      ArmChair: -1357235678521840587
+      Barrel: 4874948391625671284
+      BedsideTable: -8698367798949188179
+      Clothsline: 8461967925631927735
+      Mirror: 4692087741475499420
+      Oven: 6382715980653762448
+      Sink: 8271753379637793525
+      TV: 3223045677631275853
+      Table: -6675459945859929122
+      Toilet: -6967791626713050953
+      Tonel: 2916073862928582063
+      UmbrellaStand: -2532776721595713123
+      WashingMachine: -2990150666475553981
+      Window: 6749604709963905756
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
