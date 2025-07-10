@@ -49,7 +49,7 @@ public class PlayerBroomController : MonoBehaviour
         if (currentTool != null)
         {
             currentTool.Initialize(gameObject, mountPoint);
-            currentTool.OnMounted();
+            //currentTool.OnMounted();
         }
 
         if (mountPoint != null)

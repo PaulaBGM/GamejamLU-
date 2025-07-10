@@ -106,12 +106,12 @@ public class PlayerClimb : MonoBehaviour
             }
         }
 
-        /*
+        
         if (animator != null)
         {
             animator.SetBool("isClimbing", true);
         }
-        */
+        
     }
 
     /// <summary>
@@ -131,11 +131,11 @@ public class PlayerClimb : MonoBehaviour
 
         currentStairZone = null;
 
-        /*
+        
         if (animator != null)
         {
             animator.SetBool("isClimbing", false);
         }
-        */
+        
     }
 }

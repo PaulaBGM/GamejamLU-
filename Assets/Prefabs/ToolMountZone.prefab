@@ -69,7 +69,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 2.92
 --- !u!114 &9040990319640583583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,8 +82,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4a7137186bf96d43bda0dc7703c33ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toolPrefab: {fileID: 7878926144370468433, guid: 9381d54063af04b4b9d0fe25ee7b8c64, type: 3}
-  mountParticles: {fileID: 0}
+  toolPrefab: {fileID: 729789693727294701, guid: 685258fdea6880c4a943604407824573, type: 3}
+  mountParticles: {fileID: 6690798196102535567, guid: cc664efe408818242b89d68cd20615ea, type: 3}
 --- !u!212 &6812133502528143954
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -128,7 +128,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5650887619208477777, guid: 6d26dd694f60f404fb08343486718a56, type: 3}
+  m_Sprite: {fileID: 2280039028248247304, guid: 2b65c62fec530234f830e4e1e16c1bb0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

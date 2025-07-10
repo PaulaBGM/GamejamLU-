@@ -26,7 +26,7 @@ public class PlayerToolRider : MonoBehaviour
         GameObject toolInstance = Instantiate(toolPrefab, mountPoint.position, Quaternion.identity);
         currentTool = toolInstance.GetComponent<MountableTool>();
         currentTool.Initialize(gameObject, mountPoint);
-        currentTool.OnMounted();
+        //currentTool.OnMounted();
 
         if (mountParticles != null)
             Instantiate(mountParticles, transform.position, Quaternion.identity).Play();

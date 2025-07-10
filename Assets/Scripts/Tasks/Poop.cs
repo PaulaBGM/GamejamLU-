@@ -23,8 +23,8 @@ public class Poop : MonoBehaviour
                 else
                     player.SoilLaundry(false); // blanca: ensucia solo la de arriba
             }
-
+        */
             Destroy(gameObject);
-        }*/
+        //}
     }
 }

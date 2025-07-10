@@ -51,5 +51,6 @@ public class Seagull : MonoBehaviour
     {
         GameObject poopPrefab = UnityEngine.Random.value < 0.5f ? whitePoopPrefab : blackPoopPrefab;
         Instantiate(poopPrefab, transform.position + Vector3.down, Quaternion.identity);
+
     }
 }
