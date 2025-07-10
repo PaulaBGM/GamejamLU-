@@ -7,7 +7,7 @@ public class MopTool : MountableTool
 
     private float spawnTimer;
 
-    public override void OnMounted()
+    protected override void OnMounted()
     {
         spawnTimer = 0f;
     }

@@ -4,75 +4,85 @@
 public class PlayerBroomController : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private bool onBroom = false;
+    private MountableTool currentTool;
 
-    public float broomSpeed = 8f;
-    public Transform broomMountPoint;
-
-    private GameObject broomObject;
+    public Transform mountPoint; // GameObject que se activa al montar
+    private GameObject toolObject; // Instancia de la herramienta
+    private bool onTool = false;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        if (mountPoint != null)
+            mountPoint.gameObject.SetActive(false);
     }
 
     private void Update()
     {
-        if (onBroom)
+        // Si hay una herramienta activa, delegamos su lógica
+        if (onTool && currentTool != null)
         {
-            // Movimiento en escoba
-            float moveX = Input.GetAxisRaw("Horizontal");
-            float moveY = Input.GetAxisRaw("Vertical");
-            Vector2 movement = new Vector2(moveX, moveY).normalized;
-
-            rb.linearVelocity = movement * broomSpeed;
-
-            if (broomObject != null)
-            {
-                broomObject.transform.position = broomMountPoint.position;
-            }
+            currentTool.HandleMovement();
 
             // Desmontar con Q
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                DismountBroom();
+                DismountTool();
             }
         }
     }
 
-    public void MountBroom(GameObject broomPrefab, ParticleSystem particles)
+    public void MountBroom(GameObject toolPrefab, ParticleSystem particles)
     {
-        if (onBroom) return;
+        if (onTool || toolPrefab == null) return;
 
+        // Efecto visual de montaje
         if (particles != null)
         {
             Instantiate(particles, transform.position, Quaternion.identity).Play();
         }
 
-        broomObject = Instantiate(broomPrefab, broomMountPoint.position, Quaternion.identity);
-        broomObject.transform.SetParent(transform);
-        onBroom = true;
+        // Instanciamos la herramienta y la conectamos al jugador
+        toolObject = Instantiate(toolPrefab, mountPoint.position, Quaternion.identity);
+        currentTool = toolObject.GetComponent<MountableTool>();
 
-        Debug.Log("¡Montado en la escoba!");
-    }
-
-    public void DismountBroom()
-    {
-        if (!onBroom) return;
-
-        if (broomObject != null)
+        if (currentTool != null)
         {
-            Destroy(broomObject);
+            currentTool.Initialize(gameObject, mountPoint);
+            currentTool.OnMounted();
         }
 
-        onBroom = false;
-        rb.linearVelocity = Vector2.zero;
+        if (mountPoint != null)
+            mountPoint.gameObject.SetActive(true); // Activamos el punto de montaje
 
-        Debug.Log("¡Desmontado de la escoba!");
+        onTool = true;
+        Debug.Log("Montado en herramienta: " + toolObject.name);
+    }
+
+    public void DismountTool()
+    {
+        if (!onTool) return;
+
+        if (currentTool != null)
+        {
+            currentTool.OnDismounted();
+        }
+
+        if (toolObject != null)
+            Destroy(toolObject);
+
+        if (mountPoint != null)
+            mountPoint.gameObject.SetActive(false);
+
+        currentTool = null;
+        toolObject = null;
+        onTool = false;
+
+        Debug.Log("Desmontado de herramienta");
     }
 
     public bool IsOnBroom()
     {
-        return onBroom;
+        return onTool;
     }
 }
