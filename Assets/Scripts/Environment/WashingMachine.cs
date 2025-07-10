@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Lógica de lavado y devolución de ropa limpia.
+/// </summary>
 public class WashingMachine : MonoBehaviour
 {
     [SerializeField] private float washingTime = 20f;
@@ -18,10 +21,9 @@ public class WashingMachine : MonoBehaviour
         if (!Input.GetKeyDown(interactionKey)) return;
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, interactionRange);
-
-        foreach (Collider2D collider in colliders)
+        foreach (Collider2D col in colliders)
         {
-            PlayerPickUp player = collider.GetComponent<PlayerPickUp>();
+            PlayerPickUp player = col.GetComponent<PlayerPickUp>();
             if (player != null)
             {
                 if (isFinished)
@@ -33,72 +35,55 @@ public class WashingMachine : MonoBehaviour
                     List<PickupItem> items = player.DropAllItemsTo(washingPoint);
                     ReceiveItems(items);
                 }
-
-                break; // Solo interactuar con un jugador
+                break;
             }
         }
     }
 
     private void ReturnCleanItemsToPlayer(PlayerPickUp player)
     {
-        if (itemsInside.Count == 0) return;
-
-        // Hacer visibles los objetos antes de devolverlos
         foreach (var item in itemsInside)
         {
-            SpriteRenderer sr = item.GetComponentInChildren<SpriteRenderer>();
-            if (sr != null) sr.enabled = true;
+            var sr = item.GetComponentInChildren<SpriteRenderer>();
+            if (sr) sr.enabled = true;
 
-            // Reactivar colisiones si tienes collider
-            Collider2D col = item.GetComponent<Collider2D>();
-            if (col != null) col.enabled = true;
+            var col = item.GetComponent<Collider2D>();
+            if (col) col.enabled = true;
 
-            // Cambiar Rigidbody a cinemático para control del jugador
-            Rigidbody2D rb = item.GetComponent<Rigidbody2D>();
-            if (rb != null)
+            var rb = item.GetComponent<Rigidbody2D>();
+            if (rb)
             {
                 rb.bodyType = RigidbodyType2D.Kinematic;
                 rb.linearVelocity = Vector2.zero;
-                rb.angularVelocity = 0f;
             }
         }
 
         player.ReceiveCleanItems(itemsInside);
         itemsInside.Clear();
         isFinished = false;
-        Debug.Log("Chema recoge los objetos limpios");
-    }
-
-    public bool CanAcceptItems()
-    {
-        return !isWashing;
     }
 
     public void ReceiveItems(List<PickupItem> items)
     {
-        if (!CanAcceptItems()) return;
+        if (isWashing) return;
 
         itemsInside = items;
 
         foreach (var item in itemsInside)
         {
             item.transform.position = washingPoint.position;
-            item.SetClean(false); // Aún están sucios al llegar
+            item.SetClean(false);
 
-            // Ocultar objeto
-            SpriteRenderer sr = item.GetComponentInChildren<SpriteRenderer>();
-            if (sr != null) sr.enabled = false;
+            var sr = item.GetComponentInChildren<SpriteRenderer>();
+            if (sr) sr.enabled = false;
 
-            // Desactivar colisiones
-            Collider2D col = item.GetComponent<Collider2D>();
-            if (col != null) col.enabled = false;
+            var col = item.GetComponent<Collider2D>();
+            if (col) col.enabled = false;
 
-            // Poner Rigidbody dinámico para que no caiga y no se mueva
-            Rigidbody2D rb = item.GetComponent<Rigidbody2D>();
-            if (rb != null)
+            var rb = item.GetComponent<Rigidbody2D>();
+            if (rb)
             {
                 rb.linearVelocity = Vector2.zero;
-                rb.angularVelocity = 0f;
                 rb.bodyType = RigidbodyType2D.Kinematic;
             }
         }
@@ -112,13 +97,10 @@ public class WashingMachine : MonoBehaviour
         yield return new WaitForSeconds(washingTime);
 
         foreach (var item in itemsInside)
-        {
             item.SetClean(true);
-        }
 
         isWashing = false;
         isFinished = true;
-        Debug.Log("Lavadora terminó de lavar");
     }
 
     private void OnDrawGizmosSelected()
@@ -127,4 +109,3 @@ public class WashingMachine : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, interactionRange);
     }
 }
-

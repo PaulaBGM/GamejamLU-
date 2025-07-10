@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// <summary>
-/// Comportamiento de los objetos que se pueden recoger y apilar.
+/// Representa una prenda de ropa que se puede recoger, lavar y tender.
 /// </summary>
 public class PickupItem : MonoBehaviour
 {
@@ -12,14 +12,14 @@ public class PickupItem : MonoBehaviour
     private float moveSpeed = 5f;
     private bool moving = false;
 
-    void Update()
+    private void Update()
     {
+        // Movimiento suave al apilar
         if (moving)
         {
-            // Mueve el objeto suavemente a su posición deseada en el stack
             transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetLocalPosition, moveSpeed * Time.deltaTime);
 
-            if (Vector3.Distance(transform.localPosition, targetLocalPosition) < 0.01f)
+            if (Vector3.SqrMagnitude(transform.localPosition - targetLocalPosition) < 0.0001f)
             {
                 transform.localPosition = targetLocalPosition;
                 moving = false;
@@ -27,39 +27,18 @@ public class PickupItem : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Marca el objeto como recogido para evitar múltiples recolecciones.
-    /// </summary>
-    public void SetCollected(bool value)
-    {
-        IsCollected = value;
-    }
+    public void SetCollected(bool value) => IsCollected = value;
+    public void SetClean(bool value) => IsClean = value;
 
-    /// <summary>
-    /// Marca el objeto como limpio (lavado).
-    /// </summary>
-    public void SetClean(bool value)
+    public void StartMoveToPosition(Vector3 localPos, float speed)
     {
-        IsClean = value;
-    }
-
-    /// <summary>
-    /// Inicia el movimiento hacia la posición dentro del stack.
-    /// </summary>
-    public void StartMoveToPosition(Vector3 localPosition, float speed)
-    {
-        targetLocalPosition = localPosition;
+        targetLocalPosition = localPos;
         moveSpeed = speed;
         moving = true;
     }
     public void StopMovement()
     {
         moving = false;
-    }
-
-    public void EnableMovement()
-    {
-        moving = true;
     }
 
 }

@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Maneja la lógica de recogida y transporte de ítems.
+/// </summary>
 public class PlayerPickUp : MonoBehaviour
 {
     [SerializeField] private Transform holdPoint;
@@ -14,20 +17,15 @@ public class PlayerPickUp : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(pickupKey))
-        {
-            TryPickup();
-        }
+        if (Input.GetKeyDown(pickupKey)) TryPickup();
     }
 
     private void TryPickup()
     {
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, pickupRange, pickupLayer);
-
         foreach (var hit in hits)
         {
             PickupItem item = hit.GetComponent<PickupItem>();
-
             if (item != null && !item.IsCollected && !item.IsClean)
             {
                 item.SetCollected(true);
@@ -35,8 +33,6 @@ public class PlayerPickUp : MonoBehaviour
 
                 int index = collectedItems.Count;
                 Vector3 localPos = Vector3.up * (index * stackHeight);
-                item.transform.localPosition = localPos;
-
                 item.StartMoveToPosition(localPos, moveSpeed);
 
                 Rigidbody2D rb = item.GetComponent<Rigidbody2D>();
@@ -47,25 +43,17 @@ public class PlayerPickUp : MonoBehaviour
                 }
 
                 collectedItems.Add(item);
-                break; // Solo recoge uno por pulsación
+                break;
             }
         }
     }
 
-    public bool HasItems()
-    {
-        return collectedItems.Count > 0;
-    }
+    public bool HasItems() => collectedItems.Count > 0;
 
-    /// <summary>
-    /// Suelta todos los ítems recogidos y los mueve al transform indicado (por ejemplo, la lavadora).
-    /// </summary>
     public List<PickupItem> DropAllItemsTo(Transform destination)
     {
         List<PickupItem> itemsToDrop = new(collectedItems);
         collectedItems.Clear();
-
-        Debug.Log("Chema deja los objetos");
 
         foreach (PickupItem item in itemsToDrop)
         {
@@ -83,9 +71,6 @@ public class PlayerPickUp : MonoBehaviour
         return itemsToDrop;
     }
 
-    /// <summary>
-    /// Recibe los objetos limpios desde la lavadora y los apila sobre el jugador.
-    /// </summary>
     public void ReceiveCleanItems(List<PickupItem> cleanedItems)
     {
         foreach (PickupItem item in cleanedItems)
@@ -95,8 +80,6 @@ public class PlayerPickUp : MonoBehaviour
 
             int index = collectedItems.Count;
             Vector3 localPos = Vector3.up * (index * stackHeight);
-            item.transform.localPosition = localPos;
-
             item.StartMoveToPosition(localPos, moveSpeed);
 
             Rigidbody2D rb = item.GetComponent<Rigidbody2D>();
@@ -109,4 +92,44 @@ public class PlayerPickUp : MonoBehaviour
             collectedItems.Add(item);
         }
     }
+
+    public List<PickupItem> GetCleanItems()
+    {
+        return collectedItems.FindAll(i => i.IsClean);
+    }
+
+    public void RemoveItem(PickupItem item)
+    {
+        if (collectedItems.Contains(item))
+        {
+            collectedItems.Remove(item);
+        }
+    }
+    // Devuelve una lista de solo los objetos limpios y los elimina del stack
+    public List<PickupItem> DropOnlyCleanItems()
+    {
+        List<PickupItem> cleanItems = collectedItems.FindAll(item => item.IsClean);
+        collectedItems.RemoveAll(item => item.IsClean);
+
+        foreach (var item in cleanItems)
+        {
+            item.SetCollected(false);
+            item.transform.SetParent(null);
+
+            Rigidbody2D rb = item.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.bodyType = RigidbodyType2D.Dynamic;
+                rb.linearVelocity = Vector2.zero;
+            }
+        }
+
+        return cleanItems;
+    }
+
+    public bool HasCleanItems()
+    {
+        return collectedItems.Exists(item => item.IsClean);
+    }
+
 }
