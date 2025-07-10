@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using UnityEngine.Localization.Settings;
 
 public class OptionsMenu : MonoBehaviour
 {
@@ -11,6 +13,7 @@ public class OptionsMenu : MonoBehaviour
     //Private GameObject to store the Instantiated prefab
     private GameObject _optionsMenu;
     //Point to spawn the options menu prefab
+    [SerializeField]
     private GameObject _mainCanva;
     //Bool to see if the menu is open
     public bool IsOpen;
@@ -31,16 +34,29 @@ public class OptionsMenu : MonoBehaviour
         }
         _mainCanva = GameObject.Find("Canvas");
         IsOpen = false;
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[PlayerPrefs.GetInt("LanguageId")];
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (_mainCanva == null)
         {
-            if(_optionsMenu != null && _optionsMenu.activeSelf)
+            CheckMainCanva();
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (_optionsMenu == null)
             {
-                //If the options menu is already open, close it
-                _optionsMenu.SetActive(false);
+                ToggleOptionsMenu();
+            }
+            if (_optionsMenu != null && _optionsMenu.activeSelf)
+            {
+                ToggleOptionsMenu();
+                return;
+            }
+            else
+            {
+                ToggleOptionsMenu();
                 return;
             }
         }
@@ -50,30 +66,46 @@ public class OptionsMenu : MonoBehaviour
             if (_optionsMenu.activeSelf)
             {
                 IsOpen = true;
-                TurnOffAllButtons();
+                if(_buttonsToDisable != null && _buttonsToDisable.Count > 0)
+                {
+                    //If the options menu is open, disable all buttons in the list
+                    TurnOffAllButtons();
+                }
             }
             else
             {
                 IsOpen = false;
-                TurnOnAllButtons();
+                if(_buttonsToDisable != null && _buttonsToDisable.Count > 0)
+                {
+                    //If the options menu is closed, enable all buttons in the list
+                    TurnOnAllButtons();
+                }
             }
         }
     }
 
+    public void CheckMainCanva()
+    {
+        _mainCanva = GameObject.FindGameObjectWithTag("MainCanva");
+    }
+
     private void TurnOffAllButtons()
     {
-        //Toggle the active state of all buttons in the list
+        _buttonsToDisable.RemoveAll(b => b == null);
+
         foreach (GameObject button in _buttonsToDisable)
         {
-            button.SetActive(false);
+            if (button) button.SetActive(false);
         }
     }
+
     private void TurnOnAllButtons()
     {
-        //Toggle the active state of all buttons in the list
+        _buttonsToDisable.RemoveAll(b => b == null);
+
         foreach (GameObject button in _buttonsToDisable)
         {
-            button.SetActive(true);
+            if (button) button.SetActive(true);
         }
     }
 

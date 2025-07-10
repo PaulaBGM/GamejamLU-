@@ -45,6 +45,7 @@ public class CinematicEvent : MonoBehaviour
         {
             // Ya hemos mostrado todos los paneles, ir a la siguiente escena
             SceneManager.LoadScene(2);
+            OptionsMenu.Instance.CheckMainCanva();
         }
     }
 }
