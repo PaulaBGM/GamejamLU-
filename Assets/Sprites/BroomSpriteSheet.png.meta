@@ -159,7 +159,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BroomSpriteSheet_0: -1008124144715852321
+      BroomSpriteSheet_1: -3591976762364761600
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 073fe169b598cbc47b55fb50031a249e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 30
-  activationDelay: 5
+  lifeTime: 10
+  activationDelay: 1
 --- !u!61 &30801765900036082
 BoxCollider2D:
   m_ObjectHideFlags: 0
