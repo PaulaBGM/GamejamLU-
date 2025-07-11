@@ -9,15 +9,16 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 7f;
 
     [Header("Chequeo de Suelo")]
-    public float raycastDistance = 0.2f;
+    public Transform groundCheck;
+    public float checkRadius = 0.2f;
     public LayerMask groundLayer;
 
     private Rigidbody2D rb;
-    private bool isGrounded;
+    private bool isGrounded = true;
     private float moveInput;
 
     private bool facingRight = true;
-     
+
     [SerializeField] private float flipSmoothTime = 0.3f;
     [SerializeField] private string cameraChildName = "Camera";
     [SerializeField] private Animator anim;
@@ -33,14 +34,15 @@ public class PlayerController : MonoBehaviour
         moveInput = Input.GetAxisRaw("Horizontal");
         anim.SetFloat("Speed", Mathf.Abs(moveInput));
 
-        // Saltar con tecla W o botón de salto, solo si está en el suelo
-        if (isGrounded && (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Jump")))
+        // Saltar
+        moveInput = Input.GetAxisRaw("Horizontal");
+
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-            anim.SetBool("JumpStart", true);
+            anim.SetBool("JumpStart", true); // se activa el salto inicial
         }
 
-        // Voltear sprite y cámara
         if (moveInput > 0 && !facingRight)
         {
             FlipChildren(true);
@@ -52,29 +54,24 @@ public class PlayerController : MonoBehaviour
             facingRight = false;
         }
 
+        // Actualizar verticalSpeed para el Animator
         anim.SetFloat("verticalSpeed", rb.linearVelocity.y);
     }
 
     private void FixedUpdate()
     {
-        // Movimiento lateral
+        // Movimiento horizontal
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
 
-        // Raycast desde el centro del personaje hacia abajo
-        Vector2 origin = transform.position;
-        RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.down, raycastDistance, groundLayer);
-        isGrounded = hit.collider != null;
+        // Actualizar estado de suelo
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
         anim.SetBool("IsGrounded", isGrounded);
 
-        // Opcional: resetear animación de salto si empieza a caer
+        // Resetear "JumpStart" si ya estamos cayendo
         if (rb.linearVelocity.y <= 0)
         {
             anim.SetBool("JumpStart", false);
         }
-
-#if UNITY_EDITOR
-        Debug.DrawRay(origin, Vector2.down * raycastDistance, isGrounded ? Color.green : Color.red);
-#endif
     }
 
     private void FlipChildren(bool faceRight)
@@ -105,7 +102,8 @@ public class PlayerController : MonoBehaviour
     private IEnumerator SmoothFlipCamera(Transform cam, bool faceRight)
     {
         Vector3 startPos = cam.localPosition;
-        Vector3 targetPos = new Vector3(-startPos.x, startPos.y, startPos.z);
+        Vector3 targetPos = startPos;
+        targetPos.x = -startPos.x;
 
         float elapsed = 0f;
         float duration = flipSmoothTime;
