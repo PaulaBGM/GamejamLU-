@@ -1,13 +1,31 @@
 fileFormatVersion: 2
-guid: 6d26dd694f60f404fb08343486718a56
+guid: 9f2bd193ce208d64a95c676df17198e5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1284859215476283910
-    second: MopSpriteSheet_0
+      213: -2991922026934096904
+    second: WrongBar_0
   - first:
-      213: 5650887619208477777
-    second: MopSpriteSheet_1
+      213: -3608852965755250574
+    second: WrongBar_1
+  - first:
+      213: 8521950771998709471
+    second: WrongBar_2
+  - first:
+      213: 8288463658783161012
+    second: WrongBar_3
+  - first:
+      213: -5187948201900587174
+    second: WrongBar_4
+  - first:
+      213: 5783780819852566498
+    second: WrongBar_5
+  - first:
+      213: -6672415327341225232
+    second: WrongBar_6
+  - first:
+      213: -5797102150177467700
+    second: WrongBar_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,12 +67,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 80
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -78,7 +96,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -104,7 +122,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -117,7 +135,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -130,7 +148,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -143,7 +161,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -155,13 +173,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MopSpriteSheet_0
+      name: WrongBar_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 384
-        height: 384
+        x: 35
+        y: 22
+        width: 34
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -170,20 +188,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 60ad9d426acb4d110800000000000000
-      internalID: 1284859215476283910
+      spriteID: 8fb2de4b4ce8a76d0800000000000000
+      internalID: -2991922026934096904
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MopSpriteSheet_1
+      name: WrongBar_1
       rect:
         serializedVersion: 2
-        x: 384
-        y: 0
-        width: 384
-        height: 384
+        x: 72
+        y: 22
+        width: 34
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,8 +210,140 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 15cf298995cfb6e40800000000000000
-      internalID: 5650887619208477777
+      spriteID: 2781b812957caedc0800000000000000
+      internalID: -3608852965755250574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WrongBar_2
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 22
+        width: 34
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd6595e631d044670800000000000000
+      internalID: 8521950771998709471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WrongBar_3
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 22
+        width: 34
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ba318398c9860370800000000000000
+      internalID: 8288463658783161012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WrongBar_4
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 20
+        width: 34
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a57c698e894b008b0800000000000000
+      internalID: -5187948201900587174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WrongBar_5
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 20
+        width: 34
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ef970a030e144050800000000000000
+      internalID: 5783780819852566498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WrongBar_6
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 20
+        width: 34
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fa54fb9c91d663a0800000000000000
+      internalID: -6672415327341225232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WrongBar_7
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 20
+        width: 34
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc2d40c0f4e8c8fa0800000000000000
+      internalID: -5797102150177467700
       vertices: []
       indices: 
       edges: []
@@ -202,7 +352,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 3e70c5659caec8e4ba81493f36984a14
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -212,8 +362,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      MopSpriteSheet_0: 1284859215476283910
-      MopSpriteSheet_1: 5650887619208477777
+      WrongBar_0: -2991922026934096904
+      WrongBar_1: -3608852965755250574
+      WrongBar_2: 8521950771998709471
+      WrongBar_3: 8288463658783161012
+      WrongBar_4: -5187948201900587174
+      WrongBar_5: 5783780819852566498
+      WrongBar_6: -6672415327341225232
+      WrongBar_7: -5797102150177467700
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
