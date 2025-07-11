@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: 7839650822165191294}
   - component: {fileID: 7797734514196717719}
   - component: {fileID: 7919255647301769115}
+  - component: {fileID: 1925022267444492446}
   m_Layer: 0
   m_Name: --PLAYER--
   m_TagString: Player
@@ -224,8 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 8
   jumpForce: 30
-  groundCheck: {fileID: 5747561762668884174}
-  checkRadius: 0.2
+  groundCheckDistance: 1.6
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -346,6 +346,20 @@ MonoBehaviour:
   mountParticles: {fileID: 6690798196102535567, guid: cc664efe408818242b89d68cd20615ea, type: 3}
   mopSprite: {fileID: 5650887619208477777, guid: 6d26dd694f60f404fb08343486718a56, type: 3}
   originalSprite: {fileID: 1284859215476283910, guid: 6d26dd694f60f404fb08343486718a56, type: 3}
+  isOnBroom: 0
+--- !u!114 &1925022267444492446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5940372863869735624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01085bd980b0d9c4096fb4c0fa711dee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stompCooldown: 0.1
 --- !u!1 &6444855865762246878
 GameObject:
   m_ObjectHideFlags: 0

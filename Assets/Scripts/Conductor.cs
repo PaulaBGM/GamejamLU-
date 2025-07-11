@@ -1,23 +1,29 @@
 using UnityEngine;
 
+/// <summary>
+/// Controla la sincronización con la música y permite evaluar el timing del jugador.
+/// </summary>
 public class Conductor : MonoBehaviour
 {
     public static Conductor instance;
 
-    public float songBpm;
-    public float secPerBeat;
-    public float firstBeatOffset;
-    public float songPosition;
-    public float songPositionInBeats;
-    public float dspSongTime;
-    public float inputTimeDifference;
+    [Header("Configuración de la canción")]
+    [SerializeField] private float songBpm = 120f;
+    [SerializeField] private float firstBeatOffset = 0f;
+    [SerializeField] private float beatsPerLoop = 16f;
 
-    public AudioSource musicSource;
+    [Header("Referencias")]
+    [SerializeField] private AudioSource musicSource;
 
-    public float beatsPerLoop;
-    public int completedLoops = 0;
-    public float loopPositionInBeats;
-    public float loopPositionInAnalog;
+    private float secPerBeat;
+    private float dspSongTime;
+    private float songPosition;
+    private float songPositionInBeats;
+    private float inputTimeDifference;
+
+    private int completedLoops = 0;
+    private float loopPositionInBeats;
+    private float loopPositionInAnalog;
 
     void Awake()
     {
@@ -26,7 +32,9 @@ public class Conductor : MonoBehaviour
 
     void Start()
     {
-        musicSource = GetComponent<AudioSource>();
+        if (musicSource == null)
+            musicSource = GetComponent<AudioSource>();
+
         secPerBeat = 60f / songBpm;
         dspSongTime = (float)AudioSettings.dspTime;
         musicSource.Play();
@@ -44,11 +52,38 @@ public class Conductor : MonoBehaviour
         loopPositionInAnalog = loopPositionInBeats / beatsPerLoop;
     }
 
-    // Método accesible desde otros scripts para evaluar el timing de un input
+    /// <summary>
+    /// Devuelve el desfase en beats respecto al beat más cercano (entre 0 y 1).
+    /// Además, muestra por consola si fue perfecto, bueno o malo.
+    /// </summary>
     public float GetInputTimingAccuracy()
     {
         inputTimeDifference = songPositionInBeats % 1;
+
+        // Evalúa y muestra por consola el tipo de precisión
+        if (inputTimeDifference <= 0.05f || inputTimeDifference >= 0.95f)
+        {
+            Debug.Log(" ¡Perfecto! inputTimeDifference = " + inputTimeDifference.ToString("F3"));
+        }
+        else if (inputTimeDifference <= 0.1f || inputTimeDifference >= 0.9f)
+        {
+            Debug.Log(" ¡Bien! inputTimeDifference = " + inputTimeDifference.ToString("F3"));
+        }
+        else if (inputTimeDifference <= 0.2f || inputTimeDifference >= 0.8f)
+        {
+            Debug.Log(" Regular... inputTimeDifference = " + inputTimeDifference.ToString("F3"));
+        }
+        else
+        {
+            Debug.Log(" Mal timing. inputTimeDifference = " + inputTimeDifference.ToString("F3"));
+        }
+
         return inputTimeDifference;
     }
-}
 
+    // Getters públicos si necesitas acceder desde otros scripts
+    public float SongPosition => songPosition;
+    public float SongPositionInBeats => songPositionInBeats;
+    public float LoopPositionInAnalog => loopPositionInAnalog;
+    public float SecPerBeat => secPerBeat;
+}

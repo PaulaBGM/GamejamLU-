@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1376560898870390080}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.64, z: 0}
+  m_LocalPosition: {x: 0, y: -1.9, z: 0}
   m_LocalScale: {x: 1, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -149,6 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ceilingCollider: {fileID: 8579725344636555503}
   stairCollider: {fileID: 5150720061969770541}
+  isSideStair: 0
 --- !u!1 &3372411335450896523
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,9 +159,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6512189959336705727}
+  - component: {fileID: 4369648078247618164}
   m_Layer: 0
   m_Name: Tonel
-  m_TagString: Untagged
+  m_TagString: Barrel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -182,6 +184,25 @@ Transform:
   - {fileID: 6557370645075349874}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4369648078247618164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3372411335450896523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ab832dccfbfee448a714674d0ddc17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splashEffect: {fileID: 0}
+  splashSpawnPoint: {fileID: 6512189959336705727}
+  splashSound: {fileID: 0}
+  perfectFill: 0.5
+  goodFill: 0.35
+  okFill: 0.2
+  badFill: 0.05
 --- !u!1 &5853931950273850589
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,7 +216,7 @@ GameObject:
   - component: {fileID: 8579725344636555503}
   m_Layer: 3
   m_Name: Barrel2
-  m_TagString: Untagged
+  m_TagString: Barrel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
