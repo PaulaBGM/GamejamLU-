@@ -2348,6 +2348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ceilingCollider: {fileID: 0}
   stairCollider: {fileID: 173331964}
+  isSideStair: 0
 --- !u!4 &176299911 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1129203185751178674, guid: 3e372e8484f4c4749a286cac2a829527, type: 3}
@@ -2573,7 +2574,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.1, y: 4.8344603}
+  m_Size: {x: 3, y: 5.5}
   m_EdgeRadius: 0
 --- !u!114 &260140059
 MonoBehaviour:
@@ -2589,6 +2590,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ceilingCollider: {fileID: 1399454688}
   stairCollider: {fileID: 260140058}
+  isSideStair: 0
 --- !u!4 &271235704 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6181200341719058809, guid: a1a1a71f364464a4c8f2688f80f297bf, type: 3}
@@ -2838,6 +2840,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ceilingCollider: {fileID: 1399454688}
   stairCollider: {fileID: 330207109}
+  isSideStair: 0
 --- !u!61 &330207109
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2882,7 +2885,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.1, y: 4.8344603}
+  m_Size: {x: 3, y: 5.5}
   m_EdgeRadius: 0
 --- !u!212 &330207110
 SpriteRenderer:
@@ -3451,6 +3454,8 @@ GameObject:
   m_Component:
   - component: {fileID: 446731263}
   - component: {fileID: 446731264}
+  - component: {fileID: 446731265}
+  - component: {fileID: 446731266}
   m_Layer: 0
   m_Name: Stairs (1)
   m_TagString: Untagged
@@ -3528,6 +3533,67 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &446731265
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446731262}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.1, y: 5.12}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 5.1, y: 5.12}
+  m_EdgeRadius: 0
+--- !u!114 &446731266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446731262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4858660f8859e3949af260cdea546386, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ceilingCollider: {fileID: 446731265}
+  stairCollider: {fileID: 446731265}
+  isSideStair: 1
 --- !u!1 &461812148
 GameObject:
   m_ObjectHideFlags: 0
@@ -8289,8 +8355,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4858660f8859e3949af260cdea546386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ceilingCollider: {fileID: 1399454688}
+  ceilingCollider: {fileID: 60291310}
   stairCollider: {fileID: 568053578}
+  isSideStair: 0
 --- !u!61 &568053578
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8335,7 +8402,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.1, y: 4.8344603}
+  m_Size: {x: 3, y: 5.5}
   m_EdgeRadius: 0
 --- !u!212 &568053579
 SpriteRenderer:
@@ -8440,6 +8507,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ceilingCollider: {fileID: 1399454688}
   stairCollider: {fileID: 571624575}
+  isSideStair: 0
 --- !u!61 &571624575
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17650,6 +17718,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1129203185751178674, guid: 3e372e8484f4c4749a286cac2a829527, type: 3}
   m_PrefabInstance: {fileID: 1563885260}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &813116074 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5940372863869735624, guid: 76206381ed6c1544ca03f9366fb7b007, type: 3}
+  m_PrefabInstance: {fileID: 1566039191}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &813116082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813116074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53568f2b0fd448d479a8a9d763eb0644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stompCooldown: 0.1
 --- !u!1001 &818054478
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35632,6 +35718,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ceilingCollider: {fileID: 0}
   stairCollider: {fileID: 0}
+  isSideStair: 0
 --- !u!61 &1185822079
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -35800,8 +35887,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4858660f8859e3949af260cdea546386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ceilingCollider: {fileID: 1399454688}
+  ceilingCollider: {fileID: 60291310}
   stairCollider: {fileID: 1226322554}
+  isSideStair: 0
 --- !u!61 &1226322554
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -35846,7 +35934,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.1, y: 4.8344603}
+  m_Size: {x: 3, y: 5.5}
   m_EdgeRadius: 0
 --- !u!212 &1226322555
 SpriteRenderer:
@@ -39680,7 +39768,7 @@ GameObject:
   - component: {fileID: 1399454686}
   - component: {fileID: 1399454687}
   - component: {fileID: 1399454688}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39791,7 +39879,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 1.3576801}
+  m_Offset: {x: 0, y: -0.100447126}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -39801,7 +39889,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 5.12, y: 0.6246395}
+  m_Size: {x: 5.12, y: 0.42374527}
   m_EdgeRadius: 0
 --- !u!1 &1449781785
 GameObject:
@@ -41100,13 +41188,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 764411735368239138, guid: 76206381ed6c1544ca03f9366fb7b007, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3835769205625875914, guid: 76206381ed6c1544ca03f9366fb7b007, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.81
+      value: -13.6
       objectReference: {fileID: 0}
     - target: {fileID: 3835769205625875914, guid: 76206381ed6c1544ca03f9366fb7b007, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 40.66
+      value: 13.8
       objectReference: {fileID: 0}
     - target: {fileID: 3835769205625875914, guid: 76206381ed6c1544ca03f9366fb7b007, type: 3}
       propertyPath: m_LocalPosition.z
@@ -41140,14 +41232,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5747561762668884174, guid: 76206381ed6c1544ca03f9366fb7b007, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.797
+      objectReference: {fileID: 0}
     - target: {fileID: 5940372863869735624, guid: 76206381ed6c1544ca03f9366fb7b007, type: 3}
       propertyPath: m_Name
       value: --PLAYER--
       objectReference: {fileID: 0}
+    - target: {fileID: 6636837456022148313, guid: 76206381ed6c1544ca03f9366fb7b007, type: 3}
+      propertyPath: jumpForce
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5940372863869735624, guid: 76206381ed6c1544ca03f9366fb7b007, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 813116082}
   m_SourcePrefab: {fileID: 100100000, guid: 76206381ed6c1544ca03f9366fb7b007, type: 3}
 --- !u!1 &1584177256
 GameObject:
@@ -58621,6 +58724,22 @@ PrefabInstance:
     - target: {fileID: 3372411335450896523, guid: 81a34682d370a5a44a85e333085c06b3, type: 3}
       propertyPath: m_Name
       value: Tonel
+      objectReference: {fileID: 0}
+    - target: {fileID: 4158099480379231293, guid: 81a34682d370a5a44a85e333085c06b3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5150720061969770541, guid: 81a34682d370a5a44a85e333085c06b3, type: 3}
+      propertyPath: m_Size.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5150720061969770541, guid: 81a34682d370a5a44a85e333085c06b3, type: 3}
+      propertyPath: m_Size.y
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5150720061969770541, guid: 81a34682d370a5a44a85e333085c06b3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6512189959336705727, guid: 81a34682d370a5a44a85e333085c06b3, type: 3}
       propertyPath: m_LocalPosition.x
