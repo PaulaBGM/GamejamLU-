@@ -1,49 +1,25 @@
 fileFormatVersion: 2
-guid: 2539530c5714f454e98ddb21eefd5e64
+guid: b9bd456ae548e0446833a39a0aea273f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2916073862928582063
-    second: HouseObjects_SpriteSheet1_0
+      213: -2158737630746083628
+    second: HouseObjects_SpriteSheet2_0
   - first:
-      213: 8461967925631927735
-    second: HouseObjects_SpriteSheet1_1
+      213: -5626141927735911548
+    second: HouseObjects_SpriteSheet2_1
   - first:
-      213: -6675459945859929122
-    second: HouseObjects_SpriteSheet1_2
+      213: 3036136712004142789
+    second: HouseObjects_SpriteSheet2_2
   - first:
-      213: 8271753379637793525
-    second: HouseObjects_SpriteSheet1_3
+      213: 4344224785000896392
+    second: HouseObjects_SpriteSheet2_3
   - first:
-      213: 6382715980653762448
-    second: HouseObjects_SpriteSheet1_4
+      213: 5628689712586126929
+    second: HouseObjects_SpriteSheet2_4
   - first:
-      213: -8698367798949188179
-    second: HouseObjects_SpriteSheet1_5
-  - first:
-      213: 6749604709963905756
-    second: HouseObjects_SpriteSheet1_6
-  - first:
-      213: 3223045677631275853
-    second: HouseObjects_SpriteSheet1_7
-  - first:
-      213: 4874948391625671284
-    second: HouseObjects_SpriteSheet1_8
-  - first:
-      213: -1357235678521840587
-    second: HouseObjects_SpriteSheet1_9
-  - first:
-      213: -6967791626713050953
-    second: HouseObjects_SpriteSheet1_10
-  - first:
-      213: -2532776721595713123
-    second: HouseObjects_SpriteSheet1_11
-  - first:
-      213: -2990150666475553981
-    second: HouseObjects_SpriteSheet1_12
-  - first:
-      213: 4692087741475499420
-    second: HouseObjects_SpriteSheet1_13
+      213: 6755285035762094538
+    second: HouseObjects_SpriteSheet2_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -86,7 +62,7 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
-  spriteExtrude: 0
+  spriteExtrude: 1
   spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
@@ -191,183 +167,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tonel
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1152
-        width: 384
-        height: 384
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fa5c8a27ab9f77820800000000000000
-      internalID: 2916073862928582063
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Clothsline
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 1152
-        width: 384
-        height: 384
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7b54a04bef2fe6570800000000000000
-      internalID: 8461967925631927735
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Table
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 1152
-        width: 384
-        height: 384
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: edbabae1c800c53a0800000000000000
-      internalID: -6675459945859929122
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sink
-      rect:
-        serializedVersion: 2
-        x: 1152
-        y: 1152
-        width: 384
-        height: 384
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5f292f68fdb2bc270800000000000000
-      internalID: 8271753379637793525
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Oven
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 768
-        width: 384
-        height: 384
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 09793190e56f39850800000000000000
-      internalID: 6382715980653762448
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BedsideTable
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 768
-        width: 384
-        height: 384
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: dadefe1a290394780800000000000000
-      internalID: -8698367798949188179
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Window
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 768
-        width: 384
-        height: 384
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cdab3b709b96bad50800000000000000
-      internalID: 6749604709963905756
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TV
-      rect:
-        serializedVersion: 2
-        x: 1152
-        y: 768
-        width: 384
-        height: 384
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d430216a7fe8abc20800000000000000
-      internalID: 3223045677631275853
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Barrel
+      name: Bath
       rect:
         serializedVersion: 2
         x: 0
@@ -382,14 +182,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 472c53dcbbb47a340800000000000000
-      internalID: 4874948391625671284
+      spriteID: 4de7c14ff8f9a02e0800000000000000
+      internalID: -2158737630746083628
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ArmChair
+      name: Stairs
       rect:
         serializedVersion: 2
         x: 384
@@ -404,14 +204,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 53c283167512a2de0800000000000000
-      internalID: -1357235678521840587
+      spriteID: 48b9e5da9bdebe1b0800000000000000
+      internalID: -5626141927735911548
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Toilet
+      name: Paint1
       rect:
         serializedVersion: 2
         x: 768
@@ -426,14 +226,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7b0d3d4be6e6d4f90800000000000000
-      internalID: -6967791626713050953
+      spriteID: 5c68780e046822a20800000000000000
+      internalID: 3036136712004142789
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UmbrellaStand
+      name: Door
       rect:
         serializedVersion: 2
         x: 1152
@@ -448,14 +248,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d99b8edadf4c9dcd0800000000000000
-      internalID: -2532776721595713123
+      spriteID: 8871d6edc69c94c30800000000000000
+      internalID: 4344224785000896392
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WashingMachine
+      name: Paint2
       rect:
         serializedVersion: 2
         x: 0
@@ -470,14 +270,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 34bb3d3bfc9d086d0800000000000000
-      internalID: -2990150666475553981
+      spriteID: 1567795b87f1d1e40800000000000000
+      internalID: 5628689712586126929
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mirror
+      name: Bed
       rect:
         serializedVersion: 2
         x: 384
@@ -492,8 +292,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c9dac9de0f4ad1140800000000000000
-      internalID: 4692087741475499420
+      spriteID: ac19c11f2f79fbd50800000000000000
+      internalID: 6755285035762094538
       vertices: []
       indices: 
       edges: []
@@ -502,7 +302,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: c109705efbc6d914c8557559696d68dc
+    spriteID: 3341f78d8457a4f4c83977ffd02dd137
     internalID: 0
     vertices: []
     indices: 
@@ -512,20 +312,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ArmChair: -1357235678521840587
-      Barrel: 4874948391625671284
-      BedsideTable: -8698367798949188179
-      Clothsline: 8461967925631927735
-      Mirror: 4692087741475499420
-      Oven: 6382715980653762448
-      Sink: 8271753379637793525
-      TV: 3223045677631275853
-      Table: -6675459945859929122
-      Toilet: -6967791626713050953
-      Tonel: 2916073862928582063
-      UmbrellaStand: -2532776721595713123
-      WashingMachine: -2990150666475553981
-      Window: 6749604709963905756
+      Bath: -2158737630746083628
+      Bed: 6755285035762094538
+      Door: 4344224785000896392
+      Paint1: 3036136712004142789
+      Paint2: 5628689712586126929
+      Stairs: -5626141927735911548
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
