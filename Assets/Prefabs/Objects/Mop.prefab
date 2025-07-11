@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 1284859215476283910, guid: 6d26dd694f60f404fb08343486718a56, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 3.84, y: 3.84}
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 337980644790030002}
   m_Layer: 0
   m_Name: Mop
-  m_TagString: Untagged
+  m_TagString: Mop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,5 +133,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
-  slipperyZonePrefab: {fileID: 0}
+  slipperyZonePrefab: {fileID: 2891153861351555507, guid: b8ae9a4ab32d2f6408f5a8ab1a82772f, type: 3}
   spawnInterval: 0.5
+  mountedSprite: {fileID: 5650887619208477777, guid: 6d26dd694f60f404fb08343486718a56, type: 3}

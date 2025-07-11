@@ -15,7 +15,7 @@ public class SlipperyZone : MonoBehaviour
         Invoke(nameof(Activate), activationDelay); // Espera 5s para activarse
         Invoke(nameof(Expire), lifeTime);
 
-        // Ajustar posici?n para alinearse con el suelo
+        // Ajustar posicion para alinearse con el suelo
         AlignWithGround();
     }
 
@@ -50,13 +50,11 @@ public class SlipperyZone : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1f, LayerMask.GetMask("Ground"));
         if (hit.collider != null)
         {
-            // Alinearse con la posici?n del suelo (puedes ajustarlo si hace falta que quede m?s alto o m?s bajo)
+            // Alinearse con la posicion del suelo 
             Vector3 newPos = transform.position;
             newPos.y = hit.point.y;
             transform.position = newPos;
         }
-        else
-        {
-        }
+       
     }
 }

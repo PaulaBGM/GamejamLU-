@@ -9,8 +9,8 @@ public class FloorStain : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            PlayerBroomController broom = other.GetComponent<PlayerBroomController>();
-            if (broom != null && broom.IsOnBroom())
+            PlayerToolRider broom = other.GetComponent<PlayerToolRider>();
+            if (broom != null && broom.isOnBroom)
             {
                 CleanPass();
             }
