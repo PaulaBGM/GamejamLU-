@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WahingMachineShake
+  m_Name: StaticWashingMachine
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,9 +21,9 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 21300000, guid: 01e223243e092994f8da2029587f4acc, type: 3}
+      value: {fileID: 21300000, guid: d5f954efd52b913459ef0075db098ad6, type: 2}
     - time: 0.083333336
-      value: {fileID: 21300000, guid: 2fa2782f54f06394c86caf6bc3a73a36, type: 3}
+      value: {fileID: 21300000, guid: ed6bc7bb5c0c9ca4b9b61e390e16c339, type: 2}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -46,8 +46,8 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 01e223243e092994f8da2029587f4acc, type: 3}
-    - {fileID: 21300000, guid: 2fa2782f54f06394c86caf6bc3a73a36, type: 3}
+    - {fileID: 21300000, guid: d5f954efd52b913459ef0075db098ad6, type: 2}
+    - {fileID: 21300000, guid: ed6bc7bb5c0c9ca4b9b61e390e16c339, type: 2}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

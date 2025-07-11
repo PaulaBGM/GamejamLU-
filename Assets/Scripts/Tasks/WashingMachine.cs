@@ -39,12 +39,12 @@ public class WashingMachine : MonoBehaviour
                 {
                     ReturnCleanItemsToPlayer(player);
                     _audioSource.Stop();
-                    _anim.gameObject.SetActive(false);
+                    _anim.SetBool("IsWashing", false);
                 }
                 else if (!isWashing && player.HasItems())
                 {
                     List<PickupItem> items = player.DropAllItemsTo(washingPoint);
-                    _anim.gameObject.SetActive(true);
+                    _anim.SetBool("IsWashing", true);
                     _audioSource.Play();
                     ReceiveItems(items);
                 }
