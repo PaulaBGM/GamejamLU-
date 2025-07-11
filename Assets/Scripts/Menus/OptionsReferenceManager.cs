@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class OptionsReferenceManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class OptionsReferenceManager : MonoBehaviour
     private Scrollbar _sfxVolumeSlider;
     [SerializeField]
     private GameObject _optionsMenuExit;
+    [SerializeField]
+    private AudioMixer _audioMixer;
 
     private bool hasChanges;
 
@@ -28,21 +31,37 @@ public class OptionsReferenceManager : MonoBehaviour
         }
         if (PlayerPrefs.HasKey("MusicVolume"))
         {
-            _musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume");
+            float music = PlayerPrefs.GetFloat("MusicVolume");
+            _musicVolumeSlider.value = music;
+            _audioMixer.SetFloat("MusicVolume", Mathf.Log10(Mathf.Clamp(music, 0.0001f, 1f)) * 20f);
         }
         else
         {
-            _musicVolumeSlider.value = 1.0f; // Default value
+            float music = 1.0f;
+            _musicVolumeSlider.value = music;
+            _audioMixer.SetFloat("MusicVolume", Mathf.Log10(music) * 20f);
         }
         if (PlayerPrefs.HasKey("SFXVolume"))
         {
-            _sfxVolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume");
+            float sfx = PlayerPrefs.GetFloat("SFXVolume");
+            _sfxVolumeSlider.value = sfx;
+            _audioMixer.SetFloat("SFXVolume", Mathf.Log10(Mathf.Clamp(sfx, 0.0001f, 1f)) * 20f);
         }
         else
         {
-            _sfxVolumeSlider.value = 1.0f; // Default value
+            float sfx = 1.0f;
+            _sfxVolumeSlider.value = sfx;
+            _audioMixer.SetFloat("SFXVolume", Mathf.Log10(sfx) * 20f); 
         }
     }
+
+    void Update()
+    {
+        float music;
+        _audioMixer.GetFloat("MusicVolume", out music);
+        Debug.Log("MusicVolume actual: " + music);
+    }
+
 
     public void CheckChanges()
     {
@@ -76,10 +95,14 @@ public class OptionsReferenceManager : MonoBehaviour
     }
     public void SaveMusicVolume()
     {
+        float volume = Mathf.Log10(Mathf.Clamp(_musicVolumeSlider.value, 0.0001f, 1f)) * 20f;
+        _audioMixer.SetFloat("MusicVolume", volume);
         PlayerPrefs.SetFloat("MusicVolume", _musicVolumeSlider.value);
     }
     public void SaveSFXVolume()
     {
+        float volume = Mathf.Log10(Mathf.Clamp(_sfxVolumeSlider.value, 0.0001f, 1f)) * 20f;
+        _audioMixer.SetFloat("SFXVolume", volume);
         PlayerPrefs.SetFloat("SFXVolume", _sfxVolumeSlider.value);
     }
     public void SaveAllSettings()

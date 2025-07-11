@@ -901,6 +901,7 @@ MonoBehaviour:
   _musicVolumeSlider: {fileID: 7826007164712507983}
   _sfxVolumeSlider: {fileID: 4027453095947504091}
   _optionsMenuExit: {fileID: 6154418445642262524}
+  _audioMixer: {fileID: 24100000, guid: de7cbb2ce9afe9d45a104bd46caf0f51, type: 2}
 --- !u!114 &3765555319795508492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2211,7 +2212,19 @@ MonoBehaviour:
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2744887280179455117}
+        m_TargetAssemblyTypeName: OptionsReferenceManager, Assembly-CSharp
+        m_MethodName: SaveMusicVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4570700629264317473
 GameObject:
   m_ObjectHideFlags: 0
@@ -3358,7 +3371,19 @@ MonoBehaviour:
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2744887280179455117}
+        m_TargetAssemblyTypeName: OptionsReferenceManager, Assembly-CSharp
+        m_MethodName: SaveSFXVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7209848591056533594
 GameObject:
   m_ObjectHideFlags: 0
@@ -3396,7 +3421,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.6750183, y: 0}
+  m_AnchoredPosition: {x: 2.6750488, y: 0}
   m_SizeDelta: {x: 5.349934, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4260903221344403313

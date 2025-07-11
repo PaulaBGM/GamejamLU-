@@ -14,10 +14,14 @@ public class WashingMachine : MonoBehaviour
     private bool isFinished = false;
     private int _cleanedCount = 0;
     private const int _totalRequired = 6;
+    private AudioSource _audioSource;
 
     [SerializeField]
     private Animator _anim;
-
+    private void Awake()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
     private void Update()
     {
         if (!Input.GetKeyDown(interactionKey)) return;
@@ -34,12 +38,14 @@ public class WashingMachine : MonoBehaviour
                 if (isFinished)
                 {
                     ReturnCleanItemsToPlayer(player);
+                    _audioSource.Stop();
                     _anim.gameObject.SetActive(false);
                 }
                 else if (!isWashing && player.HasItems())
                 {
                     List<PickupItem> items = player.DropAllItemsTo(washingPoint);
                     _anim.gameObject.SetActive(true);
+                    _audioSource.Play();
                     ReceiveItems(items);
                 }
 
