@@ -2,20 +2,22 @@ using UnityEngine;
 
 /// <summary>
 /// Maneja el comportamiento del jugador al subir escaleras.
-/// Incluye detección de interacción, alineación horizontal y desactivación de colisión con el techo.
+/// Soporta escaleras frontales (alineación horizontal) y escaleras laterales.
+/// Ignora colisiones con el techo y el suelo de la escalera mientras se escala.
 /// </summary>
+[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class PlayerClimb : MonoBehaviour
 {
     [Header("Configuración de Escaleras")]
     [SerializeField] private float climbSpeed = 3f;               // Velocidad al escalar
-    [SerializeField] private KeyCode interactKey = KeyCode.E;     // Tecla para comenzar a escalar
+    [SerializeField] private KeyCode interactKey = KeyCode.E;     // Tecla para comenzar a escalar (opcional)
 
     private Rigidbody2D rb;
     private Animator animator;
     private Collider2D playerCollider;
 
-    private bool isOnStairs = false;      // Si está dentro del trigger de escalera
-    private bool isClimbing = false;      // Si está escalando activamente
+    private bool isOnStairs = false;
+    private bool isClimbing = false;
 
     private float verticalInput;
     private StairZone currentStairZone;
@@ -31,19 +33,13 @@ public class PlayerClimb : MonoBehaviour
     {
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        // Comenzar a escalar al presionar la tecla y estar en escaleras
-        if (isOnStairs && !isClimbing && Input.GetKeyDown(interactKey))
+        // Iniciar escalada si se pulsa tecla o se mueve hacia arriba/abajo
+        if (isOnStairs && !isClimbing && (Input.GetKeyDown(interactKey) || Mathf.Abs(verticalInput) > 0.1f))
         {
             StartClimbing();
         }
 
-        // Detener movimiento vertical si no hay input
-        if (isClimbing && Mathf.Abs(verticalInput) < 0.01f)
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
-        }
-
-        // Salir de escalera si se va del trigger
+        // Cancelar escalada si sale del trigger
         if (!isOnStairs && isClimbing)
         {
             ResetClimb();
@@ -54,11 +50,19 @@ public class PlayerClimb : MonoBehaviour
     {
         if (isClimbing)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, verticalInput * climbSpeed);
+            // Movimiento vertical fluido mientras escala
+            if (Mathf.Abs(verticalInput) > 0.01f)
+            {
+                rb.linearVelocity = new Vector2(0f, verticalInput * climbSpeed);
+            }
+            else
+            {
+                rb.linearVelocity = Vector2.zero;
+            }
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Stairs"))
         {
@@ -76,42 +80,39 @@ public class PlayerClimb : MonoBehaviour
     }
 
     /// <summary>
-    /// Inicia el modo de escalada y alinea al jugador al centro de las escaleras.
+    /// Inicia la escalada: sin gravedad, alinea si es necesario y desactiva colisiones.
     /// </summary>
     private void StartClimbing()
     {
-        if (isClimbing) return;
+        if (isClimbing || currentStairZone == null) return;
 
         isClimbing = true;
         rb.gravityScale = 0f;
+        rb.linearVelocity = Vector2.zero;
 
-        // Centrar posición X del jugador en la escalera para evitar desalineación
-        if (currentStairZone != null)
+        // Alinear en X solo si no es escalera lateral
+        if (!currentStairZone.isSideStair && currentStairZone.stairCollider != null)
         {
             Vector3 pos = transform.position;
-
-            Collider2D stairCollider = currentStairZone.GetComponent<Collider2D>();
-            if (stairCollider != null)
-            {
-                pos.x = stairCollider.bounds.center.x;
-                transform.position = pos;
-            }
-
-            // Desactivar colisión con techo si existe
-            if (currentStairZone.ceilingCollider != null && playerCollider != null)
-            {
-                Physics2D.IgnoreCollision(playerCollider, currentStairZone.ceilingCollider, true);
-                Physics2D.IgnoreCollision(playerCollider, currentStairZone.stairCollider, true);
-
-            }
+            pos.x = currentStairZone.stairCollider.bounds.center.x;
+            transform.position = pos;
         }
 
-        
+        // Ignorar colisiones
+        if (playerCollider != null)
+        {
+            if (currentStairZone.ceilingCollider != null)
+                Physics2D.IgnoreCollision(playerCollider, currentStairZone.ceilingCollider, true);
+
+            if (currentStairZone.stairCollider != null)
+                Physics2D.IgnoreCollision(playerCollider, currentStairZone.stairCollider, true);
+        }
+
+        // Animación
         if (animator != null)
         {
             animator.SetBool("isClimbing", true);
         }
-        
     }
 
     /// <summary>
@@ -122,20 +123,20 @@ public class PlayerClimb : MonoBehaviour
         isClimbing = false;
         rb.gravityScale = 1f;
 
-        // Restaurar colisión si hay un techo definido
-        if (currentStairZone != null && currentStairZone.ceilingCollider != null && playerCollider != null)
+        if (playerCollider != null && currentStairZone != null)
         {
-            Physics2D.IgnoreCollision(playerCollider, currentStairZone.ceilingCollider, false);
-            Physics2D.IgnoreCollision(playerCollider, currentStairZone.stairCollider, false);
+            if (currentStairZone.ceilingCollider != null)
+                Physics2D.IgnoreCollision(playerCollider, currentStairZone.ceilingCollider, false);
+
+            if (currentStairZone.stairCollider != null)
+                Physics2D.IgnoreCollision(playerCollider, currentStairZone.stairCollider, false);
         }
 
-        currentStairZone = null;
-
-        
         if (animator != null)
         {
             animator.SetBool("isClimbing", false);
         }
-        
+
+        currentStairZone = null;
     }
 }

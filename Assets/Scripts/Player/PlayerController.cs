@@ -8,15 +8,13 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 5f;
     public float jumpForce = 7f;
 
-    [Header("Chequeo de Suelo")]
-    public Transform groundCheck;
-    public float checkRadius = 0.2f;
+    [Header("Chequeo de Suelo por Raycast")]
+    public float groundCheckDistance = 0.1f;
     public LayerMask groundLayer;
 
     private Rigidbody2D rb;
     private bool isGrounded;
     private float moveInput;
-
     private bool facingRight = true;
 
     [SerializeField] private float flipSmoothTime = 0.3f;
@@ -34,13 +32,14 @@ public class PlayerController : MonoBehaviour
         moveInput = Input.GetAxisRaw("Horizontal");
         anim.SetFloat("Speed", Mathf.Abs(moveInput));
 
-        // Saltar
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        // Saltar con W o Espacio si está en el suelo
+        if (isGrounded && (Input.GetKeyDown(KeyCode.Space)))
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-            anim.SetBool("JumpStart", true); // se activa el salto inicial
+            anim.SetBool("JumpStart", true);
         }
 
+        // Voltear sprite y cámara
         if (moveInput > 0 && !facingRight)
         {
             FlipChildren(true);
@@ -52,7 +51,6 @@ public class PlayerController : MonoBehaviour
             facingRight = false;
         }
 
-        // Actualizar verticalSpeed para el Animator
         anim.SetFloat("verticalSpeed", rb.linearVelocity.y);
     }
 
@@ -61,15 +59,22 @@ public class PlayerController : MonoBehaviour
         // Movimiento horizontal
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
 
-        // Actualizar estado de suelo
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
+        // Detección de suelo con raycast desde el centro hacia abajo
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, groundLayer);
+        isGrounded = hit.collider != null;
+
         anim.SetBool("IsGrounded", isGrounded);
 
-        // Resetear "JumpStart" si ya estamos cayendo
+        // Resetear animación de salto si está cayendo
         if (rb.linearVelocity.y <= 0)
         {
             anim.SetBool("JumpStart", false);
         }
+
+#if UNITY_EDITOR
+        // Visualizar raycast en Scene View
+        Debug.DrawRay(transform.position, Vector2.down * groundCheckDistance, isGrounded ? Color.green : Color.red);
+#endif
     }
 
     private void FlipChildren(bool faceRight)
