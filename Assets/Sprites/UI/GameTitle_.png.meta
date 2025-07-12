@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e35e3292fc4f2ec43b557168ef1e8909
+guid: bf3359b4e51fc5f4095bc3afd6c32978
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -23,6 +23,15 @@ TextureImporter:
   - first:
       213: 6401130334486494631
     second: GameTitle_6
+  - first:
+      213: -3424353242249268010
+    second: GameTitle_7
+  - first:
+      213: 7627333058367321104
+    second: GameTitle_8
+  - first:
+      213: 7497534759618935009
+    second: GameTitle_9
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -173,10 +182,10 @@ TextureImporter:
       name: GameTitle_0
       rect:
         serializedVersion: 2
-        x: 68
-        y: 34
-        width: 149
-        height: 219
+        x: 75
+        y: 64
+        width: 137
+        height: 206
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,10 +204,10 @@ TextureImporter:
       name: GameTitle_1
       rect:
         serializedVersion: 2
-        x: 176
-        y: 125
-        width: 45
-        height: 45
+        x: 184
+        y: 154
+        width: 31
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -217,10 +226,10 @@ TextureImporter:
       name: GameTitle_2
       rect:
         serializedVersion: 2
-        x: 218
-        y: 34
-        width: 156
-        height: 254
+        x: 225
+        y: 60
+        width: 168
+        height: 219
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -239,10 +248,10 @@ TextureImporter:
       name: GameTitle_3
       rect:
         serializedVersion: 2
-        x: 363
-        y: 34
-        width: 46
-        height: 156
+        x: 400
+        y: 66
+        width: 63
+        height: 95
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -261,10 +270,10 @@ TextureImporter:
       name: GameTitle_4
       rect:
         serializedVersion: 2
-        x: 402
-        y: 38
-        width: 79
-        height: 109
+        x: 470
+        y: 68
+        width: 149
+        height: 182
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -283,10 +292,10 @@ TextureImporter:
       name: GameTitle_5
       rect:
         serializedVersion: 2
-        x: 462
-        y: 40
-        width: 162
-        height: 191
+        x: 573
+        y: 67
+        width: 77
+        height: 87
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -305,10 +314,10 @@ TextureImporter:
       name: GameTitle_6
       rect:
         serializedVersion: 2
-        x: 565
-        y: 31
-        width: 373
-        height: 173
+        x: 650
+        y: 64
+        width: 69
+        height: 157
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -319,6 +328,72 @@ TextureImporter:
       bones: []
       spriteID: 7ad7b04ef1265d850800000000000000
       internalID: 6401130334486494631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameTitle_7
+      rect:
+        serializedVersion: 2
+        x: 721
+        y: 64
+        width: 85
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d476428ed04a70d0800000000000000
+      internalID: -3424353242249268010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameTitle_8
+      rect:
+        serializedVersion: 2
+        x: 795
+        y: 60
+        width: 69
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 014f397510bb9d960800000000000000
+      internalID: 7627333058367321104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameTitle_9
+      rect:
+        serializedVersion: 2
+        x: 867
+        y: 63
+        width: 64
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e8fa36e3289c0860800000000000000
+      internalID: 7497534759618935009
       vertices: []
       indices: 
       edges: []
@@ -344,6 +419,9 @@ TextureImporter:
       GameTitle_4: -5893557192365271090
       GameTitle_5: 5804678577798249914
       GameTitle_6: 6401130334486494631
+      GameTitle_7: -3424353242249268010
+      GameTitle_8: 7627333058367321104
+      GameTitle_9: 7497534759618935009
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
