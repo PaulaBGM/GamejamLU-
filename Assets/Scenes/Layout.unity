@@ -37470,6 +37470,10 @@ MonoBehaviour:
   NiceResult: {fileID: 4021562232667278890, guid: a5ec217d472fcc8449a22e85ef1f595e, type: 3}
   MediumResult: {fileID: 4757580592827686973, guid: a5ec217d472fcc8449a22e85ef1f595e, type: 3}
   BadResult: {fileID: 8434990373427304158, guid: a5ec217d472fcc8449a22e85ef1f595e, type: 3}
+  CharacterHeader: {fileID: 604656457}
+  CharacterHeaderBadSprite: {fileID: -1498741754905800934, guid: e0398a89b00b8034a8044dd876c9923f, type: 3}
+  CharacterHeaderMediumSprite: {fileID: 1844021136067326446, guid: e0398a89b00b8034a8044dd876c9923f, type: 3}
+  CharacterHeaderNiceSprite: {fileID: 5613687333866607295, guid: e0398a89b00b8034a8044dd876c9923f, type: 3}
   _taskListPanel: {fileID: 536636988}
   _taskListButton: {fileID: 46301353}
   FinalPercent: 0

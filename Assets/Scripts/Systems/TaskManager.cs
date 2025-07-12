@@ -44,6 +44,14 @@ public class TaskManager : MonoBehaviour
     private Sprite MediumResult;
     [SerializeField]
     private Sprite BadResult;
+    [SerializeField]
+    private Image CharacterHeader;
+    [SerializeField]
+    private Sprite CharacterHeaderBadSprite;
+    [SerializeField]
+    private Sprite CharacterHeaderMediumSprite;
+    [SerializeField]
+    private Sprite CharacterHeaderNiceSprite;
 
     [SerializeField]
     private GameObject _taskListPanel;
@@ -89,6 +97,8 @@ public class TaskManager : MonoBehaviour
         ClothesTaskProgress.gameObject.SetActive(false);
         WashingMachineTaskProgress.gameObject.SetActive(false);
         HangClothesTaskProgress.gameObject.SetActive(false);
+
+        CalculateFinalPercent();
     }
     private void Update()
     {
@@ -143,6 +153,7 @@ public class TaskManager : MonoBehaviour
             WineTask.Completed = true;
             WineTaskProgress.sprite = BadResult;
         }
+        CalculateFinalPercent();
     }
     private void EndSweepTask(float percent)
     {
@@ -163,6 +174,7 @@ public class TaskManager : MonoBehaviour
             SweepTask.Completed = true;
             SweepTaskProgress.sprite = BadResult;
         }
+        CalculateFinalPercent();
     }
     private void EndScrubTask(float percent)
     {
@@ -183,6 +195,7 @@ public class TaskManager : MonoBehaviour
             ScrubTask.Completed = true;
             ScrubTaskProgress.sprite = BadResult;
         }
+        CalculateFinalPercent();
     }
     private void EndDishesTask(float percent)
     {
@@ -203,6 +216,7 @@ public class TaskManager : MonoBehaviour
             DishesTask.Completed = true;
             DishesTaskProgress.sprite = BadResult;
         }
+        CalculateFinalPercent();
     }
     private void EndClothesTask(float percent)
     {
@@ -223,6 +237,7 @@ public class TaskManager : MonoBehaviour
             ClothesTask.Completed = true;
             ClothesTaskProgress.sprite = BadResult;
         }
+        CalculateFinalPercent();
     }
     private void EndWashingMachineTask(float percent)
     {
@@ -243,6 +258,7 @@ public class TaskManager : MonoBehaviour
             WashingMachineTask.Completed = true;
             WashingMachineTaskProgress.sprite = BadResult;
         }
+        CalculateFinalPercent();
     }
     private void EndHangClothesTask(float percent)
     {
@@ -263,6 +279,7 @@ public class TaskManager : MonoBehaviour
             HangClothesTask.Completed = true;
             HangClothesTaskProgress.sprite = BadResult;
         }
+        CalculateFinalPercent();
     }
     public void ToggleTaskList()
     {
@@ -280,5 +297,17 @@ public class TaskManager : MonoBehaviour
             WashingMachineTask.CompletedPercent +
             HangClothesTask.CompletedPercent) /
             7.0f;
+        if (FinalPercent > 66.7f) 
+        {
+            CharacterHeader.sprite = CharacterHeaderNiceSprite;
+        }
+        else if (FinalPercent > 33.4f)
+        {
+            CharacterHeader.sprite = CharacterHeaderMediumSprite;
+        }
+        else
+        {
+            CharacterHeader.sprite = CharacterHeaderBadSprite;
+        }
     }
 }
