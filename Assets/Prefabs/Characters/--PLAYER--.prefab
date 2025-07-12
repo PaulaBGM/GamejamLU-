@@ -69,7 +69,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 9
+  orthographic size: 7.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: 7839650822165191294}
   - component: {fileID: 7797734514196717719}
   - component: {fileID: 7919255647301769115}
+  - component: {fileID: 6770535488431261520}
   m_Layer: 0
   m_Name: --PLAYER--
   m_TagString: Player
@@ -223,9 +224,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 8
-  jumpForce: 30
-  groundCheck: {fileID: 5747561762668884174}
-  checkRadius: 0.2
+  jumpForce: 20
+  groundCheckDistance: 1.6
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -261,7 +261,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 9.8
+  m_GravityScale: 9
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -307,8 +307,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.023387372, y: -0.01282841}
-  m_Size: {x: 1.4547935, y: 2.5607562}
+  m_Offset: {x: 0.023387372, y: -0.023422718}
+  m_Size: {x: 1.4547935, y: 3.1187239}
   m_Direction: 0
 --- !u!114 &7797734514196717719
 MonoBehaviour:
@@ -346,6 +346,22 @@ MonoBehaviour:
   mountParticles: {fileID: 6690798196102535567, guid: cc664efe408818242b89d68cd20615ea, type: 3}
   mopSprite: {fileID: 5650887619208477777, guid: 6d26dd694f60f404fb08343486718a56, type: 3}
   originalSprite: {fileID: 1284859215476283910, guid: 6d26dd694f60f404fb08343486718a56, type: 3}
+  isOnBroom: 0
+--- !u!114 &6770535488431261520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5940372863869735624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca95110f3e773bd48aa116fb1e06fd47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stompCooldown: 0.1
+  normalFallMultiplier: 1.5
+  boostedFallMultiplier: 3.5
 --- !u!1 &6444855865762246878
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,7 +390,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3835769205625875914}
@@ -481,7 +497,7 @@ Transform:
   m_GameObject: {fileID: 6680302934299542297}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

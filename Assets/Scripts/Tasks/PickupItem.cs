@@ -9,6 +9,7 @@ public class PickupItem : MonoBehaviour
     public bool IsClean { get; set; } = false;
 
     private Vector3 targetLocalPosition;
+    private Vector3 targetLocalRotation;
     private float moveSpeed = 5f;
     private bool moving = false;
 
@@ -28,10 +29,24 @@ public class PickupItem : MonoBehaviour
     private const int _totalRequired = 6;
     private static bool _taskAlreadyCompleted = false;
 
+    private void Awake()
+    {
+        _itemImage = GetComponentInChildren<SpriteRenderer>();
+    }
+
+    public void SetCleanSprite()
+    {
+        if (_cleanSprite != null && _itemImage != null)
+        {
+            _itemImage.sprite = _cleanSprite;
+        }
+    }
+
     private void Start()
     {
         CheckPickUpState();
     }
+
     void Update()
     {
         if (moving)
@@ -39,9 +54,11 @@ public class PickupItem : MonoBehaviour
             // Mueve el objeto suavemente a su posición deseada en el stack
             transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetLocalPosition, moveSpeed * Time.deltaTime);
 
-            if (Vector3.Distance(transform.localPosition, targetLocalPosition) < 0.01f)
+            // Comparación optimizada y ajuste de rotación
+            if ((transform.localPosition - targetLocalPosition).sqrMagnitude < 0.0001f)
             {
                 transform.localPosition = targetLocalPosition;
+                transform.localRotation = Quaternion.identity; // Fijar rotación a (0, 0, 0)
                 moving = false;
             }
         }
@@ -75,7 +92,6 @@ public class PickupItem : MonoBehaviour
         IsCollected = value;
     }
 
-
     /// <summary>
     /// Marca el objeto como limpio (lavado).
     /// </summary>
@@ -93,6 +109,7 @@ public class PickupItem : MonoBehaviour
         moveSpeed = speed;
         moving = true;
     }
+
     public void StopMovement()
     {
         moving = false;

@@ -9,26 +9,28 @@ public class WashingMachine : MonoBehaviour
     [SerializeField] private float interactionRange = 1f;
     [SerializeField] private KeyCode interactionKey = KeyCode.E;
 
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip washingSoundLoop;
+    [SerializeField] private AudioClip finishedSound;
+
+    [SerializeField] private Animator _anim;
+
     private List<PickupItem> itemsInside = new();
     private bool isWashing = false;
     private bool isFinished = false;
     private int _cleanedCount = 0;
     private const int _totalRequired = 6;
-    private AudioSource _audioSource;
 
-    [SerializeField]
-    private Animator _anim;
     private void Awake()
     {
-        _audioSource = GetComponent<AudioSource>();
+        if (_audioSource == null) _audioSource = GetComponent<AudioSource>();
     }
+
     private void Update()
     {
         if (!Input.GetKeyDown(interactionKey)) return;
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, interactionRange);
-
-        
 
         foreach (Collider2D collider in colliders)
         {
@@ -45,7 +47,6 @@ public class WashingMachine : MonoBehaviour
                 {
                     List<PickupItem> items = player.DropAllItemsTo(washingPoint);
                     _anim.SetBool("IsWashing", true);
-                    _audioSource.Play();
                     ReceiveItems(items);
                 }
 
@@ -58,17 +59,14 @@ public class WashingMachine : MonoBehaviour
     {
         if (itemsInside.Count == 0) return;
 
-        // Hacer visibles los objetos antes de devolverlos
         foreach (var item in itemsInside)
         {
             SpriteRenderer sr = item.GetComponentInChildren<SpriteRenderer>();
             if (sr != null) sr.enabled = true;
 
-            // Reactivar colisiones si tienes collider
             Collider2D col = item.GetComponent<Collider2D>();
             if (col != null) col.enabled = true;
 
-            // Cambiar Rigidbody a cinemático para control del jugador
             Rigidbody2D rb = item.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
@@ -84,10 +82,7 @@ public class WashingMachine : MonoBehaviour
         Debug.Log("Chema recoge los objetos limpios");
     }
 
-    public bool CanAcceptItems()
-    {
-        return !isWashing;
-    }
+    public bool CanAcceptItems() => !isWashing;
 
     public void ReceiveItems(List<PickupItem> items)
     {
@@ -98,17 +93,14 @@ public class WashingMachine : MonoBehaviour
         foreach (var item in itemsInside)
         {
             item.transform.position = washingPoint.position;
-            item.SetClean(false); // Aún están sucios al llegar
+            item.SetClean(false);
 
-            // Ocultar objeto
             SpriteRenderer sr = item.GetComponentInChildren<SpriteRenderer>();
             if (sr != null) sr.enabled = false;
 
-            // Desactivar colisiones
             Collider2D col = item.GetComponent<Collider2D>();
             if (col != null) col.enabled = false;
 
-            // Poner Rigidbody dinámico para que no caiga y no se mueva
             Rigidbody2D rb = item.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
@@ -124,6 +116,15 @@ public class WashingMachine : MonoBehaviour
     private IEnumerator WashItems()
     {
         isWashing = true;
+
+        // Reproducir sonido de lavado en bucle
+        if (_audioSource != null && washingSoundLoop != null)
+        {
+            _audioSource.clip = washingSoundLoop;
+            _audioSource.loop = true;
+            _audioSource.Play();
+        }
+
         yield return new WaitForSeconds(washingTime);
 
         foreach (var item in itemsInside)
@@ -134,6 +135,18 @@ public class WashingMachine : MonoBehaviour
 
         isWashing = false;
         isFinished = true;
+
+        // Detener el bucle y reproducir sonido de fin
+        if (_audioSource != null)
+        {
+            _audioSource.Stop();
+            _audioSource.loop = false;
+
+            if (finishedSound != null)
+                _audioSource.PlayOneShot(finishedSound);
+        }
+
+        _anim.SetBool("IsWashing", false);
         TaskManager.Instance.EndTask(6, (float)_cleanedCount / _totalRequired * 100f);
         Debug.Log("Lavadora terminó de lavar");
         Debug.Log($"Objetos lavados: {(float)_cleanedCount / _totalRequired * 100f}%");
@@ -145,4 +158,3 @@ public class WashingMachine : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, interactionRange);
     }
 }
-

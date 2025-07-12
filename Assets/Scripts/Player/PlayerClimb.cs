@@ -60,6 +60,10 @@ public class PlayerClimb : MonoBehaviour
                 rb.linearVelocity = Vector2.zero;
             }
         }
+        else 
+        {
+            ResetClimb();
+         }
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -121,7 +125,7 @@ public class PlayerClimb : MonoBehaviour
     private void ResetClimb()
     {
         isClimbing = false;
-        rb.gravityScale = 1f;
+        rb.gravityScale = 9f;
 
         if (playerCollider != null && currentStairZone != null)
         {

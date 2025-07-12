@@ -10,13 +10,26 @@ public class Seagull : MonoBehaviour
     [SerializeField] private float poopIntervalMax = 5f;
     [SerializeField] private float lifetime = 10f;
 
+    [SerializeField] private AudioSource poop;
+    [SerializeField] private AudioClip poopClip;
+
     private float poopTimer;
     private float lifetimeTimer = 0f;
+    private Animator animator;
 
     public event Action OnSeagullDestroyed;
 
     private void Start()
     {
+        animator = GetComponentInChildren<Animator>();
+        if (animator == null)
+            Debug.LogWarning("Animator no encontrado en el hijo de la gaviota.");
+
+        if (poop == null)
+            Debug.LogWarning("AudioSource 'poop' no está asignado.");
+        if (poopClip == null)
+            Debug.LogWarning("AudioClip 'poopClip' no está asignado.");
+
         ResetPoopTimer();
     }
 
@@ -27,14 +40,14 @@ public class Seagull : MonoBehaviour
         lifetimeTimer += Time.deltaTime;
         poopTimer -= Time.deltaTime;
 
-        // Suelta una caca al azar (blanca o negra)
+        // Soltar caca si toca
         if (poopTimer <= 0f)
         {
             DropPoop();
             ResetPoopTimer();
         }
 
-        // Destruye la gaviota tras cierto tiempo
+        // Destruir al pasar el tiempo de vida
         if (lifetimeTimer >= lifetime)
         {
             OnSeagullDestroyed?.Invoke();
@@ -45,12 +58,20 @@ public class Seagull : MonoBehaviour
     private void ResetPoopTimer()
     {
         poopTimer = UnityEngine.Random.Range(poopIntervalMin, poopIntervalMax);
+
     }
 
     private void DropPoop()
     {
-        GameObject poopPrefab = UnityEngine.Random.value < 0.5f ? whitePoopPrefab : blackPoopPrefab;
-        Instantiate(poopPrefab, transform.position + Vector3.down, Quaternion.identity);
+        GameObject prefab = UnityEngine.Random.value < 0.5f ? whitePoopPrefab : blackPoopPrefab;
+        Vector3 dropPosition = transform.position + Vector3.down;
 
+        Instantiate(prefab, dropPosition, Quaternion.identity);
+
+        if (poop != null && poopClip != null)
+            poop.PlayOneShot(poopClip);
+
+        if (animator != null)
+            animator.SetTrigger("poop");
     }
 }
