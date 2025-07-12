@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4944164481046630570, guid: e88ac3119c3a1b14c9190aa16512820e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 31
+      value: 25.439999
       objectReference: {fileID: 0}
     - target: {fileID: 4944164481046630570, guid: e88ac3119c3a1b14c9190aa16512820e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 2786844450187097600, guid: 627355f9171218247851d086da13f083, type: 3}
+    - target: {fileID: 8544311919893731881, guid: e88ac3119c3a1b14c9190aa16512820e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

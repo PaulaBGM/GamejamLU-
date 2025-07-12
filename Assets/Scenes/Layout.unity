@@ -678,6 +678,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8544311919893731881, guid: e88ac3119c3a1b14c9190aa16512820e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24028,6 +24032,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2217916854119011952, guid: 27af22e263eb33241a06f7eb1780d971, type: 3}
+      propertyPath: m_Size.y
+      value: 5.4556365
+      objectReference: {fileID: 0}
+    - target: {fileID: 2217916854119011952, guid: 27af22e263eb33241a06f7eb1780d971, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.14999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 2217916854119011952, guid: 27af22e263eb33241a06f7eb1780d971, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.65377545
+      objectReference: {fileID: 0}
     - target: {fileID: 8321903104445659627, guid: 27af22e263eb33241a06f7eb1780d971, type: 3}
       propertyPath: m_Name
       value: Stair (2)
@@ -36652,18 +36668,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1020561651}
     m_Modifications:
-    - target: {fileID: 1929742634759302781, guid: 521255c17732c564089d233e18c3dac2, type: 3}
-      propertyPath: m_FlipX
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2020522099760003953, guid: 521255c17732c564089d233e18c3dac2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2020522099760003953, guid: 521255c17732c564089d233e18c3dac2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4542759995516897480, guid: 521255c17732c564089d233e18c3dac2, type: 3}
       propertyPath: m_Name
       value: Door (2)
@@ -37016,9 +37020,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2712249612746070902, guid: 76206381ed6c1544ca03f9366fb7b007, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.21
+      objectReference: {fileID: 0}
     - target: {fileID: 3835769205625875914, guid: 76206381ed6c1544ca03f9366fb7b007, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 26.5
+      value: 15.16
       objectReference: {fileID: 0}
     - target: {fileID: 3835769205625875914, guid: 76206381ed6c1544ca03f9366fb7b007, type: 3}
       propertyPath: m_LocalPosition.y
@@ -37059,6 +37067,10 @@ PrefabInstance:
     - target: {fileID: 5940372863869735624, guid: 76206381ed6c1544ca03f9366fb7b007, type: 3}
       propertyPath: m_Name
       value: --PLAYER--
+      objectReference: {fileID: 0}
+    - target: {fileID: 8601431425137527408, guid: 76206381ed6c1544ca03f9366fb7b007, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.88
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -41425,6 +41437,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 980379464}
     m_Modifications:
+    - target: {fileID: 2020522099760003953, guid: 521255c17732c564089d233e18c3dac2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 2020522099760003953, guid: 521255c17732c564089d233e18c3dac2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 4542759995516897480, guid: 521255c17732c564089d233e18c3dac2, type: 3}
       propertyPath: m_Name
       value: Door (3)
@@ -60179,7 +60199,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6063357164526365807, guid: 68e94943b128f7f42b526b02f33d48f7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -25.882
+      value: -25.99
       objectReference: {fileID: 0}
     - target: {fileID: 6063357164526365807, guid: 68e94943b128f7f42b526b02f33d48f7, type: 3}
       propertyPath: m_LocalPosition.y
