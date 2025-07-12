@@ -9,9 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6512189959336705727}
-  m_Layer: 0
+  - component: {fileID: 1949589789832418814}
+  - component: {fileID: 68860091001123830}
+  m_Layer: 3
   m_Name: Tonel
-  m_TagString: Untagged
+  m_TagString: Barrel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,6 +35,79 @@ Transform:
   - {fileID: 6557370645075349874}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1949589789832418814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3372411335450896523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c12bcae94f7500343986011784afaf4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splashEffectPrefab: {fileID: 2721411610057579525, guid: 5c471d0a37295984cb7512ce3d7975f8, type: 3}
+  splashSpawnPoint: {fileID: 6512189959336705727}
+  splashSound: {fileID: 0}
+  wineStreamPrefab: {fileID: 8755292208273791459, guid: cc0117e141756c04db9643d9b49dbc11, type: 3}
+  wineStreamSpawnPoint: {fileID: 0}
+  perfectFill: 0.5
+  goodFill: 0.35
+  okFill: 0.2
+  badFill: 0.05
+--- !u!60 &68860091001123830
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3372411335450896523}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.21384048, y: 0.37629747}
+      - {x: -2.6439638, y: 0.05953601}
+      - {x: -2.4767127, y: -1.1654185}
+      - {x: 2.5301738, y: -1.0406778}
+      - {x: 2.697425, y: 0.05953592}
+  m_UseDelaunayMesh: 0
 --- !u!1 &5853931950273850589
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,10 +118,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6557370645075349874}
   - component: {fileID: 4867357158836488228}
-  - component: {fileID: 8579725344636555503}
   m_Layer: 3
   m_Name: Barrel2
-  m_TagString: Untagged
+  m_TagString: Barrel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,52 +195,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &8579725344636555503
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5853931950273850589}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.22}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.4, y: 6.4}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 4.12, y: 0.93250895}
-  m_EdgeRadius: 0
 --- !u!1001 &2123911765100702023
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -175,6 +203,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6512189959336705727}
     m_Modifications:
+    - target: {fileID: 1232297732141333683, guid: 27af22e263eb33241a06f7eb1780d971, type: 3}
+      propertyPath: ceilingCollider
+      value: 
+      objectReference: {fileID: 68860091001123830}
     - target: {fileID: 1890729328085889393, guid: 27af22e263eb33241a06f7eb1780d971, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.8

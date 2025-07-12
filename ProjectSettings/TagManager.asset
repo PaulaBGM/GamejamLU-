@@ -8,6 +8,7 @@ TagManager:
   - MainCanva
   - Mop
   - Broom
+  - Barrel
   layers:
   - Default
   - TransparentFX
