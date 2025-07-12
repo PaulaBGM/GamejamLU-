@@ -68,10 +68,11 @@ public class Seagull : MonoBehaviour
 
         Instantiate(prefab, dropPosition, Quaternion.identity);
 
-        if (poop != null && poopClip != null)
+        if (RooftopZone.PlayerOnRooftop && poop != null && poopClip != null)
             poop.PlayOneShot(poopClip);
 
         if (animator != null)
             animator.SetTrigger("poop");
     }
+
 }

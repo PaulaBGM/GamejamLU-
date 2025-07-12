@@ -12,19 +12,34 @@ public class Poop : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other)
-    {/*
+    {
         if (other.CompareTag("Player"))
         {
-            //PlayerLaundry player = other.GetComponent<PlayerLaundry>();
-            if (player != null)
+            Transform stackPoint = other.transform.Find("stackpoint");
+
+            if (stackPoint != null)
             {
-                if (isBlackPoop)
-                    player.SoilLaundry(true);  // negra: ensucia toda la pila
-                else
-                    player.SoilLaundry(false); // blanca: ensucia solo la de arriba
+                foreach (Transform child in stackPoint)
+                {
+                    PickupItem item = child.GetComponent<PickupItem>();
+                    if (item != null)
+                    {
+                        item.SetCollected(true);
+                        item.SetClean(false);
+                        item.CheckPickUpState();
+                    }
+                }
             }
-        */
-            Destroy(gameObject);
-        //}
+            else
+            {
+                Debug.LogWarning("No se encontró StackPoint en el jugador.");
+            }
+
+            Destroy(gameObject); //  IMPORTANTE: se destruye al tocar al jugador
+        }
+        else if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            Destroy(gameObject); //  Se destruye si toca algo en la capa Ground
+        }
     }
 }

@@ -9,8 +9,7 @@ public class Clothesline : MonoBehaviour
     private readonly List<PickupItem> hangingClothes = new(); // Lista de ropa colgada
     private bool[] usedHangPoints; // Para marcar los puntos ya usados
 
-    [Header("Tecla de acción")]
-    [SerializeField] private KeyCode actionKey = KeyCode.Space;
+   
 
     private PlayerPickUp playerInZone;
 
@@ -28,16 +27,24 @@ public class Clothesline : MonoBehaviour
 
     private void Update()
     {
-        if (playerInZone != null && Input.GetKeyDown(actionKey))
+        if (playerInZone != null)
         {
-            TryHangClothes(playerInZone);
+            Debug.Log("Player está en el tendal");
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Debug.Log("Espacio presionado dentro del tendal");
+                TryHangClothes(playerInZone);
+            }
         }
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
+            Debug.Log("player en el tendal");
             playerInZone = other.GetComponent<PlayerPickUp>();
         }
     }
