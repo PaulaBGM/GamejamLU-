@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TaskManager : MonoBehaviour
@@ -116,7 +117,8 @@ public class TaskManager : MonoBehaviour
            WashingMachineTask.Completed &&
            HangClothesTask.Completed)
         {
-            TimerMechanic.ShowResults();
+            CalculateFinalPercent();
+            SceneManager.LoadScene(3);
         }
     }
     public void EndTask(int id, float percent)

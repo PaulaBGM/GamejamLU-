@@ -9,6 +9,12 @@ public class TimerMechanic : MonoBehaviour
     private bool _isOnHalfTime;
     private bool _isOnLastMinute;
     private float _timer;
+    [SerializeField]
+    private Color _greem;
+    [SerializeField]
+    private Color _yellow;
+    [SerializeField]
+    private Color _red;
 
     [SerializeField]
     private TextMeshProUGUI _timerText;
@@ -59,15 +65,15 @@ public class TimerMechanic : MonoBehaviour
     {
         if (_isOnFirstHalf)
         {
-            _timerText.color = Color.green;
+            _timerText.color = _greem;
         }
         else if (_isOnHalfTime)
         {
-            _timerText.color = Color.yellow;
+            _timerText.color = _yellow;
         }
         else if (_isOnLastMinute)
         {
-            _timerText.color = Color.red;
+            _timerText.color = _red;
         }
     }
     private string FormatTime(float time)
@@ -88,10 +94,5 @@ public class TimerMechanic : MonoBehaviour
     public void StopTimer()
     {
         _timerRunning = false;
-    }
-    public void ShowResults()
-    {
-        TaskManager.Instance.CalculateFinalPercent();
-        SceneManager.LoadScene(3);
     }
 }

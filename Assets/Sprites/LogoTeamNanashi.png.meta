@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: f18ddfd401a6e34468a2133b0dcbc626
+guid: 80d037da64d79ae4e82c167f4b2f0273
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8349847985072630442
-    second: Ilustracion_sin_titulo_7_0
-  - first:
-      213: -281109931156891243
-    second: Ilustracion_sin_titulo_7_1
+      213: -8121591147132841321
+    second: LogoTeamNanashi_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ilustracion_sin_titulo_7_0
+      name: LogoTeamNanashi_0
       rect:
         serializedVersion: 2
-        x: 90
-        y: 33
-        width: 542
-        height: 177
+        x: 16
+        y: 23
+        width: 2113
+        height: 2137
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,30 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6551c393f716f1c80800000000000000
-      internalID: -8349847985072630442
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ilustracion_sin_titulo_7_1
-      rect:
-        serializedVersion: 2
-        x: 846
-        y: 38
-        width: 83
-        height: 184
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5991f8ac10c491cf0800000000000000
-      internalID: -281109931156891243
+      spriteID: 7929038b1ef4a4f80800000000000000
+      internalID: -8121591147132841321
       vertices: []
       indices: 
       edges: []
@@ -159,9 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Ilustracion_sin_titulo_7_0: -8349847985072630442
-      Ilustracion_sin_titulo_7_1: -281109931156891243
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

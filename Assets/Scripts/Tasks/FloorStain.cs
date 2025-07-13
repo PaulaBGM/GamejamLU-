@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class FloorStain : MonoBehaviour
 {
@@ -24,6 +24,14 @@ public class FloorStain : MonoBehaviour
 
         if (currentPasses >= passesToClean)
         {
+            if (this.gameObject.CompareTag("Barrer"))
+            {
+                ToolTaskManager.Instance.currentBroomCount++;
+            }
+            else if (this.gameObject.CompareTag("Fregar"))
+            {
+                ToolTaskManager.Instance.currentMopCount++;
+            }
             Destroy(gameObject);
         }
     }

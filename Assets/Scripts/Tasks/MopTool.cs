@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MopTool : MountableTool
 {
@@ -10,6 +10,9 @@ public class MopTool : MountableTool
     [Header("Sprite Settings")]
     [SerializeField] private Sprite mountedSprite;
 
+    [Header("Mop Hitbox")]
+    [SerializeField] private GameObject mopHitbox; // arrástralo en el Inspector
+
     private float spawnTimer;
     private SpriteRenderer playerSpriteRenderer;
     private Sprite originalSprite;
@@ -18,6 +21,7 @@ public class MopTool : MountableTool
     public override void OnMounted()
     {
         spawnTimer = 0f;
+        if (mopHitbox != null) mopHitbox.SetActive(true);
 
         if (!spriteChanged && owner != null)
         {
@@ -35,24 +39,12 @@ public class MopTool : MountableTool
 
     public override void OnDismounted()
     {
+        if (mopHitbox != null) mopHitbox.SetActive(false);
+
         if (spriteChanged && playerSpriteRenderer != null && originalSprite != null)
         {
             playerSpriteRenderer.sprite = originalSprite;
             spriteChanged = false;
-        }
-    }
-
-    public override void HandleMovement()
-    {
-        base.HandleMovement();
-
-        spawnTimer -= Time.deltaTime;
-        if (spawnTimer <= 0f)
-        {
-            
-
-            Instantiate(slipperyZonePrefab, spawnpoint.position, Quaternion.identity);
-            spawnTimer = spawnInterval;
         }
     }
 }
