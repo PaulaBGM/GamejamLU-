@@ -28,6 +28,10 @@ public class DogWalker : MonoBehaviour
     private bool movingRight = true;
     private Vector3 initialScale;
 
+    public AudioSource audiosource;
+    public AudioClip clip;
+  
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();

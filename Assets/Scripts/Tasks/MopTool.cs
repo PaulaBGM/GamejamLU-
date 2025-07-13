@@ -5,6 +5,7 @@ public class MopTool : MountableTool
     [Header("Slippery Zone")]
     [SerializeField] private GameObject slipperyZonePrefab;
     [SerializeField] private float spawnInterval = 0.5f;
+    [SerializeField] private Transform spawnpoint;
 
     [Header("Sprite Settings")]
     [SerializeField] private Sprite mountedSprite;
@@ -48,9 +49,9 @@ public class MopTool : MountableTool
         spawnTimer -= Time.deltaTime;
         if (spawnTimer <= 0f)
         {
-            Vector3 spawnPos = owner.transform.position;
+            
 
-            Instantiate(slipperyZonePrefab, spawnPos, Quaternion.identity);
+            Instantiate(slipperyZonePrefab, spawnpoint.position, Quaternion.identity);
             spawnTimer = spawnInterval;
         }
     }

@@ -15,6 +15,7 @@ public class BubbleRoofChecker : MonoBehaviour
 
     private bool isOn = true;
     private Dictionary<string, GameObject> _tagToBubble;
+    [SerializeField] private DogWalker dog;
 
     private void Awake()
     {
@@ -33,6 +34,11 @@ public class BubbleRoofChecker : MonoBehaviour
         {
             isOn = true;
         }
+        if (collision.CompareTag("FirstFloor"))
+        {
+            dog.audiosource.PlayOneShot(dog.clip);
+        }
+        else { dog.audiosource.Stop(); }
     }
     private void OnTriggerStay2D(Collider2D other)
     {
@@ -40,6 +46,8 @@ public class BubbleRoofChecker : MonoBehaviour
         {
             StartCoroutine(DeactivateWithTime(targetBubble));
         }
+
+        
     }
     private IEnumerator DeactivateWithTime(GameObject targetBubble)
     {

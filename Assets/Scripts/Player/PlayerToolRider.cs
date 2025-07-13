@@ -4,10 +4,13 @@ using UnityEngine;
 public class PlayerToolRider : MonoBehaviour
 {
     [SerializeField] private Transform mountPoint;
+    [SerializeField] private Transform broomtoolMountZone; // Nuevo: zona donde dejar herramientas
+    [SerializeField] private Transform moptoolMountZone; // Nuevo: zona donde dejar herramientas
     [SerializeField] private ParticleSystem mountParticles;
     [SerializeField] private Sprite mopSprite;
 
     private MountableTool currentTool;
+    private GameObject currentToolPrefab; // Nuevo: para recordar qué prefab se montó
     private Animator animator;
     private SpriteRenderer playerSpriteRenderer;
     [SerializeField] private Sprite originalSprite;
@@ -36,6 +39,7 @@ public class PlayerToolRider : MonoBehaviour
     {
         if (currentTool != null) return;
 
+        currentToolPrefab = toolPrefab; // Guardamos referencia al prefab original
         GameObject toolInstance = Instantiate(toolPrefab, mountPoint.position, Quaternion.identity);
         currentTool = toolInstance.GetComponent<MountableTool>();
         currentTool.Initialize(gameObject, mountPoint);
@@ -55,18 +59,15 @@ public class PlayerToolRider : MonoBehaviour
             playerSpriteRenderer.sprite = mopSprite;
         }
         else if (currentTool is BroomTool)
-        { isOnBroom = true; }
-           
+        {
+            isOnBroom = true;
+        }
 
-
-        // Si es una fregona, cambiar el sprite de la herramienta (no del jugador)
         if (currentTool is MopTool && mopSprite != null)
         {
             SpriteRenderer mopRenderer = currentTool.GetComponentInChildren<SpriteRenderer>();
             if (mopRenderer != null)
-            {
                 mopRenderer.sprite = mopSprite;
-            }
         }
 
         if (mountParticles != null)
@@ -88,11 +89,33 @@ public class PlayerToolRider : MonoBehaviour
             playerSpriteRenderer.sprite = originalSprite;
         }
 
+        // Guardar la rotación del objeto actual (por si es importante)
+        Quaternion toolRotation = currentTool.transform.rotation;
+
         currentTool.OnDismounted();
         Destroy(currentTool.gameObject);
         currentTool = null;
 
         GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
+
+        // Respawnear herramienta desmontada en toolMountZone
+        if (broomtoolMountZone != null && currentToolPrefab != null)
+        {
+            if (currentTool is BroomTool) 
+            {
+                Instantiate(currentToolPrefab, broomtoolMountZone.position, toolRotation);
+                currentToolPrefab = null; // Limpiar referencia si solo se monta una vez
+            }
+
+            if (currentTool is MopTool)
+            {
+                Instantiate(currentToolPrefab, moptoolMountZone.position, toolRotation);
+                currentToolPrefab = null; // Limpiar referencia si solo se monta una vez
+            }
+            
+        }
+
+        isOnBroom = false;
     }
 
     public bool IsMounted() => currentTool != null;

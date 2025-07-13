@@ -2859,7 +2859,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1196896453616301183
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4024,7 +4024,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Mario \u2014 BSO & SFX"
+  m_text: "Mario P\xE9rez Medina \u2014 BSO & SFX"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4e1bb133e6991174099a7d945ac4819d, type: 2}
   m_sharedMaterial: {fileID: 8044200659088384258, guid: 4e1bb133e6991174099a7d945ac4819d, type: 2}
