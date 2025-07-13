@@ -7,7 +7,7 @@ public class TutorialController : MonoBehaviour
 
     private void Update()
     {
-        while (_tutorialPanel.activeSelf)
+        if (_tutorialPanel.activeSelf)
         {
             OptionsMenu.Instance.IsOpen = true;
         }
