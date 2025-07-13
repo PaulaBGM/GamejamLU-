@@ -43,6 +43,7 @@ public class OptionsMenu : MonoBehaviour
         {
             CheckMainCanva();
         }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (_optionsMenu == null)
@@ -87,6 +88,9 @@ public class OptionsMenu : MonoBehaviour
     public void CheckMainCanva()
     {
         _mainCanva = GameObject.FindGameObjectWithTag("MainCanva");
+        TurnOffAllButtons();
+        GameObject LevelUI = GameObject.FindGameObjectWithTag("LevelUI");
+        _buttonsToDisable.Add(LevelUI);
     }
 
     private void TurnOffAllButtons()

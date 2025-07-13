@@ -7,17 +7,21 @@ public class LanguageController : MonoBehaviour
     private int _id;
     [SerializeField]
     private TextMeshProUGUI _languageText;
-    private void Start()
+    private void Awake()
     {
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[PlayerPrefs.GetInt("LanguageId")];
+        _id = PlayerPrefs.GetInt("LanguageId");
+        SetLanguageText();
     }
 
     public void IncreaseId()
     {
-        if(_id <= 2)
+        if(_id <= 3)
         {
             _id++;
             CheckLanguage();
+            SetLanguageText();
+
         }
         else
         {
@@ -30,6 +34,7 @@ public class LanguageController : MonoBehaviour
         {
             _id--;
             CheckLanguage();
+            SetLanguageText();
         }
         else
         {
@@ -41,20 +46,17 @@ public class LanguageController : MonoBehaviour
     {
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[_id];
         PlayerPrefs.SetInt("LanguageId", _id);
-        switch (_id) 
+    }
+    private void SetLanguageText()
+    {
+        _languageText.text = LocalizationSettings.SelectedLocale.Identifier.Code switch
         {
-            case 0:
-                _languageText.text = "Español";
-                break;
-            case 1:
-                _languageText.text = "English";
-                break;
-            case 2:
-                _languageText.text = "Galego";
-                break;
-            case 3:
-                _languageText.text = "Catalá";
-                break;
-        }
+            "es" => "Español",
+            "en" => "English",
+            "gl" => "Galego",
+            "ca-ES" => "Catalá",
+            "pt" => "Portuguese",
+            _ => "English"
+        };
     }
 }
