@@ -3,7 +3,6 @@ using UnityEngine;
 public class Poop : MonoBehaviour
 {
     [SerializeField] private float fallSpeed = 5f;
-    [SerializeField] private bool isBlackPoop = false;
 
     private void Update()
     {

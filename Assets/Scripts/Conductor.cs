@@ -8,7 +8,7 @@ public class Conductor : MonoBehaviour
     public static Conductor instance;
 
     [Header("Configuración de la canción")]
-    [SerializeField] private float songBpm = 120f;
+    [SerializeField] private float songBpm = 165f;
     [SerializeField] private float firstBeatOffset = 0f;
     [SerializeField] private float beatsPerLoop = 16f;
 

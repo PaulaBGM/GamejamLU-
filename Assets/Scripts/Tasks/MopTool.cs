@@ -5,7 +5,6 @@ public class MopTool : MountableTool
     [Header("Slippery Zone")]
     [SerializeField] private GameObject slipperyZonePrefab;
     [SerializeField] private float spawnInterval = 0.5f;
-    [SerializeField] private float lifetime = 10f;
 
     [Header("Sprite Settings")]
     [SerializeField] private Sprite mountedSprite;

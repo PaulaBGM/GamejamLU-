@@ -250,7 +250,7 @@ MonoBehaviour:
   - {fileID: 893999785324165574}
   - {fileID: 893999785324165574}
   - {fileID: 893999785324165574}
-  actionKey: 101
+  hangingClothes: []
 --- !u!1 &5637400086398327570
 GameObject:
   m_ObjectHideFlags: 0

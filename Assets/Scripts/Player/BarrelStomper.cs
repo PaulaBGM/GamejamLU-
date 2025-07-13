@@ -7,7 +7,6 @@ public class BarrelStomper : MonoBehaviour
     [SerializeField] private float stompCooldown = 0.1f;
 
     [Header("Multiplicadores de Caida")]
-    [SerializeField] private float normalFallMultiplier = 1.5f;
     [SerializeField] private float boostedFallMultiplier = 3.5f;
 
     private Rigidbody2D rb;
