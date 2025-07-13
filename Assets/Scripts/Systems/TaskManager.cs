@@ -74,6 +74,11 @@ public class TaskManager : MonoBehaviour
             Destroy(Instance);
         }
     }
+    public void ShowResults()
+    {
+        CalculateFinalPercent();
+        SceneManager.LoadScene(3);
+    }
     private void Start()
     {
         //Initialize all tasks as not completed

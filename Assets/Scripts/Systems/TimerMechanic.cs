@@ -58,7 +58,7 @@ public class TimerMechanic : MonoBehaviour
         }
         else
         {
-            ShowResults();
+            TaskManager.Instance.ShowResults();
         }
     }
     private void CheckTimerColor()
