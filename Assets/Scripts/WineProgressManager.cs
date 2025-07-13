@@ -5,8 +5,9 @@ public class WineProgressManager : MonoBehaviour
 {
     public static WineProgressManager Instance;
 
-    [SerializeField] private float totalProgressNeeded = 1f;
+    [SerializeField] private float totalProgressNeeded = 3f;
     private float currentProgress = 0f;
+    public int perfectCount = 0;
 
     [Header("UI")]
     [SerializeField] private Image progressBar;
@@ -22,6 +23,16 @@ public class WineProgressManager : MonoBehaviour
             Destroy(gameObject);
     }
 
+    public void AddPerfect()
+    {
+        if (perfectCount < 3)
+        {
+            perfectCount++;
+        }
+    }
+
+
+
     public void AddProgress(float amount)
     {
         if (bottleFilled) return;
@@ -36,7 +47,9 @@ public class WineProgressManager : MonoBehaviour
         {
             bottleFilled = true;
             Debug.Log("Botella de vino llena!");
-            // notificar al game manager
+            // Aquí puedes llamar a un evento o animación final
         }
     }
+
+    public float ProgressNormalized => currentProgress / totalProgressNeeded;
 }

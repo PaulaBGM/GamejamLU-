@@ -51,6 +51,7 @@ public class PlayerToolRider : MonoBehaviour
 
         if (tag == "Mop" && playerSpriteRenderer != null && mopSprite != null)
         {
+            isOnBroom = true;
             playerSpriteRenderer.sprite = mopSprite;
         }
         else if (currentTool is BroomTool)

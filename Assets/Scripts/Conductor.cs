@@ -1,13 +1,13 @@
 using UnityEngine;
 
 /// <summary>
-/// Controla la sincronizacion con la m?sica y permite evaluar el timing del jugador.
+/// Controla la sincronización con la música y evalúa el timing del jugador.
 /// </summary>
 public class Conductor : MonoBehaviour
 {
     public static Conductor instance;
 
-    [Header("Configuracion de la cancion")]
+    [Header("Configuración de la canción")]
     [SerializeField] private float songBpm = 120f;
     [SerializeField] private float firstBeatOffset = 0f;
     [SerializeField] private float beatsPerLoop = 16f;
@@ -53,35 +53,36 @@ public class Conductor : MonoBehaviour
     }
 
     /// <summary>
-    /// Devuelve el desfase en beats respecto al beat mas cercano (entre 0 y 1).
-    /// Ademas, muestra por consola si fue perfecto, bueno o malo.
+    /// Evalúa el desfase respecto al beat más cercano.
     /// </summary>
     public float GetInputTimingAccuracy()
     {
         inputTimeDifference = songPositionInBeats % 1;
 
-        // Evalua y muestra por consola el tipo de precision
-        if (inputTimeDifference <= 0.05f || inputTimeDifference >= 0.95f)
+        // Ajuste: ampliar la ventana de tolerancia
+        float diff = inputTimeDifference;
+        if (diff > 0.5f) diff = 1f - diff; // Simetría, para manejar beats cercanos a 0 o 1
+
+        if (diff <= 0.1f)
         {
-            Debug.Log(" Perfecto! inputTimeDifference = " + inputTimeDifference.ToString("F3"));
+            Debug.Log("Perfecto! inputTimeDifference = " + inputTimeDifference.ToString("F3"));
         }
-        else if (inputTimeDifference <= 0.1f || inputTimeDifference >= 0.9f)
+        else if (diff <= 0.2f)
         {
-            Debug.Log(" Bien! inputTimeDifference = " + inputTimeDifference.ToString("F3"));
+            Debug.Log("Bien! inputTimeDifference = " + inputTimeDifference.ToString("F3"));
         }
-        else if (inputTimeDifference <= 0.2f || inputTimeDifference >= 0.8f)
+        else if (diff <= 0.3f)
         {
-            Debug.Log(" Regular... inputTimeDifference = " + inputTimeDifference.ToString("F3"));
+            Debug.Log("Regular... inputTimeDifference = " + inputTimeDifference.ToString("F3"));
         }
         else
         {
-            Debug.Log(" Mal timing. inputTimeDifference = " + inputTimeDifference.ToString("F3"));
+            Debug.Log("Mal timing. inputTimeDifference = " + inputTimeDifference.ToString("F3"));
         }
 
-        return inputTimeDifference;
+        return diff;
     }
 
-    // Getters publicos para poder acceder desde los otros scripts
     public float SongPosition => songPosition;
     public float SongPositionInBeats => songPositionInBeats;
     public float LoopPositionInAnalog => loopPositionInAnalog;

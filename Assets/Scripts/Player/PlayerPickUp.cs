@@ -9,6 +9,7 @@ public class PlayerPickUp : MonoBehaviour
     [SerializeField] private LayerMask pickupLayer;
     [SerializeField] private float pickupRange = 1f;
     [SerializeField] private KeyCode pickupKey = KeyCode.E;
+    private Transform fridgeTransform;
 
     private readonly List<PickupItem> collectedItems = new();
 
@@ -121,4 +122,5 @@ public class PlayerPickUp : MonoBehaviour
 
         return null;
     }
+
 }

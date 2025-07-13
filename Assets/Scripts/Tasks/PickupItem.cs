@@ -10,8 +10,8 @@ public class PickupItem : MonoBehaviour
 
     private Vector3 targetLocalPosition;
     private Vector3 targetLocalRotation;
-    private float moveSpeed = 5f;
-    private bool moving = false;
+    protected float moveSpeed = 5f;
+    protected bool moving = false;
 
     [SerializeField]
     private SpriteRenderer _itemImage;
@@ -47,7 +47,7 @@ public class PickupItem : MonoBehaviour
         CheckPickUpState();
     }
 
-    void Update()
+    protected void Update()
     {
         if (moving)
         {

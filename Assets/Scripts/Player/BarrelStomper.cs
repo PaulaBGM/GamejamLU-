@@ -3,10 +3,10 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class BarrelStomper : MonoBehaviour
 {
-    [Header("Configuración de Pisotón")]
+    [Header("Configuración de Pisoton")]
     [SerializeField] private float stompCooldown = 0.1f;
 
-    [Header("Multiplicadores de Caída")]
+    [Header("Multiplicadores de Caida")]
     [SerializeField] private float normalFallMultiplier = 1.5f;
     [SerializeField] private float boostedFallMultiplier = 3.5f;
 

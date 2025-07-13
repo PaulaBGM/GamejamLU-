@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class SlipperyZone : MonoBehaviour
 {
-    public float lifeTime = 30f;
-    public float activationDelay = 1f;
+    public float lifeTime = 10f;
+    private float lifetimeTimer = 0f;
+    public float activationDelay = 0.1f;
 
     private bool isClean = true;
     private bool isActive = false;
@@ -17,6 +18,17 @@ public class SlipperyZone : MonoBehaviour
 
         // Ajustar posicion para alinearse con el suelo
         AlignWithGround();
+    }
+
+    private void Update()
+    {
+        lifetimeTimer += Time.deltaTime;
+        // Destruir al pasar el tiempo de vida
+        if (lifetimeTimer >= lifeTime)
+        { 
+            Destroy(gameObject);
+            Debug.Log("se destruye el awawa");
+        }
     }
 
     private void Activate()

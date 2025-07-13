@@ -9,71 +9,105 @@ public class BarrelPad : MonoBehaviour
     [SerializeField] private GameObject wineStreamPrefab;
     [SerializeField] private Transform wineStreamSpawnPoint;
 
-    private ParticleSystem splashEffectInstance;
-
     [Header("Progreso")]
     [SerializeField] private float perfectFill = 0.5f;
     [SerializeField] private float goodFill = 0.35f;
     [SerializeField] private float okFill = 0.2f;
     [SerializeField] private float badFill = 0.05f;
 
+    [Header("Osu Circle")]
+    [SerializeField] private OsuCircle osuCircle;
+
+    private ParticleSystem splashEffectInstance;
+
+    private float lastBeat = -1f;
+
     private void Start()
     {
         if (splashEffectPrefab != null)
         {
             splashEffectInstance = Instantiate(splashEffectPrefab, splashSpawnPoint.position, Quaternion.identity);
-            splashEffectInstance.transform.SetParent(transform); // Opcional: mantenerlo ordenado en jerarquía
+            splashEffectInstance.transform.SetParent(transform);
             splashEffectInstance.Stop();
         }
     }
 
-    public void OnStomp()
+    private void Update()
+    {
+        // Detectar nuevo beat para pulsar el círculo
+        if (Conductor.instance != null)
+        {
+            float currentBeat = Mathf.Floor(Conductor.instance.SongPositionInBeats);
+            if (currentBeat != lastBeat)
+            {
+                lastBeat = currentBeat;
+                if (osuCircle != null)
+                    osuCircle.PulseBeat();
+            }
+        }
+
+        // Detectar input (ejemplo: tecla espacio para stomp)
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            OnStomp();
+        }
+    }
+public void OnStomp()
     {
         float timing = Conductor.instance.GetInputTimingAccuracy();
         float amount = GetFillAmountByTiming(timing);
 
-        // Splash único
-        if (splashEffectInstance != null)
+        bool isPerfect = timing <= 0.1f; // Umbral para "Perfect"
+
+        if (isPerfect)
         {
-            splashEffectInstance.transform.position = splashSpawnPoint.position;
-            splashEffectInstance.Play();
+        WineProgressManager.Instance.AddPerfect();
+        Debug.Log("[BarrelPad] PERFECT timing! Triggering splash and wine stream.");
+
+            if (splashEffectInstance != null)
+            {
+                splashEffectInstance.transform.position = splashSpawnPoint.position;
+                splashEffectInstance.Play();
+            }
+
+            if (wineStreamPrefab != null && wineStreamSpawnPoint != null)
+            {
+                Instantiate(wineStreamPrefab, wineStreamSpawnPoint.position, Quaternion.identity);
+            }
         }
 
         if (splashSound != null)
-            splashSound.Play();
-
-        // Efecto del chorro solo si es perfecto
-        if (timing <= Mathf.Epsilon && wineStreamPrefab != null && wineStreamSpawnPoint != null)
         {
-            GameObject stream = Instantiate(wineStreamPrefab, wineStreamSpawnPoint.position, Quaternion.identity);
-            ParticleSystem ps = stream.GetComponent<ParticleSystem>();
-            if (ps != null) ps.Play();
-            Destroy(stream, 2f); // autodestrucción
+            splashSound.Play();
         }
 
         WineProgressManager.Instance.AddProgress(amount);
+
+        // Contraer círculo al stomp
+        if (osuCircle != null)
+            osuCircle.TriggerShrink();
     }
 
     private float GetFillAmountByTiming(float timing)
     {
-        if (timing <= Mathf.Epsilon)
+        if (timing <= 0.1f)
         {
-            Debug.Log("Perfect timing!");
+            Debug.Log("[BarrelPad] Fill value: PERFECT");
             return perfectFill;
         }
-        else if (timing <= 0.01f)
+        else if (timing <= 0.2f)
         {
-            Debug.Log("Good timing!");
+            Debug.Log("[BarrelPad] Fill value: GOOD");
             return goodFill;
         }
-        else if (timing <= 0.02f)
+        else if (timing <= 0.3f)
         {
-            Debug.Log("OK timing!");
+            Debug.Log("[BarrelPad] Fill value: OK");
             return okFill;
         }
         else
         {
-            Debug.Log("Bad timing!");
+            Debug.Log("[BarrelPad] Fill value: BAD");
             return badFill;
         }
     }

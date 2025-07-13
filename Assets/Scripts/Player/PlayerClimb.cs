@@ -1,45 +1,40 @@
 using UnityEngine;
 
 /// <summary>
-/// Maneja el comportamiento del jugador al subir escaleras.
-/// Soporta escaleras frontales (alineación horizontal) y escaleras laterales.
-/// Ignora colisiones con el techo y el suelo de la escalera mientras se escala.
+/// Maneja la escalada ignorando el suelo de la plataforma superior.
 /// </summary>
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class PlayerClimb : MonoBehaviour
 {
     [Header("Configuración de Escaleras")]
-    [SerializeField] private float climbSpeed = 3f;               // Velocidad al escalar
-    [SerializeField] private KeyCode interactKey = KeyCode.E;     // Tecla para comenzar a escalar (opcional)
+    [SerializeField] private float climbSpeed = 3f;
+    [SerializeField] private KeyCode interactKey = KeyCode.E;
 
     private Rigidbody2D rb;
     private Animator animator;
-    private Collider2D playerCollider;
-
     private bool isOnStairs = false;
     private bool isClimbing = false;
-
     private float verticalInput;
     private StairZone currentStairZone;
+
+    private Collider2D[] playerColliders;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        playerCollider = GetComponent<Collider2D>();
         animator = GetComponentInChildren<Animator>();
+        playerColliders = GetComponents<Collider2D>();
     }
 
     private void Update()
     {
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        // Iniciar escalada si se pulsa tecla o se mueve hacia arriba/abajo
-        if (isOnStairs && !isClimbing && (Input.GetKeyDown(interactKey) || Mathf.Abs(verticalInput) > 0.1f))
+        if (isOnStairs && !isClimbing && Input.GetKeyDown(interactKey))
         {
             StartClimbing();
         }
 
-        // Cancelar escalada si sale del trigger
         if (!isOnStairs && isClimbing)
         {
             ResetClimb();
@@ -50,7 +45,8 @@ public class PlayerClimb : MonoBehaviour
     {
         if (isClimbing)
         {
-            // Movimiento vertical fluido mientras escala
+            rb.gravityScale = 0f;
+
             if (Mathf.Abs(verticalInput) > 0.01f)
             {
                 rb.linearVelocity = new Vector2(0f, verticalInput * climbSpeed);
@@ -60,13 +56,13 @@ public class PlayerClimb : MonoBehaviour
                 rb.linearVelocity = Vector2.zero;
             }
         }
-        else 
+        else
         {
-            ResetClimb();
-         }
+            rb.gravityScale = 9f;
+        }
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Stairs"))
         {
@@ -83,9 +79,6 @@ public class PlayerClimb : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Inicia la escalada: sin gravedad, alinea si es necesario y desactiva colisiones.
-    /// </summary>
     private void StartClimbing()
     {
         if (isClimbing || currentStairZone == null) return;
@@ -94,7 +87,7 @@ public class PlayerClimb : MonoBehaviour
         rb.gravityScale = 0f;
         rb.linearVelocity = Vector2.zero;
 
-        // Alinear en X solo si no es escalera lateral
+        // Alinear X si es escalera frontal
         if (!currentStairZone.isSideStair && currentStairZone.stairCollider != null)
         {
             Vector3 pos = transform.position;
@@ -102,45 +95,39 @@ public class PlayerClimb : MonoBehaviour
             transform.position = pos;
         }
 
-        // Ignorar colisiones
-        if (playerCollider != null)
-        {
-            if (currentStairZone.ceilingCollider != null)
-                Physics2D.IgnoreCollision(playerCollider, currentStairZone.ceilingCollider, true);
+        IgnoreFloorCollision(true);
 
-            if (currentStairZone.stairCollider != null)
-                Physics2D.IgnoreCollision(playerCollider, currentStairZone.stairCollider, true);
-        }
-
-        // Animación
         if (animator != null)
-        {
             animator.SetBool("isClimbing", true);
-        }
+
+        Debug.Log("Escalando: suelo ignorado.");
     }
 
-    /// <summary>
-    /// Sale del modo de escalada y restaura colisiones.
-    /// </summary>
     private void ResetClimb()
     {
+        if (!isClimbing) return;
+
         isClimbing = false;
         rb.gravityScale = 9f;
+        rb.linearVelocity = Vector2.zero;
 
-        if (playerCollider != null && currentStairZone != null)
-        {
-            if (currentStairZone.ceilingCollider != null)
-                Physics2D.IgnoreCollision(playerCollider, currentStairZone.ceilingCollider, false);
-
-            if (currentStairZone.stairCollider != null)
-                Physics2D.IgnoreCollision(playerCollider, currentStairZone.stairCollider, false);
-        }
+        IgnoreFloorCollision(false);
 
         if (animator != null)
-        {
             animator.SetBool("isClimbing", false);
-        }
 
         currentStairZone = null;
+
+        Debug.Log("Fin de escalada: suelo restaurado.");
+    }
+
+    private void IgnoreFloorCollision(bool ignore)
+    {
+        if (currentStairZone == null || currentStairZone.floorCollider == null) return;
+
+        foreach (var playerCol in playerColliders)
+        {
+            Physics2D.IgnoreCollision(playerCol, currentStairZone.floorCollider, ignore);
+        }
     }
 }

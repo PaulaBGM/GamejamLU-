@@ -1,16 +1,16 @@
 using UnityEngine;
 
 /// <summary>
-/// Define una zona de escalera, permitiendo controlar colisiones y alineacion del jugador.
+/// Define una zona de escalera.
 /// </summary>
 public class StairZone : MonoBehaviour
 {
-    [Tooltip("Collider del techo que debe ignorarse al escalar")]
-    public Collider2D ceilingCollider;
+    [Tooltip("Collider del suelo de la plataforma superior.")]
+    public Collider2D floorCollider;
 
-    [Tooltip("Collider de la escalera, si se desea ignorar al escalar")]
+    [Tooltip("Collider de la escalera (para alineación, no se ignora aquí).")]
     public Collider2D stairCollider;
 
-    [Tooltip("Es una escalera lateral (vista de perfil)? Si no, se asume frontal.")]
+    [Tooltip("Escalera lateral? Si no, se asume frontal.")]
     public bool isSideStair = false;
 }
