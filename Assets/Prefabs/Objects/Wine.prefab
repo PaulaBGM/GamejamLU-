@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5491598940511342090}
   - component: {fileID: 4082836872534873352}
-  - component: {fileID: 4971939373032311980}
   m_Layer: 0
   m_Name: Wine
   m_TagString: Untagged
@@ -50,22 +49,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wineFillImage: {fileID: 8369623417022756284}
   progressManager: {fileID: 6014032142140512915}
---- !u!114 &4971939373032311980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 497520647548359745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b26c8609d6f83b24188dfbb0957fd114, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bottleRenderer: {fileID: 0}
-  collectedSprite: {fileID: 0}
-  interactionRange: 1
-  interactionKey: 101
 --- !u!1 &839192290700837073
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,7 +124,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 5
   m_Sprite: {fileID: 4145100776150910970, guid: 5576111877c940d4e84ee9aaceb2af40, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -198,6 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalProgressNeeded: 3
+  CurrentProgress: 0
   perfectCount: 0
   progressBar: {fileID: 8369623417022756284}
   bottleFilled: 0

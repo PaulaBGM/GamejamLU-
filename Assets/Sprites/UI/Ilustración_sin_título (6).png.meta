@@ -1,28 +1,34 @@
 fileFormatVersion: 2
-guid: 18fa63ab5adc77b46add7a350b4e6268
+guid: 566230127fdcd624987b8755e4be6572
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3356541694308300123
-    second: Seagull_Spritesheet_0
+      213: -2819002711243198390
+    second: "Ilustracio\u0301n_sin_ti\u0301tulo (6)_0"
   - first:
-      213: 8774824562893707318
-    second: Seagull_Spritesheet_1
+      213: 6006781358770934285
+    second: "Ilustracio\u0301n_sin_ti\u0301tulo (6)_1"
   - first:
-      213: -2702211000524284126
-    second: Seagull_Spritesheet_2
+      213: -5213411589893833892
+    second: "Ilustracio\u0301n_sin_ti\u0301tulo (6)_2"
   - first:
-      213: 6728584355634866505
-    second: Seagull_Spritesheet_3
+      213: -7125078517199676609
+    second: "Ilustracio\u0301n_sin_ti\u0301tulo (6)_3"
   - first:
-      213: -7860679912469286690
-    second: Seagull_Spritesheet_4
+      213: -1278944044006153514
+    second: "Ilustracio\u0301n_sin_ti\u0301tulo (6)_4"
   - first:
-      213: 6093620938950335482
-    second: Seagull_Spritesheet_5
+      213: -3863883032490425754
+    second: "Ilustracio\u0301n_sin_ti\u0301tulo (6)_5"
   - first:
-      213: -7130374699467322848
-    second: Seagull_Spritesheet_6
+      213: -547203890257640451
+    second: "Ilustracio\u0301n_sin_ti\u0301tulo (6)_6"
+  - first:
+      213: 4803206476364137315
+    second: "Ilustracio\u0301n_sin_ti\u0301tulo (6)_7"
+  - first:
+      213: -8748241156221689011
+    second: "Ilustracio\u0301n_sin_ti\u0301tulo (6)_8"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -55,7 +61,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 2
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -93,7 +99,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -119,7 +125,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -132,7 +138,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -145,7 +151,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -158,7 +164,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -170,155 +176,199 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Seagull_Spritesheet_0
+      name: "Ilustracio\u0301n_sin_ti\u0301tulo (6)_0"
       rect:
         serializedVersion: 2
-        x: 0
-        y: 256
-        width: 256
-        height: 256
+        x: 262
+        y: 653
+        width: 121
+        height: 116
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5aa47fcdc1b2b61d0800000000000000
-      internalID: -3356541694308300123
+      spriteID: a407c7748f3e0e8d0800000000000000
+      internalID: -2819002711243198390
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Seagull_Spritesheet_1
+      name: "Ilustracio\u0301n_sin_ti\u0301tulo (6)_1"
       rect:
         serializedVersion: 2
-        x: 256
-        y: 256
-        width: 256
-        height: 256
+        x: 517
+        y: 670
+        width: 120
+        height: 89
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 638d6ade27076c970800000000000000
-      internalID: 8774824562893707318
+      spriteID: d02dafc02df5c5350800000000000000
+      internalID: 6006781358770934285
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Seagull_Spritesheet_2
+      name: "Ilustracio\u0301n_sin_ti\u0301tulo (6)_2"
       rect:
         serializedVersion: 2
-        x: 512
-        y: 256
-        width: 256
-        height: 256
+        x: 262
+        y: 526
+        width: 121
+        height: 116
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 22fd8957961df7ad0800000000000000
-      internalID: -2702211000524284126
+      spriteID: c5b3974e7cd36a7b0800000000000000
+      internalID: -5213411589893833892
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Seagull_Spritesheet_3
+      name: "Ilustracio\u0301n_sin_ti\u0301tulo (6)_3"
       rect:
         serializedVersion: 2
-        x: 768
-        y: 256
-        width: 256
-        height: 256
+        x: 519
+        y: 525
+        width: 121
+        height: 116
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 949edd662dbb06d50800000000000000
-      internalID: 6728584355634866505
+      spriteID: f3bdb81c6d2ae1d90800000000000000
+      internalID: -7125078517199676609
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Seagull_Spritesheet_4
+      name: "Ilustracio\u0301n_sin_ti\u0301tulo (6)_4"
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 256
-        width: 256
-        height: 256
+        x: 262
+        y: 396
+        width: 121
+        height: 116
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ed0383c644149e290800000000000000
-      internalID: -7860679912469286690
+      spriteID: 6d269690b27404ee0800000000000000
+      internalID: -1278944044006153514
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SeagullPoop1
+      name: "Ilustracio\u0301n_sin_ti\u0301tulo (6)_5"
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 256
-        height: 256
+        x: 519
+        y: 395
+        width: 121
+        height: 116
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: afb540665f3e09450800000000000000
-      internalID: 6093620938950335482
+      spriteID: 662cfba8adab06ac0800000000000000
+      internalID: -3863883032490425754
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SeagullPoop2
+      name: "Ilustracio\u0301n_sin_ti\u0301tulo (6)_6"
       rect:
         serializedVersion: 2
-        x: 256
-        y: 0
-        width: 256
-        height: 256
+        x: 264
+        y: 269
+        width: 121
+        height: 116
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 02a41da3df1db0d90800000000000000
-      internalID: -7130374699467322848
+      spriteID: df34b7506f0f768f0800000000000000
+      internalID: -547203890257640451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Ilustracio\u0301n_sin_ti\u0301tulo (6)_7"
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 268
+        width: 121
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3634a8e77da68a240800000000000000
+      internalID: 4803206476364137315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Ilustracio\u0301n_sin_ti\u0301tulo (6)_8"
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 145
+        width: 631
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4324f1c401089680800000000000000
+      internalID: -8748241156221689011
       vertices: []
       indices: 
       edges: []
@@ -327,7 +377,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: da2e9ea2c076afa4a954aa276a72894c
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -337,13 +387,15 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      SeagullPoop1: 6093620938950335482
-      SeagullPoop2: -7130374699467322848
-      Seagull_Spritesheet_0: -3356541694308300123
-      Seagull_Spritesheet_1: 8774824562893707318
-      Seagull_Spritesheet_2: -2702211000524284126
-      Seagull_Spritesheet_3: 6728584355634866505
-      Seagull_Spritesheet_4: -7860679912469286690
+      "Ilustracio\u0301n_sin_ti\u0301tulo (6)_0": -2819002711243198390
+      "Ilustracio\u0301n_sin_ti\u0301tulo (6)_1": 6006781358770934285
+      "Ilustracio\u0301n_sin_ti\u0301tulo (6)_2": -5213411589893833892
+      "Ilustracio\u0301n_sin_ti\u0301tulo (6)_3": -7125078517199676609
+      "Ilustracio\u0301n_sin_ti\u0301tulo (6)_4": -1278944044006153514
+      "Ilustracio\u0301n_sin_ti\u0301tulo (6)_5": -3863883032490425754
+      "Ilustracio\u0301n_sin_ti\u0301tulo (6)_6": -547203890257640451
+      "Ilustracio\u0301n_sin_ti\u0301tulo (6)_7": 4803206476364137315
+      "Ilustracio\u0301n_sin_ti\u0301tulo (6)_8": -8748241156221689011
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
