@@ -20,6 +20,9 @@ public class BarrelPad : MonoBehaviour
 
     private ParticleSystem splashEffectInstance;
 
+    [SerializeField]
+    private WineProgressManager wineProgressManager;
+
     private float lastBeat = -1f;
 
     private void Start()
@@ -61,7 +64,7 @@ public void OnStomp()
 
         if (isPerfect)
         {
-        WineProgressManager.Instance.AddPerfect();
+        wineProgressManager.AddPerfect();
         Debug.Log("[BarrelPad] PERFECT timing! Triggering splash and wine stream.");
 
             if (splashEffectInstance != null)
@@ -81,7 +84,7 @@ public void OnStomp()
             splashSound.Play();
         }
 
-        WineProgressManager.Instance.AddProgress(amount);
+        wineProgressManager.AddProgress(amount);
 
         // Contraer círculo al stomp
         if (osuCircle != null)

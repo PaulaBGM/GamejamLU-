@@ -10,6 +10,10 @@ TagManager:
   - Broom
   - Barrel
   - LevelUI
+  - Roof
+  - SecondFloor
+  - FirstFloor
+  - Cellar
   layers:
   - Default
   - TransparentFX

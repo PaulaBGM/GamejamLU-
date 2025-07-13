@@ -6,10 +6,8 @@ public class Clothesline : MonoBehaviour
 {
     [Header("Puntos para colgar ropa")]
     [SerializeField] private Transform[] hangPoints; // Posiciones físicas donde se cuelgan las prendas
-    private readonly List<PickupItem> hangingClothes = new(); // Lista de ropa colgada
+    public List<PickupItem> hangingClothes = new(); // Lista de ropa colgada
     private bool[] usedHangPoints; // Para marcar los puntos ya usados
-
-   
 
     private PlayerPickUp playerInZone;
 
@@ -63,13 +61,19 @@ public class Clothesline : MonoBehaviour
     private void TryHangClothes(PlayerPickUp player)
     {
         int freeIndex = GetNextAvailableHangPointIndex();
-        if (freeIndex == -1) return; // Todos los puntos están ocupados
+        if (freeIndex == -1) return;           // Tendal lleno
 
-        PickupItem cleanItem = player.RemoveFirstCleanItem();
-        if (cleanItem != null)
+        MonoBehaviour raw;
+        do
         {
-            HangClothes(cleanItem, freeIndex);
+            raw = player.RemoveFirstCleanItem();  // Saca el primer limpio
+            if (raw == null) return;             // Inventario vacío
         }
+        while (!(raw is PickupItem));            // Repite mientras sea plato
+
+        // Aquí sabemos que raw ES ropa
+        PickupItem cleanItem = (PickupItem)raw;
+        HangClothes(cleanItem, freeIndex);
     }
 
     /// <summary>

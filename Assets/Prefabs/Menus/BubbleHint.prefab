@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5620964448904219134}
   - component: {fileID: 3031019403198909379}
   - component: {fileID: 5896634968058342270}
-  - component: {fileID: 2971130732668123039}
   m_Layer: 5
   m_Name: BubbleHint
   m_TagString: Untagged
@@ -77,19 +76,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 15
---- !u!114 &2971130732668123039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3306742739961801301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1f8d34f8eadbfb4f8dc1b537452fa39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hintText: {fileID: 0}
 --- !u!1 &5114455873956616356
 GameObject:
   m_ObjectHideFlags: 0

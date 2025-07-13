@@ -1,8 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
-public class WashingMachine : MonoBehaviour
+public class DishWasher : MonoBehaviour
 {
     [SerializeField] private float washingTime = 20f;
     [SerializeField] private Transform washingPoint;
@@ -15,11 +15,11 @@ public class WashingMachine : MonoBehaviour
 
     [SerializeField] private Animator _anim;
 
-    private List<PickupItem> itemsInside = new();
+    private List<PickupDish> itemsInside = new();
     private bool isWashing = false;
     private bool isFinished = false;
     private int _cleanedCount = 0;
-    private const int _totalRequired = 6;
+    private const int _totalRequired = 4;
 
     private void Awake()
     {
@@ -45,19 +45,15 @@ public class WashingMachine : MonoBehaviour
                 }
                 else if (!isWashing && player.HasItems())
                 {
+                    // 1. Recibimos la lista tal cual la devuelve el Player (MonoBehaviour)
                     List<MonoBehaviour> dropped = player.DropAllItemsTo(washingPoint);
 
-                    List<PickupItem> items = new();
-
-                    foreach (var mb in dropped)
-                    {
-                        if (mb is PickupItem item)
-                            items.Add(item);
-                    }
-
                     _anim.SetBool("IsWashing", true);
-                    ReceiveItems(items);
+
+                    // 2. Se la pasamos a ReceiveItems ›› ya hemos cambiado su firma
+                    ReceiveItems(dropped);
                 }
+
 
                 break; // Solo interactuar con un jugador
             }
@@ -86,9 +82,9 @@ public class WashingMachine : MonoBehaviour
         }
 
         List<MonoBehaviour> cleaned = new();
-        foreach (var item in itemsInside)
+        foreach (var dish in itemsInside)
         {
-            cleaned.Add(item); // PickupDish hereda de MonoBehaviour
+            cleaned.Add(dish); // PickupDish hereda de MonoBehaviour
         }
 
         player.ReceiveCleanItems(cleaned);
@@ -99,33 +95,39 @@ public class WashingMachine : MonoBehaviour
 
     public bool CanAcceptItems() => !isWashing;
 
-    public void ReceiveItems(List<PickupItem> items)
+    public void ReceiveItems(List<MonoBehaviour> items)
     {
-        if (!CanAcceptItems()) return;
+        itemsInside.Clear();
 
-        itemsInside = items;
-
-        foreach (var item in itemsInside)
+        foreach (var mb in items)
         {
-            item.transform.position = washingPoint.position;
-            item.SetClean(false);
-
-            SpriteRenderer sr = item.GetComponentInChildren<SpriteRenderer>();
-            if (sr != null) sr.enabled = false;
-
-            Collider2D col = item.GetComponent<Collider2D>();
-            if (col != null) col.enabled = false;
-
-            Rigidbody2D rb = item.GetComponent<Rigidbody2D>();
-            if (rb != null)
+            if (mb is PickupDish item)
             {
-                rb.linearVelocity = Vector2.zero;
-                rb.angularVelocity = 0f;
-                rb.bodyType = RigidbodyType2D.Kinematic;
+                item.transform.position = washingPoint.position;
+                item.SetClean(false);
+
+                SpriteRenderer sr = item.GetComponentInChildren<SpriteRenderer>();
+                if (sr != null) sr.enabled = false;
+
+                Collider2D col = item.GetComponent<Collider2D>();
+                if (col != null) col.enabled = false;
+
+                Rigidbody2D rb = item.GetComponent<Rigidbody2D>();
+                if (rb != null)
+                {
+                    rb.linearVelocity = Vector2.zero;
+                    rb.angularVelocity = 0f;
+                    rb.bodyType = RigidbodyType2D.Kinematic;
+                }
+
+                itemsInside.Add(item);
             }
         }
 
-        StartCoroutine(WashItems());
+        if (itemsInside.Count > 0)
+        {
+            StartCoroutine(WashItems());
+        }
     }
 
     private IEnumerator WashItems()
@@ -162,8 +164,8 @@ public class WashingMachine : MonoBehaviour
         }
 
         _anim.SetBool("IsWashing", false);
-        TaskManager.Instance.EndTask(6, (float)_cleanedCount / _totalRequired * 100f);
-        Debug.Log("Lavadora terminÃ³ de lavar");
+        TaskManager.Instance.EndTask(4, (float)_cleanedCount / _totalRequired * 100f);
+        Debug.Log("Lavadora terminó de lavar");
         Debug.Log($"Objetos lavados: {(float)_cleanedCount / _totalRequired * 100f}%");
     }
 

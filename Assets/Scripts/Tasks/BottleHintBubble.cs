@@ -7,17 +7,6 @@ public class BottleHintBubble : MonoBehaviour
 
     private void Update()
     {
-        if (WineProgressManager.Instance == null) return;
 
-        int perfects = Mathf.Min(WineProgressManager.Instance.perfectCount, 3);
-
-        if (perfects < 3)
-        {
-            hintText.text = perfects.ToString();
-        }
-        else
-        {
-            hintText.text = "E";
-        }
     }
 }

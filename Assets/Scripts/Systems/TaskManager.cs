@@ -222,12 +222,12 @@ public class TaskManager : MonoBehaviour
     {
         ClothesTask.CompletedPercent = percent;
         ClothesTaskProgress.gameObject.SetActive(true);
-        if (percent > 66.7f)
+        if (percent > 66.6f)
         {
             ClothesTask.Completed = true;
             ClothesTaskProgress.sprite = NiceResult;
         }
-        else if (percent > 33.4f)
+        else if (percent > 33.3f)
         {
             ClothesTask.Completed = true;
             ClothesTaskProgress.sprite = MediumResult;

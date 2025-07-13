@@ -3,10 +3,8 @@ using UnityEngine.UI;
 
 public class WineProgressManager : MonoBehaviour
 {
-    public static WineProgressManager Instance;
-
     [SerializeField] private float totalProgressNeeded = 3f;
-    private float currentProgress = 0f;
+    public float CurrentProgress = 0f;
     public int perfectCount = 0;
 
     [Header("UI")]
@@ -14,14 +12,6 @@ public class WineProgressManager : MonoBehaviour
 
     [Header("Eventos")]
     public bool bottleFilled = false;
-
-    private void Awake()
-    {
-        if (Instance == null)
-            Instance = this;
-        else
-            Destroy(gameObject);
-    }
 
     public void AddPerfect()
     {
@@ -31,19 +21,17 @@ public class WineProgressManager : MonoBehaviour
         }
     }
 
-
-
     public void AddProgress(float amount)
     {
         if (bottleFilled) return;
 
-        currentProgress += amount;
-        currentProgress = Mathf.Clamp(currentProgress, 0f, totalProgressNeeded);
+        CurrentProgress += amount;
+        CurrentProgress = Mathf.Clamp(CurrentProgress, 0f, totalProgressNeeded);
 
         if (progressBar != null)
-            progressBar.fillAmount = currentProgress / totalProgressNeeded;
+            progressBar.fillAmount = CurrentProgress / totalProgressNeeded;
 
-        if (currentProgress >= totalProgressNeeded)
+        if (CurrentProgress >= totalProgressNeeded)
         {
             bottleFilled = true;
             Debug.Log("Botella de vino llena!");
@@ -51,5 +39,5 @@ public class WineProgressManager : MonoBehaviour
         }
     }
 
-    public float ProgressNormalized => currentProgress / totalProgressNeeded;
+    public float ProgressNormalized => CurrentProgress / totalProgressNeeded;
 }
