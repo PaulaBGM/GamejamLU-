@@ -89,9 +89,9 @@ public class TimerMechanic : MonoBehaviour
     {
         _timerRunning = false;
     }
-    private void ShowResults()
+    public void ShowResults()
     {
         TaskManager.Instance.CalculateFinalPercent();
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(3);
     }
 }

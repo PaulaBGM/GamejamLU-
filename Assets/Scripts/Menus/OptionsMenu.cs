@@ -20,6 +20,8 @@ public class OptionsMenu : MonoBehaviour
     [SerializeField]
     private List<GameObject> _buttonsToDisable;
 
+    public float Percent;
+
     private void Awake()
     {
         //Singleton pattern to ensure only one instance of OptionsMenu exists

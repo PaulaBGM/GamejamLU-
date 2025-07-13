@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class BubbleRoofChecker : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class BubbleRoofChecker : MonoBehaviour
     [SerializeField]
     private GameObject _bubbleCellar;
 
+    private bool isOn = true;
     private Dictionary<string, GameObject> _tagToBubble;
 
     private void Awake()
@@ -25,15 +27,27 @@ public class BubbleRoofChecker : MonoBehaviour
             { "Cellar",       _bubbleCellar      }
         };
     }
-
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (_tagToBubble.TryGetValue(other.tag, out GameObject targetBubble))
+        if (_tagToBubble.TryGetValue(collision.tag, out GameObject targetBubble))
         {
-            ToggleAllBubblesExcept(targetBubble);
+            isOn = true;
         }
     }
-
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (_tagToBubble.TryGetValue(other.tag, out GameObject targetBubble) && isOn)
+        {
+            StartCoroutine(DeactivateWithTime(targetBubble));
+        }
+    }
+    private IEnumerator DeactivateWithTime(GameObject targetBubble)
+    {
+        ToggleAllBubblesExcept(targetBubble);
+        yield return new WaitForSeconds(6.0f);
+        isOn = false;
+        ToggleAllBubblesExcept(null);
+    }
     private void OnTriggerExit2D(Collider2D other)
     {
         if (_tagToBubble.ContainsKey(other.tag))

@@ -4,7 +4,9 @@ using UnityEngine.UI;
 public class TaskManager : MonoBehaviour
 {
     public static TaskManager Instance;
-    
+    [SerializeField]
+    private TimerMechanic TimerMechanic;
+
     [Header("Tasks")]
     [SerializeField]
     private Task WineTask;
@@ -105,6 +107,16 @@ public class TaskManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.T))
         {
             ToggleTaskList();
+        }
+        if(WineTask.Completed &&
+           SweepTask.Completed &&
+           ScrubTask.Completed &&
+           DishesTask.Completed &&
+           ClothesTask.Completed &&
+           WashingMachineTask.Completed &&
+           HangClothesTask.Completed)
+        {
+            TimerMechanic.ShowResults();
         }
     }
     public void EndTask(int id, float percent)
@@ -309,5 +321,6 @@ public class TaskManager : MonoBehaviour
         {
             CharacterHeader.sprite = CharacterHeaderBadSprite;
         }
+        OptionsMenu.Instance.Percent = FinalPercent;
     }
 }

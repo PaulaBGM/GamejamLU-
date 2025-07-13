@@ -120,19 +120,31 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 26
-    m_Localized: Tejado Burbuja
+    m_Localized: Malditas gaivotas!
     m_Metadata:
       m_Items: []
   - m_Id: 27
-    m_Localized: Segunda Planta Burbuja
+    m_Localized: Agora para o quarto!
     m_Metadata:
       m_Items: []
   - m_Id: 28
-    m_Localized: Primera Planta Burbuja
+    m_Localized: "Puxa vida, o c\xE3o!"
     m_Metadata:
       m_Items: []
   - m_Id: 29
-    m_Localized: Bodega Burbuja
+    m_Localized: Tenho que preparar o vinho
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30
+    m_Localized: Escapaste de uma bofetada!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31
+    m_Localized: Safaste-te por pouco!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32
+    m_Localized: Vais levar uma daquelas!
     m_Metadata:
       m_Items: []
   references:
