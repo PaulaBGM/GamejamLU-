@@ -18759,11 +18759,6 @@ MonoBehaviour:
   firstBeatOffset: 0
   beatsPerLoop: 16
   musicSource: {fileID: 28453329}
---- !u!1 &380786075 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8478052091243012540, guid: 48703bfe2c61a6a418418ffbbcc03978, type: 3}
-  m_PrefabInstance: {fileID: 3980941157427505015}
-  m_PrefabAsset: {fileID: 0}
 --- !u!212 &381248042 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 1277432530555731528, guid: a1a1a71f364464a4c8f2688f80f297bf, type: 3}
@@ -62829,10 +62824,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4285023342545289400, guid: 48703bfe2c61a6a418418ffbbcc03978, type: 3}
-      propertyPath: m_SortingOrder
-      value: 5
-      objectReference: {fileID: 0}
+    - target: {fileID: 7155668126073170507, guid: 48703bfe2c61a6a418418ffbbcc03978, type: 3}
+      propertyPath: wineProgressManager
+      value: 
+      objectReference: {fileID: 1645728906}
     - target: {fileID: 8478052091243012540, guid: 48703bfe2c61a6a418418ffbbcc03978, type: 3}
       propertyPath: m_Name
       value: Fridge
@@ -62840,79 +62835,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8478052091243012540, guid: 48703bfe2c61a6a418418ffbbcc03978, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3980941157427505017}
-    - targetCorrespondingSourceObject: {fileID: 8478052091243012540, guid: 48703bfe2c61a6a418418ffbbcc03978, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3980941157427505018}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48703bfe2c61a6a418418ffbbcc03978, type: 3}
 --- !u!4 &3980941157427505016 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1879042134917725283, guid: 48703bfe2c61a6a418418ffbbcc03978, type: 3}
   m_PrefabInstance: {fileID: 3980941157427505015}
   m_PrefabAsset: {fileID: 0}
---- !u!61 &3980941157427505017
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 380786075}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: -0.18780518, y: -0.5282047}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 3.3945312, y: 5.7655807}
-  m_EdgeRadius: 0
---- !u!114 &3980941157427505018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 380786075}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e589e78e800e8a540a7957be1af8db20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  storagePoint: {fileID: 3980941157427505016}
-  wineProgressManager: {fileID: 1645728906}
 --- !u!4 &4244207968835934349 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7870286146189970038, guid: b9c7c68f4ce835e47b4c67d6cd7920f6, type: 3}
@@ -63804,7 +63733,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8843848027743130050, guid: 9c6d8452b19203447bc15c389b48d7e0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9215559800365827736, guid: 9c6d8452b19203447bc15c389b48d7e0, type: 3}
       propertyPath: m_AnchoredPosition.x
