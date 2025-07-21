@@ -97,4 +97,7 @@ public class MainMenuButtons : MonoBehaviour
         _exitPanel.SetActive(show);
         foreach (GameObject b in _buttonsToDisable) b.SetActive(!show);
     }
+
+    public void ExitMenu () 
+    { }
 }
