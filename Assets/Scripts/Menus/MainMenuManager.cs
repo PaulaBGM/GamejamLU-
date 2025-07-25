@@ -20,6 +20,8 @@ public class MainMenuManager : UIManager
         base.Awake();
 
         if (_exitPanel != null) _exitPanel.SetActive(false);
+        _optionsMenuInstance = Instantiate(_optionsMenuPrefab, _mainCanvas.transform);
+        _optionsMenuInstance.SetActive(false);
     }
 
     public void StartGame()
@@ -45,10 +47,6 @@ public class MainMenuManager : UIManager
     // --- Funcionalidad del menú de opciones ---
     public void ToggleOptionsMenu()
     {
-        if (_optionsMenuInstance == null)
-        {
-            _optionsMenuInstance = Instantiate(_optionsMenuPrefab, _mainCanvas.transform);
-        }
 
         _isOptionsMenuOpen = !_optionsMenuInstance.activeSelf;
         _optionsMenuInstance.SetActive(_isOptionsMenuOpen);

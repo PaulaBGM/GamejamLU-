@@ -5,110 +5,146 @@ using UnityEngine.Audio;
 
 public class OptionsReferenceManager : MonoBehaviour
 {
-    [SerializeField]
-    private Scrollbar _brightSlider;
-    [SerializeField]
-    private Scrollbar _musicVolumeSlider;
-    [SerializeField]
-    private Scrollbar _sfxVolumeSlider;
-    [SerializeField]
-    private GameObject _optionsMenuExit;
-    [SerializeField]
-    private AudioMixer _audioMixer;
+    [Header("Sliders")]
+    [SerializeField] private Scrollbar _brightSlider;
+    [SerializeField] private Scrollbar _musicVolumeSlider;
+    [SerializeField] private Scrollbar _sfxVolumeSlider;
+
+    [Header("UI Panels")]
+    [SerializeField] private GameObject _optionsMenuExit;
+    [SerializeField] private GameObject _creditsMenu;
+    [SerializeField] private GameObject _optionMenu;
+
+    [Header("Audio")]
+    [SerializeField] private AudioMixer _audioMixer;
+
+    [Header("Brightness")]
+    [SerializeField] private Image _brightnessOverlay; // Imagen blanca con color alpha para simular brillo (debe estar encima del juego)
 
     private bool hasChanges;
 
+    private const string BrightnessKey = "Brightness";
+    private const string MusicVolumeKey = "MusicVolume";
+    private const string SFXVolumeKey = "SFXVolume";
+
     private void Awake()
     {
-        // Load saved volume settings if they exist
-        if (PlayerPrefs.HasKey("Brightness"))
-        {
-            _brightSlider.value = PlayerPrefs.GetFloat("Brightness");
-        }
-        else
-        {
-            _brightSlider.value = 1.0f; // Default value
-        }
-        if (PlayerPrefs.HasKey("MusicVolume"))
-        {
-            float music = PlayerPrefs.GetFloat("MusicVolume");
-            _musicVolumeSlider.value = music;
-            _audioMixer.SetFloat("MusicVolume", Mathf.Log10(Mathf.Clamp(music, 0.0001f, 1f)) * 20f);
-        }
-        else
-        {
-            float music = 1.0f;
-            _musicVolumeSlider.value = music;
-            _audioMixer.SetFloat("MusicVolume", Mathf.Log10(music) * 20f);
-        }
-        if (PlayerPrefs.HasKey("SFXVolume"))
-        {
-            float sfx = PlayerPrefs.GetFloat("SFXVolume");
-            _sfxVolumeSlider.value = sfx;
-            _audioMixer.SetFloat("SFXVolume", Mathf.Log10(Mathf.Clamp(sfx, 0.0001f, 1f)) * 20f);
-        }
-        else
-        {
-            float sfx = 1.0f;
-            _sfxVolumeSlider.value = sfx;
-            _audioMixer.SetFloat("SFXVolume", Mathf.Log10(sfx) * 20f); 
-        }
+        LoadSettings();
+        ApplyBrightness(_brightSlider.value);
+        _creditsMenu.SetActive(false);
+        _optionsMenuExit.SetActive(false);
     }
 
     void Update()
     {
+        // Debug de volumen (opcional)
         float music;
         _audioMixer.GetFloat("MusicVolume", out music);
         Debug.Log("MusicVolume actual: " + music);
     }
 
+    private void LoadSettings()
+    {
+        // Brillo
+        float brightness = PlayerPrefs.GetFloat(BrightnessKey, 1.0f);
+        _brightSlider.value = brightness;
+
+        // Música
+        float music = PlayerPrefs.GetFloat(MusicVolumeKey, 0.5f);
+        _musicVolumeSlider.value = music;
+        _audioMixer.SetFloat("MusicVolume", Mathf.Log10(Mathf.Clamp01(music)) * 20f);
+
+        // Efectos
+        float sfx = PlayerPrefs.GetFloat(SFXVolumeKey, 1.0f);
+        _sfxVolumeSlider.value = sfx;
+        _audioMixer.SetFloat("SFXVolume", Mathf.Log10(Mathf.Clamp01(sfx)) * 20f);
+    }
+
+    public void ExitCreditsMenu()
+    {
+        _creditsMenu.SetActive(false);
+        _optionMenu.SetActive(true);
+    }
 
     public void CheckChanges()
     {
-        // Check if any of the sliders have changed from their default values
-        hasChanges = _brightSlider.value != PlayerPrefs.GetFloat("Brightness") 
-            ||
-            _musicVolumeSlider.value != PlayerPrefs.GetFloat("MusicVolume") 
-            ||
-            _sfxVolumeSlider.value != PlayerPrefs.GetFloat("SFXVolume");
-        if(hasChanges)
-        {
+        hasChanges =
+            _brightSlider.value != PlayerPrefs.GetFloat(BrightnessKey, 1.0f) ||
+            _musicVolumeSlider.value != PlayerPrefs.GetFloat(MusicVolumeKey, 0.5f) ||
+            _sfxVolumeSlider.value != PlayerPrefs.GetFloat(SFXVolumeKey, 1.0f);
+
+        if (hasChanges)
             ExitOptionsMenu();
-        }
         else
-        {
             TogglePanel();
-        }
     }
+
     public void ExitOptionsMenu()
     {
-        _optionsMenuExit.SetActive(!_optionsMenuExit.activeSelf);
+        _optionsMenuExit.SetActive(true);
+        _optionMenu.SetActive(false);
     }
-    public void TogglePanel() => OptionsMenu.Instance.ToggleOptionsMenu();
-    public void LoadCreditsScene()
+
+    public void CancelExit()
     {
-        SceneManager.LoadScene("4");
+        _optionsMenuExit.SetActive(false);
+        _optionMenu.SetActive(true);
     }
+
+    public void ConfirmExitToMainMenu()
+    {
+        SaveAllSettings();
+        SceneManager.LoadScene("MainScene"); // Cambia por el nombre que uses
+    }
+
+    public void TogglePanel() => OptionsMenu.Instance.ToggleOptionsMenu();
+
+    public void OpenCreditsMenu()
+    {
+        _creditsMenu.SetActive(true);
+        _optionMenu.SetActive(false);
+    }
+
     public void SaveBrightness()
     {
-        PlayerPrefs.SetFloat("Brightness", _brightSlider.value);
+        float value = _brightSlider.value;
+        PlayerPrefs.SetFloat(BrightnessKey, value);
+        ApplyBrightness(value);
     }
+
     public void SaveMusicVolume()
     {
-        float volume = Mathf.Log10(Mathf.Clamp(_musicVolumeSlider.value, 0.0001f, 1f)) * 20f;
-        _audioMixer.SetFloat("MusicVolume", volume);
-        PlayerPrefs.SetFloat("MusicVolume", _musicVolumeSlider.value);
+        float value = Mathf.Clamp01(_musicVolumeSlider.value);
+        _audioMixer.SetFloat("MusicVolume", Mathf.Log10(value) * 20f);
+        PlayerPrefs.SetFloat(MusicVolumeKey, value);
     }
+
     public void SaveSFXVolume()
     {
-        float volume = Mathf.Log10(Mathf.Clamp(_sfxVolumeSlider.value, 0.0001f, 1f)) * 20f;
-        _audioMixer.SetFloat("SFXVolume", volume);
-        PlayerPrefs.SetFloat("SFXVolume", _sfxVolumeSlider.value);
+        float value = Mathf.Clamp01(_sfxVolumeSlider.value);
+        _audioMixer.SetFloat("SFXVolume", Mathf.Log10(value) * 20f);
+        PlayerPrefs.SetFloat(SFXVolumeKey, value);
     }
+
     public void SaveAllSettings()
     {
         SaveBrightness();
         SaveMusicVolume();
         SaveSFXVolume();
+    }
+
+    public void OnBrightnessChanged()
+    {
+        ApplyBrightness(_brightSlider.value);
+    }
+
+    private void ApplyBrightness(float value)
+    {
+        if (_brightnessOverlay != null)
+        {
+            Color color = _brightnessOverlay.color;
+            color.a = 1.0f - value; // Más alpha = más oscuro
+            _brightnessOverlay.color = color;
+        }
     }
 }
