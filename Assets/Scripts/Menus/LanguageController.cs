@@ -9,7 +9,8 @@ public class LanguageController : MonoBehaviour
     private TextMeshProUGUI _languageText;
     private void Awake()
     {
-        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[PlayerPrefs.GetInt("LanguageId")];
+        UnityEngine.Localization.Locale locale = LocalizationSettings.AvailableLocales.Locales[PlayerPrefs.GetInt("LanguageId")];
+        LocalizationSettings.SelectedLocale = locale;
         _id = PlayerPrefs.GetInt("LanguageId");
         SetLanguageText();
     }

@@ -40,7 +40,7 @@ public class OptionsReferenceManager : MonoBehaviour
         // Debug de volumen (opcional)
         float music;
         _audioMixer.GetFloat("MusicVolume", out music);
-        Debug.Log("MusicVolume actual: " + music);
+      
     }
 
     private void LoadSettings()
