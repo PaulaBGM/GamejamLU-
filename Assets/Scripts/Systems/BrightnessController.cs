@@ -9,7 +9,7 @@ public class BrightnessController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        slider.value = PlayerPrefs.GetFloat("brillo", 0.5f);
+        slider.value = PlayerPrefs.GetFloat("Brightness", 0.5f);
 
         brightnessPanel.color = new Color(brightnessPanel.color.r, brightnessPanel.color.g, brightnessPanel.color.b, slider.value);
     }
@@ -17,7 +17,7 @@ public class BrightnessController : MonoBehaviour
     public void ChangeSlider(float value) 
     {
         sliderValue = value;
-       PlayerPrefs.SetFloat("brillo", sliderValue);
+       PlayerPrefs.SetFloat("Brightness", sliderValue);
 
         brightnessPanel.color = new Color(brightnessPanel.color.r, brightnessPanel.color.g, brightnessPanel.color.b, slider.value);
     }

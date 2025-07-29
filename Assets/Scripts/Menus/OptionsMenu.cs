@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,36 +8,51 @@ using UnityEngine.Localization.Settings;
 public class OptionsMenu : MonoBehaviour
 {
     public static OptionsMenu Instance;
-    //Options Menu Prefab to instantiate on every new scene once
-    [SerializeField]
-    private GameObject _optionsMenuPrefab;
-    //Private GameObject to store the Instantiated prefab
-    private GameObject _optionsMenu;
-    //Point to spawn the options menu prefab
-    [SerializeField]
-    private GameObject _mainCanva;
-    //Bool to see if the menu is open
-    public bool IsOpen;
-    [SerializeField]
-    private List<GameObject> _buttonsToDisable;
 
+    [SerializeField] private GameObject _optionsMenuPrefab;
+    private GameObject _optionsMenu;
+
+    [SerializeField] private GameObject _mainCanva;
+    public bool IsOpen;
+
+    [SerializeField] private List<GameObject> _buttonsToDisable;
     public float Percent;
 
     private void Awake()
     {
-        //Singleton pattern to ensure only one instance of OptionsMenu exists
+        // Singleton
         if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            StartCoroutine(InitLanguageSettings()); // << COROUTINE PARA ESPERAR
         }
         else
         {
             Destroy(gameObject);
         }
+
         _mainCanva = GameObject.Find("Canvas");
         IsOpen = false;
-        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[PlayerPrefs.GetInt("LanguageId")];
+    }
+
+    /// <summary>
+    /// Espera a que LocalizationSettings esté cargado antes de acceder a las Locales
+    /// </summary>
+    private IEnumerator InitLanguageSettings()
+    {
+        yield return LocalizationSettings.InitializationOperation;
+
+        int savedId = PlayerPrefs.GetInt("LanguageId", 0);
+        var locales = LocalizationSettings.AvailableLocales.Locales;
+
+        // Validar índice
+        if (savedId < 0 || savedId >= locales.Count)
+        {
+            savedId = 0;
+        }
+
+        LocalizationSettings.SelectedLocale = locales[savedId];
     }
 
     private void Update()
@@ -52,35 +68,31 @@ public class OptionsMenu : MonoBehaviour
             {
                 ToggleOptionsMenu();
             }
-            if (_optionsMenu != null && _optionsMenu.activeSelf)
+            else if (_optionsMenu.activeSelf)
             {
                 ToggleOptionsMenu();
-                return;
             }
             else
             {
                 ToggleOptionsMenu();
-                return;
             }
         }
+
         if (_optionsMenu != null)
         {
-
             if (_optionsMenu.activeSelf)
             {
                 IsOpen = true;
-                if(_buttonsToDisable != null && _buttonsToDisable.Count > 0)
+                if (_buttonsToDisable != null && _buttonsToDisable.Count > 0)
                 {
-                    //If the options menu is open, disable all buttons in the list
                     TurnOffAllButtons();
                 }
             }
             else
             {
                 IsOpen = false;
-                if(_buttonsToDisable != null && _buttonsToDisable.Count > 0)
+                if (_buttonsToDisable != null && _buttonsToDisable.Count > 0)
                 {
-                    //If the options menu is closed, enable all buttons in the list
                     TurnOnAllButtons();
                 }
             }
@@ -91,14 +103,14 @@ public class OptionsMenu : MonoBehaviour
     {
         _mainCanva = GameObject.FindGameObjectWithTag("MainCanva");
         TurnOffAllButtons();
-        GameObject LevelUI = GameObject.FindGameObjectWithTag("LevelUI");
-        _buttonsToDisable.Add(LevelUI);
+        GameObject levelUI = GameObject.FindGameObjectWithTag("LevelUI");
+        if (levelUI != null)
+            _buttonsToDisable.Add(levelUI);
     }
 
     private void TurnOffAllButtons()
     {
         _buttonsToDisable.RemoveAll(b => b == null);
-
         foreach (GameObject button in _buttonsToDisable)
         {
             if (button) button.SetActive(false);
@@ -108,7 +120,6 @@ public class OptionsMenu : MonoBehaviour
     private void TurnOnAllButtons()
     {
         _buttonsToDisable.RemoveAll(b => b == null);
-
         foreach (GameObject button in _buttonsToDisable)
         {
             if (button) button.SetActive(true);
@@ -117,16 +128,13 @@ public class OptionsMenu : MonoBehaviour
 
     public void ToggleOptionsMenu()
     {
-        //If the options menu isnt already on the scene
-        if(_optionsMenu == null)
+        if (_optionsMenu == null)
         {
-            //Instantiate the options menu prefab and set it active
             _optionsMenu = Instantiate(_optionsMenuPrefab, _mainCanva.transform);
             _optionsMenu.SetActive(true);
         }
         else
         {
-            //Toggle the active state of the options menu
             _optionsMenu.SetActive(!_optionsMenu.activeSelf);
         }
     }

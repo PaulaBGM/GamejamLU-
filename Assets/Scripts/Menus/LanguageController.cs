@@ -1,63 +1,77 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
+using System.Collections;
 
 public class LanguageController : MonoBehaviour
 {
     private int _id;
+
     [SerializeField]
     private TextMeshProUGUI _languageText;
-    private void Awake()
+
+    private IEnumerator Start()
     {
-        UnityEngine.Localization.Locale locale = LocalizationSettings.AvailableLocales.Locales[PlayerPrefs.GetInt("LanguageId")];
-        LocalizationSettings.SelectedLocale = locale;
-        _id = PlayerPrefs.GetInt("LanguageId");
+        // Esperar a que se inicialicen las locales
+        yield return LocalizationSettings.InitializationOperation;
+
+        // Obtener ID guardado o establecer a 0 por defecto
+        _id = PlayerPrefs.GetInt("LanguageId", 0);
+
+        // Asignar idioma seleccionado
+        if (_id >= 0 && _id < LocalizationSettings.AvailableLocales.Locales.Count)
+        {
+            LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[_id];
+        }
+        else
+        {
+            _id = 0;
+            LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[0];
+        }
+
         SetLanguageText();
     }
 
     public void IncreaseId()
     {
-        if(_id <= 3)
+        int maxIndex = LocalizationSettings.AvailableLocales.Locales.Count - 1;
+
+        if (_id < maxIndex)
         {
             _id++;
-            CheckLanguage();
-            SetLanguageText();
-
-        }
-        else
-        {
-            return;
+            ApplyLanguage();
         }
     }
+
     public void DecreaseId()
     {
-        if (_id >= 1)
+        if (_id > 0)
         {
             _id--;
-            CheckLanguage();
-            SetLanguageText();
-        }
-        else
-        {
-            return;
+            ApplyLanguage();
         }
     }
 
-    private void CheckLanguage()
+    private void ApplyLanguage()
     {
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[_id];
         PlayerPrefs.SetInt("LanguageId", _id);
+        SetLanguageText();
     }
+
     private void SetLanguageText()
     {
-        _languageText.text = LocalizationSettings.SelectedLocale.Identifier.Code switch
+        string code = LocalizationSettings.SelectedLocale.Identifier.Code;
+
+        _languageText.text = code switch
         {
             "es" => "Español",
             "en" => "English",
             "gl" => "Galego",
-            "ca-ES" => "Catalá",
-            "pt" => "Portuguese",
-            _ => "English"
+            "ca" or "ca-ES" => "Català",
+            "pt" => "Português",
+            _ => "Unknown"
         };
     }
 }
