@@ -1,7 +1,6 @@
 using UnityEngine;
-using UnityEngine.Audio;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class OptionsReferenceManager : MonoBehaviour
 {
@@ -15,84 +14,43 @@ public class OptionsReferenceManager : MonoBehaviour
     [SerializeField] private GameObject _creditsMenu;
     [SerializeField] private GameObject _optionMenu;
 
-    [Header("Audio")]
-    [SerializeField] private AudioMixer _audioMixer;
-
-    [Header("Brightness")]
-    [SerializeField] private UnityEngine.UI.Image _brightnessOverlay;
-
     private bool hasChanges;
 
-    private const string BrightnessKey = "Brightness";
-    private const string MusicVolumeKey = "MusicVolume";
-    private const string SFXVolumeKey = "SFXVolume";
-
-    private void Awake()
+    private void Start()
     {
-        LoadSettings();
-        ApplyBrightness(_brightSlider.value);
+        if (GameSettingsManager.Instance == null)
+        {
+            Debug.LogWarning("GameSettingsManager no está presente en la escena.");
+            return;
+        }
+
+        // Cargar valores desde el manager
+        _brightSlider.value = GameSettingsManager.Instance.Brightness;
+        _musicVolumeSlider.value = GameSettingsManager.Instance.MusicVolume;
+        _sfxVolumeSlider.value = GameSettingsManager.Instance.SFXVolume;
+
+        // Escuchar cambios
+        _brightSlider.onValueChanged.AddListener(OnBrightnessChanged);
+        _musicVolumeSlider.onValueChanged.AddListener(OnMusicVolumeChanged);
+        _sfxVolumeSlider.onValueChanged.AddListener(OnSFXVolumeChanged);
+
         _creditsMenu.SetActive(false);
         _optionsMenuExit.SetActive(false);
     }
 
-    private void LoadSettings()
+    private void OnBrightnessChanged(float value)
     {
-        float brightness = PlayerPrefs.GetFloat(BrightnessKey, 1.0f);
-        _brightSlider.value = brightness;
-
-        float music = PlayerPrefs.GetFloat(MusicVolumeKey, 0.5f);
-        _musicVolumeSlider.value = music;
-        _audioMixer.SetFloat("MusicVolume", Mathf.Log10(Mathf.Clamp01(music)) * 20f);
-
-        float sfx = PlayerPrefs.GetFloat(SFXVolumeKey, 1.0f);
-        _sfxVolumeSlider.value = sfx;
-        _audioMixer.SetFloat("SFXVolume", Mathf.Log10(Mathf.Clamp01(sfx)) * 20f);
-
-        ApplyBrightness(brightness);
+        GameSettingsManager.Instance.SetBrightness(value);
     }
 
-    public void SaveBrightness()
+    private void OnMusicVolumeChanged(float value)
     {
-        float value = _brightSlider.value;
-        ApplyBrightness(value);
-        PlayerPrefs.SetFloat(BrightnessKey, value);
-        PlayerPrefs.Save();
+        GameSettingsManager.Instance.SetMusicVolume(value);
     }
 
-    public void SaveMusicVolume()
+    private void OnSFXVolumeChanged(float value)
     {
-        float value = Mathf.Clamp01(_musicVolumeSlider.value);
-        _audioMixer.SetFloat("MusicVolume", Mathf.Log10(value) * 20f);
-        PlayerPrefs.SetFloat(MusicVolumeKey, value);
-        PlayerPrefs.Save();
-    }
-
-    public void SaveSFXVolume()
-    {
-        float value = Mathf.Clamp01(_sfxVolumeSlider.value);
-        _audioMixer.SetFloat("SFXVolume", Mathf.Log10(value) * 20f);
-        PlayerPrefs.SetFloat(SFXVolumeKey, value);
-        PlayerPrefs.Save();
-    }
-
-    public void SaveAllSettings()
-    {
-        SaveBrightness();
-        SaveMusicVolume();
-        SaveSFXVolume();
-    }
-
-    public void OnBrightnessChanged()
-    {
-        ApplyBrightness(_brightSlider.value);
-    }
-
-    private void ApplyBrightness(float value)
-    {
-        if (_brightnessOverlay != null)
-        {
-            _brightnessOverlay.color = new Color(0, 0, 0, 1f - value); // Más opaco = más oscuro
-        }
+        GameSettingsManager.Instance.SetSFXVolume(value);
     }
 
     public void ExitCreditsMenu()
@@ -103,10 +61,13 @@ public class OptionsReferenceManager : MonoBehaviour
 
     public void CheckChanges()
     {
+        var gsm = GameSettingsManager.Instance;
+        if (gsm == null) return;
+
         hasChanges =
-            _brightSlider.value != PlayerPrefs.GetFloat(BrightnessKey, 1.0f) ||
-            _musicVolumeSlider.value != PlayerPrefs.GetFloat(MusicVolumeKey, 0.5f) ||
-            _sfxVolumeSlider.value != PlayerPrefs.GetFloat(SFXVolumeKey, 1.0f);
+            _brightSlider.value != gsm.Brightness ||
+            _musicVolumeSlider.value != gsm.MusicVolume ||
+            _sfxVolumeSlider.value != gsm.SFXVolume;
 
         if (hasChanges)
             ExitOptionsMenu();
@@ -128,7 +89,6 @@ public class OptionsReferenceManager : MonoBehaviour
 
     public void ConfirmExitToMainMenu()
     {
-        SaveAllSettings();
         SceneManager.LoadScene("MainScene");
     }
 
@@ -141,5 +101,12 @@ public class OptionsReferenceManager : MonoBehaviour
     {
         _creditsMenu.SetActive(true);
         _optionMenu.SetActive(false);
+    }
+
+    private void OnDestroy()
+    {
+        _brightSlider.onValueChanged.RemoveAllListeners();
+        _musicVolumeSlider.onValueChanged.RemoveAllListeners();
+        _sfxVolumeSlider.onValueChanged.RemoveAllListeners();
     }
 }

@@ -8,18 +8,20 @@ public class PlayerPickUp : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private LayerMask pickupLayer;
     [SerializeField] private float pickupRange = 1f;
-    [SerializeField] private KeyCode pickupKey = KeyCode.E;
 
     private readonly List<PickupItem> collectedItems = new();
     private readonly List<PickupDish> collectedDishes = new();
 
     private void Update()
     {
-        if (Input.GetKeyDown(pickupKey))
+        if (InputManager.Instance == null || InputManager.Instance.CurrentInput == null) return;
+
+        if (InputManager.Instance.CurrentInput.InteractPressed())
         {
             TryPickup();
         }
     }
+
 
     private void TryPickup()
     {

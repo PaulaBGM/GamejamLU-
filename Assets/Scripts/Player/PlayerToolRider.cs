@@ -30,10 +30,14 @@ public class PlayerToolRider : MonoBehaviour
         {
             currentTool.HandleMovement();
 
-            if (Input.GetKeyDown(KeyCode.Q))
-                DismountTool();
+            if (InputManager.Instance != null && InputManager.Instance.CurrentInput != null)
+            {
+                if (InputManager.Instance.CurrentInput.DismountPressed())
+                    DismountTool();
+            }
         }
     }
+
 
     public void MountTool(GameObject toolPrefab)
     {

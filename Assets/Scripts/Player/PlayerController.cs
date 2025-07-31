@@ -29,17 +29,21 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        moveInput = Input.GetAxisRaw("Horizontal");
+        // Obt�n la interfaz de input actual
+        var input = InputManager.Instance.CurrentInput;
+
+        // Movimiento horizontal
+        moveInput = input.GetHorizontal();
         anim.SetFloat("Speed", Mathf.Abs(moveInput));
 
-        // Saltar con W o Espacio si est? en el suelo
-        if (isGrounded && (Input.GetKeyDown(KeyCode.Space)))
+        // Saltar si est� en el suelo y pulsaron salto
+        if (isGrounded && input.JumpPressed())
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             anim.SetBool("JumpStart", true);
         }
 
-        // Voltear sprite y c?mara
+        // Voltear sprite y c�mara
         if (moveInput > 0 && !facingRight)
         {
             FlipChildren(true);
@@ -59,13 +63,13 @@ public class PlayerController : MonoBehaviour
         // Movimiento horizontal
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
 
-        // Detecci?n de suelo con raycast desde el centro hacia abajo
+        // Detecci�n de suelo con raycast desde el centro hacia abajo
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, groundLayer);
         isGrounded = hit.collider != null;
 
         anim.SetBool("IsGrounded", isGrounded);
 
-        // Resetear animaci?n de salto si est? cayendo
+        // Resetear animaci�n de salto si est� cayendo
         if (rb.linearVelocity.y <= 0)
         {
             anim.SetBool("JumpStart", false);

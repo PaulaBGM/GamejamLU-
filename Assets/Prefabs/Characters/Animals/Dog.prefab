@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 6368340982084075913}
   m_Layer: 7
   m_Name: Dog
-  m_TagString: Untagged
+  m_TagString: Dog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -168,6 +168,7 @@ MonoBehaviour:
     m_Bits: 8
   flipCooldown: 0.3
   audiosource: {fileID: 6368340982084075913}
+  clip: {fileID: 8300000, guid: e8a8e8748325dad48956e9d58e455223, type: 3}
 --- !u!82 &6368340982084075913
 AudioSource:
   m_ObjectHideFlags: 0
@@ -181,9 +182,9 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: e8a8e8748325dad48956e9d58e455223, type: 3}
   m_Resource: {fileID: 8300000, guid: e8a8e8748325dad48956e9d58e455223, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.39
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

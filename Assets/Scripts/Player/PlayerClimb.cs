@@ -8,7 +8,6 @@ public class PlayerClimb : MonoBehaviour
 {
     [Header("Configuración de Escaleras")]
     [SerializeField] private float climbSpeed = 3f;
-    [SerializeField] private KeyCode interactKey = KeyCode.E;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -28,9 +27,11 @@ public class PlayerClimb : MonoBehaviour
 
     private void Update()
     {
-        verticalInput = Input.GetAxisRaw("Vertical");
+        if (InputManager.Instance == null || InputManager.Instance.CurrentInput == null) return;
 
-        if (isOnStairs && !isClimbing && Input.GetKeyDown(interactKey))
+        verticalInput = InputManager.Instance.CurrentInput.GetVertical();
+
+        if (isOnStairs && !isClimbing && InputManager.Instance.CurrentInput.InteractPressed())
         {
             StartClimbing();
         }
@@ -61,6 +62,7 @@ public class PlayerClimb : MonoBehaviour
             rb.gravityScale = 9f;
         }
     }
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
