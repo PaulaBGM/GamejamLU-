@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4800932275893188804, guid: e9f2d08ebbe87e744a86e4632a8d7327, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.700058
+      value: -1.85
       objectReference: {fileID: 0}
     - target: {fileID: 4800932275893188804, guid: e9f2d08ebbe87e744a86e4632a8d7327, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.2879105
+      value: 1.98
       objectReference: {fileID: 0}
     - target: {fileID: 4800932275893188804, guid: e9f2d08ebbe87e744a86e4632a8d7327, type: 3}
       propertyPath: m_LocalPosition.z
@@ -52,13 +52,45 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 6553031792109829417, guid: 34e81cfb682cdf64e8eb1ea760218a33, type: 3}
+    - target: {fileID: 5625745918121477058, guid: e9f2d08ebbe87e744a86e4632a8d7327, type: 3}
+      propertyPath: m_Color.b
+      value: 0.49803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 5625745918121477058, guid: e9f2d08ebbe87e744a86e4632a8d7327, type: 3}
+      propertyPath: m_Color.g
+      value: 0.60784316
+      objectReference: {fileID: 0}
+    - target: {fileID: 5625745918121477058, guid: e9f2d08ebbe87e744a86e4632a8d7327, type: 3}
+      propertyPath: m_Color.r
+      value: 0.85882354
+      objectReference: {fileID: 0}
     - target: {fileID: 5737902335495862341, guid: e9f2d08ebbe87e744a86e4632a8d7327, type: 3}
       propertyPath: m_Name
       value: StainSmall Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5737902335495862341, guid: e9f2d08ebbe87e744a86e4632a8d7327, type: 3}
+      propertyPath: m_TagString
+      value: Fregar
+      objectReference: {fileID: 0}
+    - target: {fileID: 8711711800299344050, guid: e9f2d08ebbe87e744a86e4632a8d7327, type: 3}
+      propertyPath: passesToClean
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8994319341494775439, guid: e9f2d08ebbe87e744a86e4632a8d7327, type: 3}
+      propertyPath: m_Size.x
+      value: 1.0079322
+      objectReference: {fileID: 0}
+    - target: {fileID: 8994319341494775439, guid: e9f2d08ebbe87e744a86e4632a8d7327, type: 3}
+      propertyPath: m_Size.y
+      value: 0.32785368
+      objectReference: {fileID: 0}
+    - target: {fileID: 8994319341494775439, guid: e9f2d08ebbe87e744a86e4632a8d7327, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.15024304
+      objectReference: {fileID: 0}
     - target: {fileID: 8994319341494775439, guid: e9f2d08ebbe87e744a86e4632a8d7327, type: 3}
       propertyPath: m_Offset.y
-      value: -0.69
+      value: -1.0260732
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

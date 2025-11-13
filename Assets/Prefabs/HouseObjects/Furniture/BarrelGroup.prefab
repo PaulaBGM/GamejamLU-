@@ -8,17 +8,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1190084568919948620, guid: 0af13a65dced452438e9eac9ac1fbf94, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.49
+      objectReference: {fileID: 0}
     - target: {fileID: 1901324437428880368, guid: 0af13a65dced452438e9eac9ac1fbf94, type: 3}
       propertyPath: m_Name
       value: BarrelGroup
       objectReference: {fileID: 0}
     - target: {fileID: 8882281606109796070, guid: 0af13a65dced452438e9eac9ac1fbf94, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -38.65
+      value: -18.62
       objectReference: {fileID: 0}
     - target: {fileID: 8882281606109796070, guid: 0af13a65dced452438e9eac9ac1fbf94, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.78
+      value: -3.37
       objectReference: {fileID: 0}
     - target: {fileID: 8882281606109796070, guid: 0af13a65dced452438e9eac9ac1fbf94, type: 3}
       propertyPath: m_LocalPosition.z
@@ -148,7 +152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8882281606109796070, guid: 0af13a65dced452438e9eac9ac1fbf94, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.59
+      value: 6.32
       objectReference: {fileID: 0}
     - target: {fileID: 8882281606109796070, guid: 0af13a65dced452438e9eac9ac1fbf94, type: 3}
       propertyPath: m_LocalPosition.z
